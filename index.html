@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="full-screen" content="yes" />
-    <meta name="browsermode" content="application">
-    <meta name="x5-fullscreen" content="true">
-    <meta name="x5-page-mode" content="app">
-    <title>Simple Search - Powered by Karune</title>
-    <meta name="keywords" content="Karune Navigation, Karune Search">
-    <meta name="description" content="Probably the most concise search navigation, giving you a simple and comfortable search experience.">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link href="css/bizhi.css" rel="stylesheet">
-    <link href="css/sousuo.css" rel="stylesheet">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_2747255_3lci8rgw5pm.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" id='font-awesome-css' href="https://cdn.staticfile.net/font-awesome/4.7.0/css/font-awesome.min.css" type='text/css' media='all'>
-    <link rel="preload" href="/source/css/custom.css" as="style" onload="this.rel='stylesheet'">
-    <script defer src="/source/js/diytitle.js"></script>
-    <script src="https://cdn.staticfile.net/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/xd.js"></script>
+  <head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="full-screen" content="yes" />
+  <meta name="browsermode" content="application">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="x5-page-mode" content="app">
+
+  <!--UC强制全屏--> 
+  <meta name="browsermode" content="application" />
+  <!--UC应用模式--> 
+  <meta name="x5-fullscreen" content="true" />
+  <!--QQ强制全屏--> 
+  <meta name="x5-page-mode" content="app" />
+  <!--QQ应用模式--> 
+  <title>Simple Search - Powered by Karune</title>
+  <meta name="keywords" content="Karune Navigation, Karune Search">
+  <meta name="description" content="Probably the most concise search navigation, giving you a simple and comfortable search experience.">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
+  <link href="css/bizhi.css" rel="stylesheet" /> 
+  <link href="css/sousuo.css" rel="stylesheet" /> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/> 
+  <link rel="stylesheet" href="/source/css/custom.css"  media="defer" onload="this.media='all'">  <!--Loading custom files--> 
+  <script defer src="/source/js/diytitle.js"></script>
+  <script src="https://cdn.staticfile.net/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/xd.js">
+  </script>
+ </head> 
     <style>
-        .demo { width: 720px; margin: 1280px auto 100px auto; }
-        .demo p { padding: 100px 0; }
+        .demo{width:360px;margin:60px auto 10px auto}
+        .demo p{padding:10px 0}
     </style>
 </head>
-<body>
-    <div id="menu">
-        <i></i>
-    </div>
-    
-    <div class="list closed">
+</body>
+  <div id="menu">
+   <i></i>
+  </div> 
+  <div class="list closed"> 
     <ul>
     <div style="text-align: center">今日一言：<br/>
     <span id="hitokoto">正在加载今日一言....</span>
@@ -514,8 +521,15 @@
   
 </script>
   </div> 
-</body>
-</html>
+   <script type="text/javascript" src="js/yyss.js"></script>
+   <script type="text/javascript" src="js/sousuo.js"></script> 
+   <script type="text/javascript" src="js/lianxiang.js"></script> 
+   <script type="text/javascript" src="js/duration.js"></script>
+   <div class="bgo"></div>
+   <div style="position: absolute;bottom: 50px;text-align: center;width:100%;">Powered By NFWS | CopyRight@copy2021</div>
+   <div style="position: absolute;bottom: 25px;text-align: center;width:100%;"><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></div>
+  </body>
+    </html>
 <!--
 
                 Search，started 2021.8.14 end 2021.8.17
