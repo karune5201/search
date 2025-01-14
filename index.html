@@ -44,15 +44,18 @@
             width: 290px; /* 宽度 */
             height: 96px; /* 高度 */
             z-index: 1000; /* 确保弹出框在最上层 */
-            border: 1px solid #ccc; /* 边框样式 */
-            background-color: #fff; /* 背景颜色 */
+            border: 1px solid rgba(204, 204, 204, 0.5); /* 半透明边框 */
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
             padding: 10px; /* 内边距 */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+            display: flex; /* 使用flex布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            backdrop-filter: blur(5px); /* 背景模糊效果 */
         }
   </style>
 </head> 
 <body>
-
     <!-- 弹出框容器 -->
     <div class="popup">
         <!-- 将你提供的iframe代码放入弹出框容器中 -->
@@ -560,11 +563,6 @@
    <img class="logo" src="" />
    <div style="position: absolute;bottom: 50px;text-align: center;width:100%;">Powered By Search | CopyRight@copy2021</div>
    <div style="position: absolute;bottom: 25px;text-align: center;width:100%;"><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></div>
-   <!-- 访问量 -->
-   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-   <br />
-   本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-   </div>
    <link rel="stylesheet" id='font-awesome-css' href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" type='text/css' media='all'>
    </head>
    <div id="music" key="67629c0cf3742" api="https://music.zbiwl.com"></div><script id="xplayer" src="https://music.zbiwl.com/Static/player9/js/player.js" ></script>
