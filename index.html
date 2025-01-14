@@ -490,43 +490,30 @@
      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-byrutor" value="https://s1.byrutor.com/?do=search&subaction=search&story=" data-placeholder="byrutor（需要翻墙）" /><label for="type-byrutor"><span>byrutor</span></label></li>
      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-3dm" value="https://so.3dmgame.com/?keyword=" data-placeholder="电脑专用" /><label for="type-3dm"><span>3dm</span></label></li>
      </ul>
-            </div>
-        </div>
-        <form action="https://google.com/search" method="get" target="_blank" id="super-search-fm">
-            <input type="text" id="search-text" placeholder="输入关键字搜索" style="outline:0" />
-            <button type="submit"><i class="iconfont icon-sousuo"></i></button>
-            <ul id="ul" class="ko"></ul>
-        </form>
     </div>
-    <div id="yy" style="display:none;">
-        <input type="text" id="kos" placeholder="<?php echo $word; ?>" />
-        <button type="submit" id="kob"><i class="iconfont icon-xdss"></i></button>
-        <ul id="kol" class="ko"></ul>
-    </div>
-    <div class="set-check hidden-xs">
+   </div>
+   <form action="https://www.google.com/search?q=" method="get" target="_blank" id="super-search-fm">
+    <input type="text" id="search-text" placeholder="输入关键字搜索" style="outline:0" />
+    <button type="submit"><i class="iconfont icon-search"></i></button>
+    <ul id="ul" class="ko"></ul>
+   </form>
+   <div id="yy" style="display:none;">
+    <input type="text" id="kos" placeholder="<?php echo $word; ?>" />
+    <button type="submit" id="kob"><i class="iconfont icon-xdss"></i></button>
+    <ul id="kol" class="ko"></ul>
+   </div>
+  <div class="set-check hidden-xs">
     <input type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off" />
-    </div>
-    <script>
-        // 禁止F12
-        document.onkeydown = function(e) {
-            if (event.keyCode == 123) {
-                return false;
-            }
+   </div>
+<script>  <!-- 禁止F12
+    document.onkeydown = function(e) {
+        if(event.keyCode == 123) {
+            return false;
         }
-    </script>
-    <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> <!--看板娘-->
-    <script type="text/javascript" src="js/yyss.js"></script>
-    <script type="text/javascript" src="js/sousuo.js"></script>
-    <script type="text/javascript" src="js/lianxiang.js"></script>
-    <script type="text/javascript" src="js/duration.js"></script>
-    <div class="bgo"></div>
-    <div style="position: absolute;bottom: 50px;text-align: center;width:100%;">Powered By Search | CopyRight@copy2021</div>
-    <div style="position: absolute;bottom: 25px;text-align: center;width:100%;">
-        <span id="timeDate">载入天数...</span>
-        <span id="times">载入时分秒...</span>
-    </div>
-    <div id="music" key="67629c0cf3742" api="https://music.zbiwl.com"></div>
-    <script id="xplayer" src="https://music.zbiwl.com/Static/player9/js/player.js"></script>
+    }
+  
+</script>
+  </div> 
 </body>
 </html>
 <!--
