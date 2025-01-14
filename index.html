@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="full-screen" content="yes">
+    <meta name="full-screen" content="yes" />
     <meta name="browsermode" content="application">
     <meta name="x5-fullscreen" content="true">
     <meta name="x5-page-mode" content="app">
@@ -34,12 +34,7 @@
         <i></i>
     </div>
     <div class="list closed">
-   <ul>
-    <div style="text-align: center"><br/>今日一言：<br/>
-    <span id="hitokoto">正在加载今日一言....</span>
-    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-    </div>
-   <ul>
+        <ul>
     <!---->
     <li class="title"><i class="iconfont icon-changyong"></i>常用</li> 
     <li><a rel="nofollow" href="http://121.36.72.150:5244/" target="_blank"><i class="iconfont icon-alist" style="color: #;"></i>网盘</a></li>
@@ -491,21 +486,15 @@
      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-byrutor" value="https://s1.byrutor.com/?do=search&subaction=search&story=" data-placeholder="byrutor（需要翻墙）" /><label for="type-byrutor"><span>byrutor</span></label></li>
      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-3dm" value="https://so.3dmgame.com/?keyword=" data-placeholder="电脑专用" /><label for="type-3dm"><span>3dm</span></label></li>
      </ul>
+            </div>
+        </div>
+        <form action="https://google.com/search" method="get" target="_blank" id="super-search-fm">
+            <input type="text" id="search-text" placeholder="输入关键字搜索" style="outline:0" />
+            <button type="submit"><i class="iconfont icon-sousuo"></i></button>
+            <ul id="ul" class="ko"></ul>
+        </form>
     </div>
-    <div class="search-group group-e">
-     <span class="type-text">网盘</span>
-     <ul class="search-type">
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-猫狸盘搜" value="https://alipansou.com/search?k=" data-placeholder="输入关键词搜索" /><label for="type-猫狸盘搜"><span>猫狸盘搜</span></label></li>
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-奈斯搜索" value="https://niceso.fun/search/?q=" data-placeholder="需要注册才能搜索" /><label for="type-奈斯搜索"><span>奈斯搜索</span></label></li>
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-两仪鸟搜索" value="http://baiduyunsousou.com/search?kw=" data-placeholder="输入关键词搜索" /><label for="type-两仪鸟搜索"><span>两仪鸟搜索</span></label></li>
-    </div>
-   </div>
-   <form action="https://google.com/search?q=" method="get" target="_blank" id="super-search-fm">
-    <input type="text" id="search-text" placeholder="输入关键字搜索" style="outline:0" />
-    <button type="submit"><i class="iconfont icon-sousuo"></i></button>
-    <ul id="ul" class="ko"></ul>
-   </form>
-   <div id="yy" style="display:none;">
+    <div id="yy" style="display:none;">
         <input type="text" id="kos" placeholder="<?php echo $word; ?>" />
         <button type="submit" id="kob"><i class="iconfont icon-xdss"></i></button>
         <ul id="kol" class="ko"></ul>
