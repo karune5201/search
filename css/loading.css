@@ -176,8 +176,8 @@
     opacity: .5
 }
 
-/* .type-text::after {
+.type-text::after {
     content: "\e6aa";
     font-family: iconfont;
     margin: 0 0 0 10px;
-} */
+}
