@@ -432,38 +432,55 @@
    </ul>
   </div>
     <!----> 
-  <div id="search" class="s-search">
-        <div id="search-list" class="hide-type-list">
-            <div class="s-type">
-                <span></span>
-                <div class="s-type-list animated fadeInUp">
-                    <label for="type-perplexity">常用</label>
-                    <label for="type-search">搜索</label>
-                </div>
+    <div id="search" class="s-search">
+    <div id="search-list" class="hide-type-list">
+        <div class="s-type">
+            <span></span>
+            <div class="s-type-list">
+                <label for="type-perplexity">常用</label>
+                <label for="type-search">搜索</label>
+            </div>
+        </div>
     </div>
     <div class="search-group group-a">
-     <span class="type-text">常用</span>
-     <ul class="search-type">
-      <li><input onclick="bw()" checked="" hidden="" type="radio" name="type" id="type-perplexity" value="https://perplexity.ai/search?q=" data-placeholder="Perplexity不是聊天机器人，而是搜索引擎（或者更准确地说，是答案引擎）" /><label for="type-perplexity"><span>perplexity</span></label></li>
-      <li><input onclick="bw()" checked="" hidden="" type="radio" name="type" id="type-异星" value="https://yxssp.com/?s=" data-placeholder="破解软件下载" /><label for="type-异星"><span>Software</span></label></li>
-      <li><input onclick="bw()" checked="" hidden="" type="radio" name="type" id="type-bilbil" value="https://search.bilibili.com/all?keyword=" data-placeholder="b站搜索" /><label for="type-bilbil"><span>哔哩哔哩搜索</span></label></li>
+        <span class="type-text">常用</span>
+        <ul class="search-type">
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-perplexity" value="https://perplexity.ai/search?q=" data-placeholder="Perplexity不是聊天机器人，而是搜索引擎（或者更准确地说，是答案引擎）"/><label for="type-perplexity">perplexity</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-异星" value="https://yxssp.com/?s=" data-placeholder="破解软件下载"/><label for="type-异星">Software</label></li>
+            <li><input onclick="bw()" hidden="" type="radio
+
       <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-taobao" value="https://downloads.khinsider.com/search?search=" data-placeholder="专辑搜索下载" /><label for="type-taobao"><span>Music</span></label></li>
-      <li><input onclick="bw()" checked="" hidden="" type="radio" name="type" id="type-GitHub" value="https://github.com/search?q=" data-placeholder="GitHub项目搜索" /><label for="type-GitHub"><span>GitHub</span></label></li>
-      <li><input onclick="bw()" checked="" hidden="" type="radio" name="type" id="type-Steam" value="https://store.steampowered.com/account/registerkey?key=" data-placeholder="输入cdk码回车激活" /><label for="type-Steam"><span>Steam cdk激活</span></label></li>
-     </ul>
+                  <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-bilbil" value="https://search.bilibili.com/all?keyword=" data-placeholder="b站搜索"/><label for="type-bilbil">哔哩哔哩搜索</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-taobao" value="https://downloads.khinsider.com/search?search=" data-placeholder="专辑搜索下载"/><label for="type-taobao">Music</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-GitHub" value="https://github.com/search?q=" data-placeholder="GitHub项目搜索"/><label for="type-GitHub">GitHub</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Steam" value="https://store.steampowered.com/account/registerkey?key=" data-placeholder="输入cdk码回车激活"/><label for="type-Steam">Steam cdk激活</label></li>
+        </ul>
     </div>
     <div class="search-group group-b">
-     <span class="type-text">搜索</span>
-     <ul class="search-type">
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-search" value="https://google.com/search?q=" data-placeholder="Google搜索" /><label for="type-search"><span>Google</span></label></li>
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Bing" value="https://bing.com/search?q=" data-placeholder="Bing搜索" /><label for="type-Bing"><span>Bing</span></label></li>
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-DuckDuckGo" value="https://duckduckgo.com/?q=" data-placeholder="DuckDuckGo搜索" /><label for="type-DuckDuckGo"><span>DuckDuckGo</span></label></li>
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Yandex" value="https://yandex.com/search/?text=" data-placeholder="Yandex搜索" /><label for="type-Yandex"><span>Yandex</span></label></li>
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Yahoo" value="https://search.yahoo.com/search;_ylt=AwrgzahENVJkqvsLjylDDWVH;_ylc=X1MDMTE5NzgwNDg2NwRfcgMyBGZyAwRmcjIDcDpzLHY6c2ZwLG06c2Esc2FfbWs6MTMEZ3ByaWQDZzFNVURHOXpSVHUxaFVnb2dZd05UQQRuX3JzbHQDMARuX3N1Z2cDMTAEb3JpZ2luA3NlYXJjaC55YWhvby5jb20EcG9zAzEEcHFzdHIDMQRwcXN0cmwDMQRxc3RybAMxBHF1ZXJ5AzEEdF9zdG1wAzE2ODMxMDkxOTQEdXNlX2Nhc2UD?p=" data-placeholder="Yahoo搜索" /><label for="type-Yahoo"><span>Yahoo</span></label></li>
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-WebCrawler" value="https://webcrawler.com/serp?q=" data-placeholder="webcrawler搜索" /><label for="type-WebCrawler"><span>WebCrawler</span></label></li>
-      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-You" value="https://you.com/search?q=" data-placeholder="You是第一个将聊天助手集成到其搜索结果中的已知搜索引擎" /><label for="type-You"><span>You</span></label></li>
-     </ul>
-   </div>
+        <span class="type-text">搜索</span>
+        <ul class="search-type">
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-search" value="https://google.com/search?q=" data-placeholder="Google搜索"/><label for="type-search">Google</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Bing" value="https://bing.com/search?q=" data-placeholder="Bing搜索"/><label for="type-Bing">Bing</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-DuckDuckGo" value="https://duckduckgo.com/?q=" data-placeholder="DuckDuckGo搜索"/><label for="type-DuckDuckGo">DuckDuckGo</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Yandex" value="https://yandex.com/search/?text=" data-placeholder="Yandex搜索"/><label for="type-Yandex">Yandex</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Yahoo" value="https://search.yahoo.com/search?p=" data-placeholder="Yahoo搜索"/><label for="type-Yahoo">Yahoo</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-WebCrawler" value="https://webcrawler.com/serp?q=" data-placeholder="webcrawler搜索"/><label for="type-WebCrawler">WebCrawler</label></li>
+            <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-You" value="https://you.com/search?q=" data-placeholder="You是第一个将聊天助手集成到其搜索结果中的已知搜索引擎"/><label for="type-You">You</label></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+function bw() {
+    // 假设bw函数用于切换选中状态
+    const inputs = document.querySelectorAll('input[name="type"]');
+    inputs.forEach(input => {
+        input.checked = false;
+    });
+    event.target.checked = true;
+}
+</script>
+
     <form action="https://www.google.com/search?q=" method="get" target="_blank" id="super-search-fm">
     <input type="text" id="search-text" placeholder="输入关键字搜索" style="outline:0" />
     <button type="submit"><i class="iconfont icon-search"></i></button>
@@ -477,13 +494,6 @@
   <div class="set-check hidden-xs">
     <input type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off" />
    </div>
-<script>  <!-- 禁止F12
-    document.onkeydown = function(e) {
-        if(event.keyCode == 123) {
-            return false;
-        }
-    }
-  
 </script>
   </div> 
    <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> <!--看板娘-->
