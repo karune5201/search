@@ -554,16 +554,6 @@
         </button>
       </form>
       
-      <div class="search-options">
-        <div class="option">
-          <input type="checkbox" id="new-tab" checked>
-          <label for="new-tab">在新标签页打开</label>
-        </div>
-        <div class="option">
-          <input type="checkbox" id="safe-search">
-          <label for="safe-search">安全搜索</label>
-        </div>
-      </div>
     </section>
     
     <!-- 内容区域 -->
@@ -873,28 +863,7 @@
         sidebar.classList.toggle('collapsed');
         this.classList.toggle('rotated');
       });
-      
-      // 暗色/亮色模式切换
-      const themeToggle = document.querySelector('.theme-toggle');
-      themeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('light-theme');
-        const icon = this.querySelector('i');
-        
-        if (document.body.classList.contains('light-theme')) {
-          icon.classList.remove('fa-moon');
-          icon.classList.add('fa-sun');
-          themeToggle.innerHTML = '<i class="fas fa-sun"></i> 亮色模式';
-          document.body.style.background = '#f0f2f5';
-          document.body.style.color = '#333';
-        } else {
-          icon.classList.remove('fa-sun');
-          icon.classList.add('fa-moon');
-          themeToggle.innerHTML = '<i class="fas fa-moon"></i> 暗色模式';
-          document.body.style.background = '';
-          document.body.style.color = '';
-        }
-      });
-    });
+
   </script>
 </body>
 </html>
