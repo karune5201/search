@@ -1,869 +1,230 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>超级搜索导航 - Powered by Karune</title>
-  <meta name="description" content="多功能搜索引擎导航页，提供多个搜索引擎切换、可收纳图标、二级菜单等功能">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Noto Sans SC', sans-serif;
-    }
-    
-    body {
-      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #fff;
-      min-height: 100vh;
-      padding: 20px;
-      overflow-x: hidden;
-      position: relative;
-    }
-    
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    .bg-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.7) 100%);
-      z-index: 1;
-      pointer-events: none;
-    }
-    
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-    
-    /* 头部样式 */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      padding: 15px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    
-    .logo-icon {
-      font-size: 2.5rem;
-      color: #ff6b6b;
-    }
-    
-    .logo-text h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    
-    .logo-text p {
-      opacity: 0.8;
-      font-size: 0.9rem;
-    }
-    
-    .settings {
-      display: flex;
-      gap: 20px;
-    }
-    
-    .theme-toggle {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 30px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    
-    .theme-toggle:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    
-    /* 搜索区域 */
-    .search-section {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .search-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-    
-    .engine-tabs {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    
-    .engine-tab {
-      padding: 8px 20px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .engine-tab.active {
-      background: #3498db;
-      box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
-    }
-    
-    .engine-tab:hover:not(.active) {
-      background: rgba(255, 255, 255, 0.25);
-    }
-    
-    .search-form {
-      display: flex;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-      border-radius: 50px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      height: 65px;
-      margin-bottom: 20px;
-    }
-    
-    .search-form:hover {
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-      transform: translateY(-2px);
-    }
-    
-    .search-input {
-      flex: 1;
-      padding: 0 25px;
-      border: none;
-      outline: none;
-      font-size: 1.1rem;
-      background: rgba(255, 255, 255, 0.95);
-      color: #333;
-    }
-    
-    .search-button {
-      background: #3498db;
-      color: white;
-      border: none;
-      padding: 0 35px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 150px;
-    }
-    
-    .search-button:hover {
-      background: #2980b9;
-    }
-    
-    .search-options {
-      display: flex;
-      justify-content: flex-end;
-      gap: 15px;
-    }
-    
-    .option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-    
-    /* 内容区域 */
-    .content {
-      display: flex;
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-    
-    .sidebar {
-      flex: 0 0 280px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      height: fit-content;
-    }
-    
-    .sidebar-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .sidebar-title h2 {
-      font-size: 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .toggle-icon {
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .toggle-icon.rotated {
-      transform: rotate(180deg);
-    }
-    
-    .quote-container {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 25px;
-    }
-    
-    .quote-title {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      opacity: 0.8;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    #hitokoto {
-      font-size: 1.2rem;
-      font-weight: 500;
-      line-height: 1.6;
-      min-height: 24px;
-      font-style: italic;
-    }
-    
-    .category {
-      margin-bottom: 25px;
-    }
-    
-    .category-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
-      padding: 10px 0;
-      cursor: pointer;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .category-icon {
-      font-size: 1.2rem;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-    }
-    
-    .category-title {
-      flex: 1;
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-    
-    .category-links {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      padding-left: 40px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-    
-    .category-links.expanded {
-      max-height: 500px;
-    }
-    
-    .category-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 15px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      text-decoration: none;
-      color: white;
-      transition: all 0.2s ease;
-    }
-    
-    .category-link:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateX(5px);
-    }
-    
-    .link-icon {
-      font-size: 1.1rem;
-      min-width: 20px;
-    }
-    
-    /* 主内容区域 */
-    .main-content {
-      flex: 1;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 25px;
-    }
-    
-    .card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-    }
-    
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .card-icon {
-      font-size: 1.8rem;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-    }
-    
-    .card-title {
-      font-size: 1.4rem;
-      font-weight: 500;
-    }
-    
-    .quick-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .quick-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 15px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      text-decoration: none;
-      color: white;
-      transition: all 0.2s ease;
-    }
-    
-    .quick-link:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-    
-    .quick-link-icon {
-      font-size: 1.2rem;
-      min-width: 25px;
-    }
-    
-    /* 页脚 */
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 15px;
-      margin-top: 20px;
-    }
-    
-    .time-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 15px;
-      font-size: 1.1rem;
-    }
-    
-    .copyright {
-      opacity: 0.8;
-      font-size: 0.95rem;
-      margin-top: 10px;
-    }
-    
-    /* 响应式设计 */
-    @media (max-width: 1200px) {
-      .content {
-        flex-direction: column;
-      }
-      
-      .sidebar {
-        flex: 1;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-      }
-      
-      .logo {
-        flex-direction: column;
-      }
-      
-      .engine-tabs {
-        justify-content: center;
-      }
-      
-      .search-header {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .search-form {
-        height: auto;
-        flex-direction: column;
-        border-radius: 20px;
-      }
-      
-      .search-input {
-        padding: 18px 25px;
-      }
-      
-      .search-button {
-        padding: 15px;
-        width: 100%;
-      }
-      
-      .main-content {
-        grid-template-columns: 1fr;
-      }
-      
-      .category-links {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="bg-overlay"></div>
-  
-  <div class="container">
-    <!-- 头部区域 -->
-    <header>
-      <div class="logo">
-        <div class="logo-icon">
-          <i class="fas fa-search"></i>
-        </div>
-        <div class="logo-text">
-          <h1>超级搜索导航</h1>
-          <p>多功能搜索引擎聚合平台</p>
-        </div>
-      </div>
-      
-      <div class="settings">
-        <button class="theme-toggle">
-          <i class="fas fa-moon"></i> 暗色模式
-        </button>
-        <button class="theme-toggle">
-          <i class="fas fa-cog"></i> 设置
-        </button>
-      </div>
-    </header>
-    
-    <!-- 搜索区域 -->
-    <section class="search-section">
-      <div class="search-header">
-        <div class="engine-tabs">
-          <div class="engine-tab active" data-engine="google">
-            <i class="fab fa-google"></i> Google
-          </div>
-          <div class="engine-tab" data-engine="bing">
-            <i class="fab fa-microsoft"></i> Bing
-          </div>
-          <div class="engine-tab" data-engine="baidu">
-            <i class="fas fa-paw"></i> 百度
-          </div>
-          <div class="engine-tab" data-engine="duckduckgo">
-            <i class="fas fa-duck"></i> DuckDuckGo
-          </div>
-          <div class="engine-tab" data-engine="yandex">
-            <i class="fab fa-yandex"></i> Yandex
-          </div>
-          <div class="engine-tab" data-engine="github">
-            <i class="fab fa-github"></i> GitHub
-          </div>
-        </div>
-      </div>
-      
-      <form id="search-form" class="search-form">
-        <input type="text" id="search-input" class="search-input" placeholder="输入关键字搜索..." required>
-        <button type="submit" class="search-button">
-          <i class="fas fa-search"></i> 搜索
-        </button>
-      </form>
-      
-    </section>
-    
-    <!-- 内容区域 -->
-    <div class="content">
-      <!-- 侧边栏 -->
-      <aside class="sidebar">
-        <div class="sidebar-title">
-          <h2><i class="fas fa-star"></i> 快捷导航</h2>
-          <i class="fas fa-chevron-down toggle-icon"></i>
-        </div>
-        
-        <div class="quote-container">
-          <div class="quote-title"><i class="fas fa-quote-left"></i> 今日一言</div>
-          <div id="hitokoto">生活就像海洋，只有意志坚强的人才能到达彼岸</div>
-        </div>
-        
-        <div class="category">
-          <div class="category-header">
-            <div class="category-icon">
-              <i class="fas fa-cloud"></i>
-            </div>
-            <h3 class="category-title">网盘资源</h3>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="category-links">
-            <a href="http://121.36.72.150:5244/" target="_blank" class="category-link">
-              <i class="link-icon fas fa-server"></i> 个人网盘
-            </a>
-            <a href="https://pan.baidu.com" target="_blank" class="category-link">
-              <i class="link-icon fab fa-baidu"></i> 百度网盘
-            </a>
-            <a href="https://www.aliyundrive.com" target="_blank" class="category-link">
-              <i class="link-icon fas fa-cloud"></i> 阿里云盘
-            </a>
-            <a href="https://drive.google.com" target="_blank" class="category-link">
-              <i class="link-icon fab fa-google-drive"></i> Google Drive
-            </a>
-          </div>
-        </div>
-        
-        <div class="category">
-          <div class="category-header">
-            <div class="category-icon">
-              <i class="fas fa-music"></i>
-            </div>
-            <h3 class="category-title">影音娱乐</h3>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="category-links">
-            <a href="http://tool.liumingye.cn/music/" target="_blank" class="category-link">
-              <i class="link-icon fas fa-headphones"></i> 音乐搜索
-            </a>
-            <a href="https://www.youtube.com" target="_blank" class="category-link">
-              <i class="link-icon fab fa-youtube"></i> YouTube
-            </a>
-            <a href="https://www.bilibili.com" target="_blank" class="category-link">
-              <i class="link-icon fas fa-play-circle"></i> 哔哩哔哩
-            </a>
-            <a href="https://www.netflix.com" target="_blank" class="category-link">
-              <i class="link-icon fas fa-film"></i> Netflix
-            </a>
-          </div>
-        </div>
-        
-        <div class="category">
-          <div class="category-header">
-            <div class="category-icon">
-              <i class="fas fa-shopping-cart"></i>
-            </div>
-            <h3 class="category-title">购物生活</h3>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="category-links">
-            <a href="https://coolexe.com/" target="_blank" class="category-link">
-              <i class="link-icon fas fa-store"></i> 杂货库
-            </a>
-            <a href="https://www.taobao.com" target="_blank" class="category-link">
-              <i class="link-icon fas fa-shopping-bag"></i> 淘宝
-            </a>
-            <a href="https://www.jd.com" target="_blank" class="category-link">
-              <i class="link-icon fas fa-box"></i> 京东
-            </a>
-            <a href="https://www.amazon.com" target="_blank" class="category-link">
-              <i class="link-icon fab fa-amazon"></i> 亚马逊
-            </a>
-          </div>
-        </div>
-      </aside>
-      
-      <!-- 主内容 -->
-      <main class="main-content">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-gamepad"></i>
-            </div>
-            <h3 class="card-title">游戏资源</h3>
-          </div>
-          <div class="quick-links">
-            <a href="https://store.steampowered.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-steam"></i> Steam
-            </a>
-            <a href="https://steamdb.info/" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-database"></i> SteamDB
-            </a>
-            <a href="https://steambase.io/sales" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-tag"></i> Steam活动
-            </a>
-            <a href="https://www.epicgames.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-ghost"></i> Epic Games
-            </a>
-            <a href="https://yxssp.com/" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-star"></i> 异星资源
-            </a>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-book"></i>
-            </div>
-            <h3 class="card-title">学习资源</h3>
-          </div>
-          <div class="quick-links">
-            <a href="https://suyin66.com/" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-book-open"></i> 书音资源
-            </a>
-            <a href="https://github.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-github"></i> GitHub
-            </a>
-            <a href="https://stackoverflow.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-stack-overflow"></i> Stack Overflow
-            </a>
-            <a href="https://www.coursera.org" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-graduation-cap"></i> Coursera
-            </a>
-            <a href="https://www.zhihu.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-question-circle"></i> 知乎
-            </a>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h3 class="card-title">开发工具</h3>
-          </div>
-          <div class="quick-links">
-            <a href="https://developer.mozilla.org" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-firefox"></i> MDN Web Docs
-            </a>
-            <a href="https://codepen.io" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-codepen"></i> CodePen
-            </a>
-            <a href="https://jsfiddle.net" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-code"></i> JSFiddle
-            </a>
-            <a href="https://www.npmjs.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-npm"></i> npm
-            </a>
-            <a href="https://fontawesome.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-icons"></i> Font Awesome
-            </a>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h3 class="card-title">设计资源</h3>
-          </div>
-          <div class="quick-links">
-            <a href="https://dribbble.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-dribbble"></i> Dribbble
-            </a>
-            <a href="https://www.behance.net" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-behance"></i> Behance
-            </a>
-            <a href="https://www.figma.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fab fa-figma"></i> Figma
-            </a>
-            <a href="https://unsplash.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-camera"></i> Unsplash
-            </a>
-            <a href="https://www.adobe.com" target="_blank" class="quick-link">
-              <i class="quick-link-icon fas fa-paint-brush"></i> Adobe
-            </a>
-          </div>
-        </div>
-      </main>
-    </div>
-    
-    <!-- 页脚 -->
-    <footer>
-      <div class="time-container">
-        <span id="timeDate">2023年10月15日 星期日</span>
-        <span id="times">12:30:45</span>
-      </div>
-      <div class="copyright">
-        Powered by Karune Search | © 2021-2023 超级搜索导航 | 让搜索更简单高效
-      </div>
-    </footer>
-  </div>
-  
-  <script>
-    // 今日一言API
-    document.addEventListener('DOMContentLoaded', function() {
-      // 尝试从API获取一言
-      fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('hitokoto').textContent = data.hitokoto;
-        })
-        .catch(() => {
-          // 如果API请求失败，使用默认值
-          document.getElementById('hitokoto').textContent = '生活就像海洋，只有意志坚强的人才能到达彼岸';
-        });
-      
-      // 更新时间和日期
-      function updateTime() {
-        const now = new Date();
-        const timeDate = now.toLocaleDateString('zh-CN', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          weekday: 'long'
-        });
-        
-        const times = now.toLocaleTimeString('zh-CN', {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit'
-        });
-        
-        document.getElementById('timeDate').textContent = timeDate;
-        document.getElementById('times').textContent = times;
-      }
-      
-      updateTime();
-      setInterval(updateTime, 1000);
-      
-      // 搜索引擎切换
-      const engineTabs = document.querySelectorAll('.engine-tab');
-      engineTabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-          engineTabs.forEach(t => t.classList.remove('active'));
-          this.classList.add('active');
-        });
-      });
-      
-      // 搜索表单提交
-      const searchForm = document.getElementById('search-form');
-      searchForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const searchTerm = document.getElementById('search-input').value;
-        const activeEngine = document.querySelector('.engine-tab.active').dataset.engine;
-        const newTab = document.getElementById('new-tab').checked;
-        
-        let searchUrl;
-        switch(activeEngine) {
-          case 'bing':
-            searchUrl = `https://www.bing.com/search?q=${encodeURIComponent(searchTerm)}`;
-            break;
-          case 'baidu':
-            searchUrl = `https://www.baidu.com/s?wd=${encodeURIComponent(searchTerm)}`;
-            break;
-          case 'duckduckgo':
-            searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(searchTerm)}`;
-            break;
-          case 'yandex':
-            searchUrl = `https://yandex.com/search/?text=${encodeURIComponent(searchTerm)}`;
-            break;
-          case 'github':
-            searchUrl = `https://github.com/search?q=${encodeURIComponent(searchTerm)}`;
-            break;
-          default: // google
-            searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
-        }
-        
-        if (newTab) {
-          window.open(searchUrl, '_blank');
-        } else {
-          window.location.href = searchUrl;
-        }
-      });
-      
-      // 折叠菜单功能
-      const categoryHeaders = document.querySelectorAll('.category-header');
-      categoryHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-          const links = this.nextElementSibling;
-          links.classList.toggle('expanded');
-          const icon = this.querySelector('.fa-chevron-down');
-          icon.classList.toggle('rotated');
-        });
-      });
-      
-      // 侧边栏折叠
-      const sidebarToggle = document.querySelector('.sidebar .toggle-icon');
-      const sidebar = document.querySelector('.sidebar');
-      sidebarToggle.addEventListener('click', function() {
-        sidebar.classList.toggle('collapsed');
-        this.classList.toggle('rotated');
-      });
+  <head>
+    <meta charset="UTF-8">
+    <!-- 移动端自适应 -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+    <!-- 禁止站点被某些浏览器以应用模式打开 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- 支持 iOS 全屏与状态栏样式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  </script>
-</body>
+    <title>Simple Search - Powered by Karune</title>
+    <meta name="keywords" content="Karune Navigation, Karune Search">
+    <meta
+      name="description"
+      content="Probably the most concise search navigation, giving you a simple and comfortable search experience."
+    >
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- CSS: 优先加载关键样式，其余可使用延迟加载 -->
+    <link href="css/bizhi.css" rel="stylesheet">
+    <link
+      href="css/sousuo.css"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"
+      integrity="sha384-HWfP+WajsE+lfprCuFkZX9+nL3NtuZ2RyE1O/KxC2bAg6gW0dVW1cmnM76E2eqmZ"
+      crossorigin="anonymous"
+    >
+    <link
+      rel="stylesheet"
+      href="/source/css/custom.css"
+      media="print"
+      onload="this.media='all'"
+    >
+  </head>
+  <body>
+    <!-- 顶部菜单按钮 -->
+    <div id="menu">
+      <i aria-hidden="true"></i>
+    </div>
+
+    <!-- 折叠菜单列表 -->
+    <div class="list closed">
+      <ul>
+        <div style="text-align: center;">
+          <p>今日一言：<br>
+            <span id="hitokoto">正在加载今日一言...</span>
+          </p>
+          <script
+            src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto"
+            defer
+          ></script>
+        </div>
+
+        <li class="title">
+          <i class="iconfont icon-changyong" aria-hidden="true"></i>
+          常用
+        </li>
+        <li>
+          <a
+            rel="nofollow noopener"
+            href="http://121.36.72.150:5244/"
+            target="_blank"
+          >
+            <i class="iconfont icon-alist" aria-hidden="true"></i> 网盘
+          </a>
+        </li>
+        <li>
+          <a
+            rel="nofollow noopener"
+            href="https://key.visualarts.gr.jp/"
+            target="_blank"
+          >
+            <i class="iconfont icon-Key" aria-hidden="true"></i> Key
+          </a>
+        </li>
+        <li>
+          <a
+            rel="nofollow noopener"
+            href="http://tool.liumingye.cn/music/?page=searchPage"
+            target="_blank"
+          >
+            <i class="iconfont" aria-hidden="true"></i> Music
+          </a>
+        </li>
+        <li>
+          <a
+            rel="nofollow noopener"
+            href="https://coolexe.com/"
+            target="_blank"
+          >
+            <i class="iconfont" aria-hidden="true"></i> 杂货库
+          </a>
+        </li>
+        <li>
+          <a
+            rel="nofollow noopener"
+            href="https://suyin66.com/"
+            target="_blank"
+          >
+            <i class="iconfont" aria-hidden="true"></i> 书音资源
+          </a>
+        </li>
+        <li>
+          <a
+            rel="nofollow noopener"
+            href="https://yxssp.com/"
+            target="_blank"
+          >
+            <i class="iconfont" aria-hidden="true"></i> 异星
+          </a>
+        </li>
+        <li>
+          <a
+            rel="nofollow noopener"
+            href="https://steamdb.info/"
+            target="_blank"
+          >
+            <i class="iconfont" aria-hidden="true"></i> steamdb
+          </a>
+        </li>
+        <li>
+          <a
+            rel="nofollow noopener"
+            href="https://steambase.io/sales"
+            target="_blank"
+          >
+            <i class="iconfont" aria-hidden="true"></i> steam 活动
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 搜索表单 -->
+    <form
+      id="super-search-fm"
+      action="https://www.google.com/search"
+      method="get"
+      target="_blank"
+    >
+      <input
+        type="text"
+        id="search-text"
+        name="q"
+        placeholder="输入关键字搜索"
+        autocomplete="off"
+        style="outline: none;"
+      >
+      <button type="submit">
+        <i class="iconfont icon-search" aria-hidden="true"></i>
+      </button>
+      <ul id="ul" class="ko"></ul>
+    </form>
+
+    <!-- 隐藏备用搜索 -->
+    <div id="yy" style="display: none;">
+      <input
+        type="text"
+        id="kos"
+        placeholder="搜索内容"
+        autocomplete="off"
+      >
+      <button type="submit" id="kob">
+        <i class="iconfont icon-xdss" aria-hidden="true"></i>
+      </button>
+      <ul id="kol" class="ko"></ul>
+    </div>
+
+    <!-- 复选框设置 -->
+    <div class="set-check hidden-xs">
+      <input
+        type="checkbox"
+        id="set-search-blank"
+        class="bubble-3"
+        autocomplete="off"
+      >
+    </div>
+
+    <!-- 底部版权与时间信息 -->
+    <div
+      style="position: absolute; bottom: 50px; text-align: center; width: 100%;"
+    >
+      Powered By Search | CopyRight@copy2021
+    </div>
+    <div
+      style="position: absolute; bottom: 25px; text-align: center; width: 100%;"
+    >
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+    </div>
+
+    <!-- 音乐播放器 -->
+    <div id="music" key="67629c0cf3742" api="https://music.zbiwl.com"></div>
+
+    <!-- 底部脚本，使用 defer/async 延迟加载 -->
+    <script
+      src="https://cdn.staticfile.net/jquery/3.5.1/jquery.min.js"
+      integrity="sha384-XN6oY8eGZjiIfjLxfFLd5hDT+Kn+B1DY6R0S6AboiUGwONEh8ab6cJmEicTYBaQv"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="/source/js/diytitle.js" defer></script>
+    <script src="js/xd.js" defer></script>
+    <script src="js/yyss.js" defer></script>
+    <script src="js/sousuo.js" defer></script>
+    <script src="js/lianxiang.js" defer></script>
+    <script src="js/duration.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"
+      async
+    ></script>
+    <script
+      id="xplayer"
+      src="https://music.zbiwl.com/Static/player9/js/player.js"
+      defer
+    ></script>
+  </body>
 </html>
