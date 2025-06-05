@@ -28,26 +28,71 @@
 </head>
 
 <body>
+  <!-- 顶部菜单按钮 -->
   <div id="menu">
-    <i></i>
-  </div> 
+    <i aria-hidden="true"></i>
+  </div>
 
-  <div class="list closed"> 
-    <ul>
-    <div style="text-align: center">今日一言：<br/>
-    <span id="hitokoto">正在加載今日一言....</span>
+  <!-- “今日一言” 区块，放在列表外部 -->
+  <div class="hitokoto-container" style="text-align: center; margin: 16px 0;">
+    <p>今日一言：<br/>
+      <span id="hitokoto">正在加载今日一言...</span>
+    </p>
     <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-    <!---->
-    <li class="title"><i class="iconfont icon-changyong"></i>常用</li> 
-    <li><a rel="nofollow" href="http://121.36.72.150:5244/" target="_blank"><i class="iconfont icon-alist" style="color: #;"></i>網盤</a></li>
-    <li><a rel="nofollow" href="https://key.visualarts.gr.jp/" target="_blank"><i class="iconfont icon-Key" style="color: #;"></i>Key</a></li>
-    <li><a rel="nofollow" href="http://tool.liumingye.cn/music/?page=searchPage" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Music</a></li>
-    <li><a rel="nofollow" href="https://coolexe.com/" target="_blank"><i class="iconfont " style="color: #;"></i>雜貨庫</a></li>
-    <li><a rel="nofollow" href="https://suyin66.com/" target="_blank"><i class="iconfont " style="color: #;"></i>書音資源</a></li>
-    <li><a rel="nofollow" href="https://yxssp.com/" target="_blank"><i class="iconfont " style="color: #;"></i>異星</a></li>
-    <li><a rel="nofollow" href="https://steamdb.info/" target="_blank"><i class="iconfont " style="color: #;"></i>steamdb</a></li>
-    <li><a rel="nofollow" href="https://steambase.io/sales" target="_blank"><i class="iconfont " style="color: #;"></i>steam活動</a></li>
-    <!---->
+  </div>
+
+  <!-- 常用链接列表 -->
+  <div class="list closed">
+    <ul>
+      <li class="title">
+        <i class="iconfont icon-changyong" aria-hidden="true"></i>
+        常用
+      </li>
+      <li>
+        <a rel="nofollow noopener" href="http://121.36.72.150:5244/" target="_blank">
+          <i class="iconfont icon-alist" aria-hidden="true"></i> 网盘
+        </a>
+      </li>
+      <li>
+        <a rel="nofollow noopener" href="https://key.visualarts.gr.jp/" target="_blank">
+          <i class="iconfont icon-Key" aria-hidden="true"></i> Key
+        </a>
+      </li>
+      <li>
+        <a rel="nofollow noopener" href="http://tool.liumingye.cn/music/?page=searchPage" target="_blank">
+          <i class="iconfont icon-music" aria-hidden="true"></i> Music
+        </a>
+      </li>
+      <li>
+        <a rel="nofollow noopener" href="https://coolexe.com/" target="_blank">
+          <i class="iconfont icon-goods" aria-hidden="true"></i> 杂货库
+        </a>
+      </li>
+      <li>
+        <a rel="nofollow noopener" href="https://suyin66.com/" target="_blank">
+          <i class="iconfont icon-book" aria-hidden="true"></i> 书音资源
+        </a>
+      </li>
+      <li>
+        <a rel="nofollow noopener" href="https://yxssp.com/" target="_blank">
+          <i class="iconfont icon-star" aria-hidden="true"></i> 异星
+        </a>
+      </li>
+      <li>
+        <a rel="nofollow noopener" href="https://steamdb.info/" target="_blank">
+          <i class="iconfont icon-steamdb" aria-hidden="true"></i> steamdb
+        </a>
+      </li>
+      <li>
+        <a rel="nofollow noopener" href="https://steambase.io/sales" target="_blank">
+          <i class="iconfont icon-steam" aria-hidden="true"></i> steam 活动
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+
+    
     <li class="title"><i class="iconfont icon-Ai"></i>Ai</li> 
     <li><a rel="nofollow" href="https://chat.openai.com/" target="_blank"><i class="iconfont icon-OpenAi" style="color: #;"></i>OpenAi</a></li>
     <li><a rel="nofollow" href="https://gemini.google.com/" target="_blank"><i class="iconfont icon-Google Bard" style="color: #;"></i>Gemini</a></li>
