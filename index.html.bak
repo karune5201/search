@@ -19,6 +19,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
   <link href="css/bizhi.css" rel="stylesheet" />
   <link href="css/sousuo.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="/source/css/custom.css" media="defer" onload="this.media='all'" /> 
 
@@ -38,69 +39,86 @@
     <span id="hitokoto">正在加載今日一言....</span>
     <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
     <!---->
-    <div class="nav-container">
+    <<div class="nav-container">
         <div class="nav-menu">
-            <ul id="navMenu">
-                <li>
-                    <div class="title-container" id="toggleMenu">
-                        <div class="title-text">
-                            <i class="fas fa-star"></i> <span>常用</span>
-                        </div>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+            <div class="title-container" id="toggleMenu">
+                <div class="title-text">
+                    <i class="fas fa-star"></i> <span>常用</span>
+                </div>
+                <i class="fas fa-chevron-down" id="toggleIcon"></i>
+            </div>
+            <div class="menu-content" id="menuContent">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <a href="http://121.36.72.150:5244/" target="_blank">
+                            <i class="fas fa-cloud"></i> <span>網盤</span>
+                        </a>
                     </div>
-                </li>
-                <li class="menu-content">
-                    <a href="http://121.36.72.150:5244/" target="_blank">
-                        <i class="fas fa-cloud"></i> <span>網盤</span>
-                    </a>
-                    <a href="https://key.visualarts.gr.jp/" target="_blank">
-                        <i class="fas fa-key"></i> <span>Key</span>
-                    </a>
-                    <a href="https://coolexe.com/" target="_blank">
-                        <i class="fas fa-box"></i> <span>雜貨庫</span>
-                    </a>
-                    <a href="https://suyin66.com/" target="_blank">
-                        <i class="fas fa-book"></i> <span>書音資源</span>
-                    </a>
-                    <a href="https://steamdb.info/" target="_blank">
-                        <i class="fas fa-database"></i> <span>steamdb</span>
-                    </a>
-                    <a href="https://steambase.io/sales" target="_blank">
-                        <i class="fas fa-tag"></i> <span>steam活動</span>
-                    </a>
-                </li>
-            </ul>
+                    <div class="menu-item">
+                        <a href="https://key.visualarts.gr.jp/" target="_blank">
+                            <i class="fas fa-key"></i> <span>Key</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://coolexe.com/" target="_blank">
+                            <i class="fas fa-box"></i> <span>雜貨庫</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://suyin66.com/" target="_blank">
+                            <i class="fas fa-book"></i> <span>書音資源</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://steamdb.info/" target="_blank">
+                            <i class="fas fa-database"></i> <span>steamdb</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://steambase.io/sales" target="_blank">
+                            <i class="fas fa-tag"></i> <span>steam活動</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navMenu = document.getElementById('navMenu');
+            const menuContent = document.getElementById('menuContent');
             const toggleMenu = document.getElementById('toggleMenu');
-            const menuContent = navMenu.querySelector('.menu-content');
+            const toggleIcon = document.getElementById('toggleIcon');
             
             // 默认展开菜单
-            navMenu.classList.add('expanded');
+            menuContent.classList.add('expanded');
             
             toggleMenu.addEventListener('click', function(e) {
                 e.stopPropagation();
-                navMenu.classList.toggle('expanded');
+                menuContent.classList.toggle('expanded');
+                // 点击标题栏时切换箭头方向
+                toggleIcon.classList.toggle('fa-chevron-down');
+                toggleIcon.classList.toggle('fa-chevron-up');
             });
 
             // 点击菜单项外部时收起菜单
             document.addEventListener('click', function(e) {
-                if (!navMenu.contains(e.target)) {
-                    navMenu.classList.remove('expanded');
+                if (!menuContent.contains(e.target) && !toggleMenu.contains(e.target)) {
+                    menuContent.classList.remove('expanded');
+                    // 收起菜单时切换箭头方向
+                    toggleIcon.classList.remove('fa-chevron-up');
+                    toggleIcon.classList.add('fa-chevron-down');
                 }
             });
 
             // 防止点击菜单项时触发外部点击收起
-            menuContent.querySelectorAll('a').forEach(link => {
+            document.querySelectorAll('.menu-item a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             });
         });
+
     </script>
     <!---->
     <li class="title"><i class="iconfont icon-Ai"></i>Ai</li> 
