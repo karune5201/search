@@ -2,7 +2,44 @@
 <html lang="en">
 <head> 
   <meta charset="UTF-8" /> 
-  <style>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" /> 
+  <meta http-equiv="Cache-Control" content="no-siteapp" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <meta name="apple-touch-fullscreen" content="yes" /> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+  <meta name="full-screen" content="yes" />
+  <meta name="browsermode" content="application" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="x5-page-mode" content="app" />
+  
+  <title>Simple Search - Powered by Karune</title>
+  <meta name="keywords" content="Karune Navigation, Karune Search">
+  <meta name="description" content="Probably the most concise search navigation, giving you a simple and comfortable search experience.">
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="css/bizhi.css" rel="stylesheet" />
+  <link href="css/sousuo.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="/source/css/custom.css" media="defer" onload="this.media='all'" /> 
+
+  <script defer src="/source/js/diytitle.js"></script>
+  <script src="https://cdn.staticfile.net/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/xd.js"></script>
+</head>
+
+<body>
+  <div id="menu">
+    <i></i>
+  </div> 
+
+  <div class="list closed"> 
+    <ul>
+    <div style="text-align: center">今日一言：<br/>
+    <span id="hitokoto">正在加載今日一言....</span>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <!---->
+     <style>
         * {
             margin: 0;
             padding: 0;
@@ -100,44 +137,6 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" /> 
-  <meta http-equiv="Cache-Control" content="no-siteapp" /> 
-  <meta name="apple-mobile-web-app-capable" content="yes" /> 
-  <meta name="apple-touch-fullscreen" content="yes" /> 
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
-  <meta name="full-screen" content="yes" />
-  <meta name="browsermode" content="application" />
-  <meta name="x5-fullscreen" content="true" />
-  <meta name="x5-page-mode" content="app" />
-  
-  <title>Simple Search - Powered by Karune</title>
-  <meta name="keywords" content="Karune Navigation, Karune Search">
-  <meta name="description" content="Probably the most concise search navigation, giving you a simple and comfortable search experience.">
-
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
-  <link href="css/bizhi.css" rel="stylesheet" />
-  <link href="css/sousuo.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
-  <link rel="stylesheet" href="/source/css/custom.css" media="defer" onload="this.media='all'" /> 
-
-  <script defer src="/source/js/diytitle.js"></script>
-  <script src="https://cdn.staticfile.net/jquery/3.5.1/jquery.min.js"></script>
-  <script src="js/xd.js"></script>
-</head>
-
-<body>
-  <div id="menu">
-    <i></i>
-  </div> 
-
-  <div class="list closed"> 
-    <ul>
-    <div style="text-align: center">今日一言：<br/>
-    <span id="hitokoto">正在加載今日一言....</span>
-    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-    <!---->
     <div class="nav-container">
         <div class="nav-menu">
             <div class="title-container" id="toggleMenu">
