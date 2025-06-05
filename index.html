@@ -38,15 +38,70 @@
     <span id="hitokoto">正在加載今日一言....</span>
     <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
     <!---->
-    <li class="title"><i class="iconfont icon-changyong"></i>常用</li> 
-    <li><a rel="nofollow" href="http://121.36.72.150:5244/" target="_blank"><i class="iconfont icon-alist" style="color: #;"></i>網盤</a></li>
-    <li><a rel="nofollow" href="https://key.visualarts.gr.jp/" target="_blank"><i class="iconfont icon-Key" style="color: #;"></i>Key</a></li>
-    <li><a rel="nofollow" href="http://tool.liumingye.cn/music/?page=searchPage" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Music</a></li>
-    <li><a rel="nofollow" href="https://coolexe.com/" target="_blank"><i class="iconfont " style="color: #;"></i>雜貨庫</a></li>
-    <li><a rel="nofollow" href="https://suyin66.com/" target="_blank"><i class="iconfont " style="color: #;"></i>書音資源</a></li>
-    <li><a rel="nofollow" href="https://yxssp.com/" target="_blank"><i class="iconfont " style="color: #;"></i>異星</a></li>
-    <li><a rel="nofollow" href="https://steamdb.info/" target="_blank"><i class="iconfont " style="color: #;"></i>steamdb</a></li>
-    <li><a rel="nofollow" href="https://steambase.io/sales" target="_blank"><i class="iconfont " style="color: #;"></i>steam活動</a></li>
+    <div class="nav-container">
+        <div class="nav-menu">
+            <ul id="navMenu">
+                <li>
+                    <div class="title-container" id="toggleMenu">
+                        <div class="title-text">
+                            <i class="fas fa-star"></i> <span>常用</span>
+                        </div>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                </li>
+                <li class="menu-content">
+                    <a href="http://121.36.72.150:5244/" target="_blank">
+                        <i class="fas fa-cloud"></i> <span>網盤</span>
+                    </a>
+                    <a href="https://key.visualarts.gr.jp/" target="_blank">
+                        <i class="fas fa-key"></i> <span>Key</span>
+                    </a>
+                    <a href="https://coolexe.com/" target="_blank">
+                        <i class="fas fa-box"></i> <span>雜貨庫</span>
+                    </a>
+                    <a href="https://suyin66.com/" target="_blank">
+                        <i class="fas fa-book"></i> <span>書音資源</span>
+                    </a>
+                    <a href="https://steamdb.info/" target="_blank">
+                        <i class="fas fa-database"></i> <span>steamdb</span>
+                    </a>
+                    <a href="https://steambase.io/sales" target="_blank">
+                        <i class="fas fa-tag"></i> <span>steam活動</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navMenu = document.getElementById('navMenu');
+            const toggleMenu = document.getElementById('toggleMenu');
+            const menuContent = navMenu.querySelector('.menu-content');
+            
+            // 默认展开菜单
+            navMenu.classList.add('expanded');
+            
+            toggleMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navMenu.classList.toggle('expanded');
+            });
+
+            // 点击菜单项外部时收起菜单
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target)) {
+                    navMenu.classList.remove('expanded');
+                }
+            });
+
+            // 防止点击菜单项时触发外部点击收起
+            menuContent.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+        });
+    </script>
     <!---->
     <li class="title"><i class="iconfont icon-Ai"></i>Ai</li> 
     <li><a rel="nofollow" href="https://chat.openai.com/" target="_blank"><i class="iconfont icon-OpenAi" style="color: #;"></i>OpenAi</a></li>
