@@ -16,8 +16,7 @@
   <meta name="keywords" content="Karune Navigation, Karune Search">
   <meta name="description" content="Probably the most concise search navigation, giving you a simple and comfortable search experience.">
 
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
   <link href="css/bizhi.css" rel="stylesheet" />
   <link href="css/sousuo.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
@@ -39,185 +38,15 @@
     <span id="hitokoto">正在加載今日一言....</span>
     <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
     <!---->
-     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            padding: 20px;
-            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .nav-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .nav-menu {
-            background-color: rgba(255, 255, 255, 0.4); /* 40% 透明度 */
-            backdrop-filter: blur(10px); /* 高斯模糊效果 */
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .title-container {
-            padding: 15px 20px;
-            background-color: rgba(0, 0, 0, 0.2); /* 20% 透明度 */
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .menu-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-in-out; /* 更流畅的动画效果 */
-        }
-
-        .menu-content.expanded {
-            max-height: 300px;
-        }
-
-        .menu-grid {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 10px;
-            gap: 10px;
-        }
-
-        .menu-item {
-            flex: 1;
-            min-width: 150px;
-            max-width: 200px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 6px;
-            padding: 0 10px;
-            transition: all 0.3s ease;
-        }
-
-        .menu-item:hover {
-            background-color: rgba(0, 0, 0, 0.4);
-            transform: scale(1.03);
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-
-        i {
-            margin-right: 8px;
-            width: 20px;
-            text-align: center;
-        }
-
-        @media (max-width: 600px) {
-            .menu-item {
-                min-width: 100px;
-            }
-        }
-    </style>
-    <div class="nav-container">
-        <div class="nav-menu">
-            <div class="title-container" id="toggleMenu">
-                <div class="title-text">
-                    <i class="fas fa-star"></i> <span>常用</span>
-                </div>
-                <i class="fas fa-chevron-down" id="toggleIcon"></i>
-            </div>
-            <div class="menu-content" id="menuContent">
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <a href="http://121.36.72.150:5244/" target="_blank">
-                            <i class="fas fa-cloud"></i> <span>網盤</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="https://key.visualarts.gr.jp/" target="_blank">
-                            <i class="fas fa-key"></i> <span>Key</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="https://coolexe.com/" target="_blank">
-                            <i class="fas fa-box"></i> <span>雜貨庫</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="https://suyin66.com/" target="_blank">
-                            <i class="fas fa-book"></i> <span>書音資源</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="https://steamdb.info/" target="_blank">
-                            <i class="fas fa-database"></i> <span>steamdb</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="https://steambase.io/sales" target="_blank">
-                            <i class="fas fa-tag"></i> <span>steam活動</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuContent = document.getElementById('menuContent');
-            const toggleMenu = document.getElementById('toggleMenu');
-            const toggleIcon = document.getElementById('toggleIcon');
-            
-            // 默认展开菜单
-            menuContent.classList.add('expanded');
-            
-            toggleMenu.addEventListener('click', function(e) {
-                e.stopPropagation();
-                menuContent.classList.toggle('expanded');
-                // 点击标题栏时切换箭头方向
-                toggleIcon.classList.toggle('fa-chevron-down');
-                toggleIcon.classList.toggle('fa-chevron-up');
-            });
-
-            // 点击菜单项外部时收起菜单
-            document.addEventListener('click', function(e) {
-                if (!menuContent.contains(e.target) && !toggleMenu.contains(e.target)) {
-                    menuContent.classList.remove('expanded');
-                    // 收起菜单时切换箭头方向
-                    toggleIcon.classList.remove('fa-chevron-up');
-                    toggleIcon.classList.add('fa-chevron-down');
-                }
-            });
-
-            // 防止点击菜单项时触发外部点击收起
-            document.querySelectorAll('.menu-item a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
-            });
-        });
-
-    </script>
+    <li class="title"><i class="iconfont icon-changyong"></i>常用</li> 
+    <li><a rel="nofollow" href="http://121.36.72.150:5244/" target="_blank"><i class="iconfont icon-alist" style="color: #;"></i>網盤</a></li>
+    <li><a rel="nofollow" href="https://key.visualarts.gr.jp/" target="_blank"><i class="iconfont icon-Key" style="color: #;"></i>Key</a></li>
+    <li><a rel="nofollow" href="http://tool.liumingye.cn/music/?page=searchPage" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Music</a></li>
+    <li><a rel="nofollow" href="https://coolexe.com/" target="_blank"><i class="iconfont " style="color: #;"></i>雜貨庫</a></li>
+    <li><a rel="nofollow" href="https://suyin66.com/" target="_blank"><i class="iconfont " style="color: #;"></i>書音資源</a></li>
+    <li><a rel="nofollow" href="https://yxssp.com/" target="_blank"><i class="iconfont " style="color: #;"></i>異星</a></li>
+    <li><a rel="nofollow" href="https://steamdb.info/" target="_blank"><i class="iconfont " style="color: #;"></i>steamdb</a></li>
+    <li><a rel="nofollow" href="https://steambase.io/sales" target="_blank"><i class="iconfont " style="color: #;"></i>steam活動</a></li>
     <!---->
     <li class="title"><i class="iconfont icon-Ai"></i>Ai</li> 
     <li><a rel="nofollow" href="https://chat.openai.com/" target="_blank"><i class="iconfont icon-OpenAi" style="color: #;"></i>OpenAi</a></li>

@@ -175,3 +175,8 @@
     color: #FFF;
     opacity: .5
 }
+
+.search-group.group-b.s-current .type-text .type-text::after {
+    content: "" !important;
+}
+
