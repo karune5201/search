@@ -1,49 +1,37 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- 移动端自适应 -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    >
+    />
     <!-- 禁止站点被某些浏览器以应用模式打开 -->
-    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
     <!-- 支持 iOS 全屏与状态栏样式 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <title>Simple Search - Powered by Karune</title>
-    <meta name="keywords" content="Karune Navigation, Karune Search">
+    <meta name="keywords" content="Karune Navigation, Karune Search" />
     <meta
       name="description"
       content="Probably the most concise search navigation, giving you a simple and comfortable search experience."
-    >
+    />
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <!-- CSS: 优先加载关键样式，其余可使用延迟加载 -->
-    <link href="css/bizhi.css" rel="stylesheet">
-    <link
-      href="css/sousuo.css"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    >
+    <!-- 立即加载的 CSS -->
+    <link href="css/bizhi.css" rel="stylesheet" />
+    <link href="css/sousuo.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"
-      integrity="sha384-HWfP+WajsE+lfprCuFkZX9+nL3NtuZ2RyE1O/KxC2bAg6gW0dVW1cmnM76E2eqmZ"
-      crossorigin="anonymous"
-    >
-    <link
-      rel="stylesheet"
-      href="/source/css/custom.css"
-      media="print"
-      onload="this.media='all'"
-    >
+    />
+    <link href="/source/css/custom.css" rel="stylesheet" />
   </head>
   <body>
     <!-- 顶部菜单按钮 -->
@@ -54,19 +42,8 @@
     <!-- 折叠菜单列表 -->
     <div class="list closed">
       <ul>
-        <div style="text-align: center;">
-          <p>今日一言：<br>
-            <span id="hitokoto">正在加载今日一言...</span>
-          </p>
-          <script
-            src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto"
-            defer
-          ></script>
-        </div>
-
         <li class="title">
-          <i class="iconfont icon-changyong" aria-hidden="true"></i>
-          常用
+          <i class="iconfont icon-changyong" aria-hidden="true"></i> 常用
         </li>
         <li>
           <a
@@ -143,26 +120,59 @@
       </ul>
     </div>
 
-    <!-- 搜索表单 -->
-    <form
-      id="super-search-fm"
-      action="https://www.google.com/search"
-      method="get"
-      target="_blank"
-    >
-      <input
-        type="text"
-        id="search-text"
-        name="q"
-        placeholder="输入关键字搜索"
-        autocomplete="off"
-        style="outline: none;"
+    <!-- “今日一言” 区块 -->
+    <div style="text-align: center; margin: 16px 0;">
+      <p>
+        今日一言：<br />
+        <span id="hitokoto">正在加载今日一言...</span>
+      </p>
+      <script
+        src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto"
+        defer
+      ></script>
+    </div>
+
+    <!-- 搜索表单 外层容器加了 .search-container 方便后续调整样式 -->
+    <div class="search-container" style="text-align: center; margin-top: 24px;">
+      <form
+        id="super-search-fm"
+        action="https://www.google.com/search"
+        method="get"
+        target="_blank"
+        style="display: inline-block;"
       >
-      <button type="submit">
-        <i class="iconfont icon-search" aria-hidden="true"></i>
-      </button>
-      <ul id="ul" class="ko"></ul>
-    </form>
+        <input
+          type="text"
+          id="search-text"
+          name="q"
+          placeholder="输入关键字搜索"
+          autocomplete="off"
+          style="
+            width: 260px;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 14px;
+          "
+        />
+        <button
+          type="submit"
+          style="
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            background-color: #fff;
+            cursor: pointer;
+          "
+        >
+          <i class="iconfont icon-search" aria-hidden="true"></i>
+        </button>
+        <!-- 自动联想列表 -->
+        <ul id="ul" class="ko"></ul>
+      </form>
+    </div>
 
     <!-- 隐藏备用搜索 -->
     <div id="yy" style="display: none;">
@@ -171,7 +181,7 @@
         id="kos"
         placeholder="搜索内容"
         autocomplete="off"
-      >
+      />
       <button type="submit" id="kob">
         <i class="iconfont icon-xdss" aria-hidden="true"></i>
       </button>
@@ -179,26 +189,40 @@
     </div>
 
     <!-- 复选框设置 -->
-    <div class="set-check hidden-xs">
+    <div class="set-check hidden-xs" style="position: fixed; top: 16px; right: 16px;">
       <input
         type="checkbox"
         id="set-search-blank"
         class="bubble-3"
         autocomplete="off"
-      >
+      />
     </div>
 
     <!-- 底部版权与时间信息 -->
     <div
-      style="position: absolute; bottom: 50px; text-align: center; width: 100%;"
+      style="
+        position: absolute;
+        bottom: 50px;
+        text-align: center;
+        width: 100%;
+        font-size: 12px;
+        color: #666;
+      "
     >
       Powered By Search | CopyRight@copy2021
     </div>
     <div
-      style="position: absolute; bottom: 25px; text-align: center; width: 100%;"
+      style="
+        position: absolute;
+        bottom: 25px;
+        text-align: center;
+        width: 100%;
+        font-size: 12px;
+        color: #666;
+      "
     >
       <span id="timeDate">载入天数...</span>
-      <span id="times">载入时分秒...</span>
+      <span id="times" style="margin-left: 8px;">载入时分秒...</span>
     </div>
 
     <!-- 音乐播放器 -->
@@ -207,8 +231,6 @@
     <!-- 底部脚本，使用 defer/async 延迟加载 -->
     <script
       src="https://cdn.staticfile.net/jquery/3.5.1/jquery.min.js"
-      integrity="sha384-XN6oY8eGZjiIfjLxfFLd5hDT+Kn+B1DY6R0S6AboiUGwONEh8ab6cJmEicTYBaQv"
-      crossorigin="anonymous"
       defer
     ></script>
     <script src="/source/js/diytitle.js" defer></script>
