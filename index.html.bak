@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="full-screen" content="yes">
+  <meta name="browsermode" content="application">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="x5-page-mode" content="app">
+  
+  <title>简洁搜索 - Powered by Karune</title>
+  <meta name="keywords" content="Karune导航, Karune搜索">
+  <meta name="description" content="极简的搜索导航，提供简洁舒适的搜索体验">
+  
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>" type="image/svg+xml">
+  
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: var(--light-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    header {
+      margin-bottom: 40px;
+    }
+    
+    .logo {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .logo span {
+      color: var(--accent-color);
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+    
+    .search-container {
+      position: relative;
+      margin: 0 auto 40px;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .search-form {
+      display: flex;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      border-radius: 50px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .search-form:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 18px 25px;
+      border: none;
+      outline: none;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--dark-color);
+    }
+    
+    .search-button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0 30px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .search-button:hover {
+      background: #2980b9;
+    }
+    
+    .quote-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .quote-title {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+    
+    #hitokoto {
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.6;
+      min-height: 24px;
+    }
+    
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    
+    .link-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 20px 10px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--light-color);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .link-card:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+    
+    .link-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .link-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .time-container {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.6) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 2.5rem;
+      }
+      
+      .search-input {
+        padding: 15px 20px;
+        font-size: 1rem;
+      }
+      
+      .search-button {
+        padding: 0 20px;
+      }
+      
+      .quick-links {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .tagline {
+        font-size: 1rem;
+      }
+      
+      .search-input {
+        padding: 12px 15px;
+      }
+      
+      .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .link-icon {
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+  
+  <!-- 使用内联方式加载Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  
+  <div class="container">
+    <header>
+      <h1 class="logo">🔍 简洁<span>搜索</span></h1>
+      <p class="tagline">极简搜索导航，提供简洁舒适的搜索体验</p>
+    </header>
+    
+    <div class="quote-container">
+      <div class="quote-title">今日一言</div>
+      <div id="hitokoto">正在加载今日一言...</div>
+    </div>
+    
+    <div class="search-container">
+      <form action="https://www.google.com/search" method="get" target="_blank" class="search-form">
+        <input type="text" name="q" class="search-input" placeholder="输入关键字搜索" required>
+        <button type="submit" class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+    </div>
+    
+    <div class="quick-links">
+      <a href="http://121.36.72.150:5244/" target="_blank" class="link-card">
+        <div class="link-icon"><i class="fas fa-cloud"></i></div>
+        <div class="link-label">网盘</div>
+      </a>
+      <a href="https://key.visualarts.gr.jp/" target="_blank" class="link-card">
+        <div class="link-icon"><i class="fas fa-key"></i></div>
+        <div class="link-label">Key</div>
+      </a>
+      <a href="http://tool.liumingye.cn/music/?page=searchPage" target="_blank" class="link-card">
+        <div class="link-icon"><i class="fas fa-music"></i></div>
+        <div class="link-label">音乐</div>
+      </a>
+      <a href="https://coolexe.com/" target="_blank" class="link-card">
+        <div class="link-icon"><i class="fas fa-store"></i></div>
+        <div class="link-label">杂货库</div>
+      </a>
+      <a href="https://suyin66.com/" target="_blank" class="link-card">
+        <div class="link-icon"><i class="fas fa-book"></i></div>
+        <div class="link-label">书音资源</div>
+      </a>
+      <a href="https://yxssp.com/" target="_blank" class="link-card">
+        <div class="link-icon"><i class="fas fa-star"></i></div>
+        <div class="link-label">异星</div>
+      </a>
+      <a href="https://steamdb.info/" target="_blank" class="link-card">
+        <div class="link-icon"><i class="fab fa-steam"></i></div>
+        <div class="link-label">steamdb</div>
+      </a>
+      <a href="https://steambase.io/sales" target="_blank" class="link-card">
+        <div class="link-icon"><i class="fas fa-tag"></i></div>
+        <div class="link-label">steam活动</div>
+      </a>
+    </div>
+    
+    <footer>
+      <div>Powered by Karune | &copy; 2021-2023</div>
+      <div class="time-container">
+        <span id="timeDate">载入天数...</span>
+        <span id="times">载入时分秒...</span>
+      </div>
+    </footer>
+  </div>
+  
+  <script>
+    // 今日一言API
+    function fetchHitokoto() {
+      fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('hitokoto').textContent = data.hitokoto;
+        })
+        .catch(() => {
+          document.getElementById('hitokoto').textContent = '生活就像海洋，只有意志坚强的人才能到达彼岸';
+        });
+    }
+    
+    // 时间显示
+    function updateTime() {
+      const now = new Date();
+      const timeDate = now.toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long'
+      });
+      
+      const times = now.toLocaleTimeString('zh-CN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      
+      document.getElementById('timeDate').textContent = timeDate;
+      document.getElementById('times').textContent = times;
+    }
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchHitokoto();
+      updateTime();
+      setInterval(updateTime, 1000);
+      
+      // 搜索框聚焦效果
+      const searchInput = document.querySelector('.search-input');
+      searchInput.addEventListener('focus', () => {
+        document.querySelector('.search-form').style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.4)';
+      });
+      
+      searchInput.addEventListener('blur', () => {
+        document.querySelector('.search-form').style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+      });
+    });
+  </script>
+</body>
+</html>
