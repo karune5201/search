@@ -1,62 +1,105 @@
 #!/bin/sh
-#本脚本用于群友交流，完全开源，可以随意传阅，不过希望保留出处。
-echo "==========================================="
-echo "       欢迎使用git项目脚本！"
-echo "==========================================="
-HexoPath=$(cd "$(dirname "$0")"; pwd)
-cd ${HexoPath}
-printf "\033[32m git项目 根目录："${HexoPath}"\033[0m"
-echo " "
-echo "[0] 退出菜单"
-echo "=============以下功能需要在空文件夹内使用================"
-echo "[1] 从Github拉取最新版本"
-echo "[2] 提交本地修改到GitHub"
-echo " "
-printf "选择："
-read answer
+# Git 多功能管理脚本（适合任意 Git 项目）
+# 作者：ChatGPT 改写 - 自由使用但请保留出处
 
+# 颜色定义
+GREEN="\033[1;32m"
+YELLOW="\033[1;33m"
+RED="\033[1;31m"
+RESET="\033[0m"
 
-if [ "$answer" = "1" ]; then
-printf "\033[32mINFO \033[0m 正在从Github拉取最新版本...\n"
-git pull origin master #2020年10月后github新建仓库默认分支改为main，注意更改
-printf "\033[32mINFO \033[0m 拉取完毕，您的博客已是最新版本！\n"
-sleep 1s
-exec ${HexoPath}/1.sh
-else
-if [ "$answer" = "2" ]; then
-printf "\033[32mINFO \033[0m 正在提交最新修改到GitHub...\n"
-git add .
-git commit -m "Update posts content"
-git push -f origin  master #2020年10月后github新建仓库默认分支改为main，注意更改
-printf "\033[32mINFO \033[0m 提交完毕，您的修改已上传至Github！\n"
-sleep 1s
-exec ${HexoPath}/1.sh
+# 获取脚本路径并进入
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+cd "$SCRIPT_DIR" || exit 1
 
+# 欢迎界面
+clear
+echo "==============================================="
+echo "         欢迎使用 Git 项目管理脚本！"
+echo "==============================================="
+echo -e "${GREEN}当前目录：${SCRIPT_DIR}${RESET}"
+echo ""
 
+# 显示菜单
+while true; do
+echo "请选择功能："
+echo "  [1] 从 GitHub 拉取最新版本"
+echo "  [2] 提交修改到 GitHub"
+echo "  [3] 克隆新的 Git 仓库"
+echo "  [4] 查看当前 Git 状态"
+echo "  [5] 查看 Git 提交日志"
+echo "  [6] 创建并切换新分支"
+echo "  [7] 查看并切换已有分支"
+echo "  [8] 撤销所有未提交修改（危险操作）"
+echo "  [9] 删除 .git 并初始化新仓库"
+echo "  [0] 退出脚本"
+echo ""
 
-else
-if [ "$answer" = "0" ]; then
-printf "\033[32mINFO \033[0m 欢迎下次光临！\n"
-sleep 1s
-exit 0
-else
-printf "\033[31mERROR \033[0m 输入错误，请返回重新选择...\n"
-sleep 1s
-exec ${HexoPath}/1.sh
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
+# 用户输入
+printf "${YELLOW}请输入操作编号 [0-9]: ${RESET}"
+read -r choice
+
+case "$choice" in
+  1)
+    echo -e "${GREEN}>> 正在从 GitHub 拉取最新版本...${RESET}"
+    git pull origin master || git pull origin main
+    echo -e "${GREEN}>> 拉取完成。${RESET}"
+    ;;
+  2)
+    echo -e "${GREEN}>> 提交中...${RESET}"
+    git add .
+    git commit -m "Update by script"
+    git push -f origin master || git push -f origin main
+    echo -e "${GREEN}>> 提交完成。${RESET}"
+    ;;
+  3)
+    printf "${YELLOW}请输入 Git 仓库地址：https://github.com/xxx/xxx.git：${RESET}"
+    read -r repo_url
+    git clone "$repo_url"
+    ;;
+  4)
+    echo -e "${GREEN}>> 当前 Git 状态：${RESET}"
+    git status
+    ;;
+  5)
+    echo -e "${GREEN}>> 最近提交记录：${RESET}"
+    git log --oneline --graph --decorate -n 10
+    ;;
+  6)
+    printf "${YELLOW}请输入新分支名称：${RESET}"
+    read -r new_branch
+    git checkout -b "$new_branch"
+    ;;
+  7)
+    echo -e "${GREEN}>> 本地分支列表：${RESET}"
+    git branch
+    printf "${YELLOW}请输入要切换的分支名称：${RESET}"
+    read -r branch
+    git checkout "$branch"
+    ;;
+  8)
+    echo -e "${RED}警告：将撤销所有未提交修改。继续？(y/n)：${RESET}"
+    read -r confirm
+    [ "$confirm" = "y" ] && git reset --hard HEAD && echo -e "${GREEN}>> 已恢复到最后一次提交。${RESET}" || echo ">> 已取消操作。"
+    ;;
+  9)
+    echo -e "${RED}危险操作：删除 .git 并初始化新仓库。继续？(y/n)：${RESET}"
+    read -r confirm
+    if [ "$confirm" = "y" ]; then
+      rm -rf .git && git init
+      echo -e "${GREEN}>> 已初始化为新仓库。${RESET}"
+    else
+      echo ">> 已取消操作。"
+    fi
+    ;;
+  0)
+    echo -e "${GREEN}感谢使用，再见！${RESET}"
+    exit 0
+    ;;
+  *)
+    echo -e "${RED}无效选项，请输入 0-9 之间的数字。${RESET}"
+    ;;
+esac
+
+echo ""  # 空行分隔
+done
