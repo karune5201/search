@@ -1,40 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Simple Search – Powered by search</title>
-  <link rel="shortcut icon" href="favicon.ico" />
+<head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" /> 
+  <meta http-equiv="Cache-Control" content="no-siteapp" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <meta name="apple-touch-fullscreen" content="yes" /> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+  <meta name="full-screen" content="yes" />
+  <meta name="browsermode" content="application" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="x5-page-mode" content="app" />
+  
+  <title>Simple Search - Powered by search</title>
+  <meta name="keywords" content="Navigation, Karune Search">
+  <meta name="description" content="Probably the most concise search navigation, giving you a simple and comfortable search experience.">
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
   <link href="css/bizhi.css" rel="stylesheet" />
   <link href="css/sousuo.css" rel="stylesheet" />
-  <link href="css/nav.css" rel="stylesheet" />
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="/source/css/custom.css" media="defer"
-        onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="/source/css/custom.css" media="defer" onload="this.media='all'" /> 
+
   <script defer src="/source/js/diytitle.js"></script>
   <script src="https://cdn.staticfile.net/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-  <div id="menu"><i></i></div>
-
-  <!-- 替换点：用 JavaScript 动态生成 nav -->
-  <nav id="sidebar" class="list closed" aria-label="主导航"></nav>
-
-  <!-- Hitokoto & 其它 HTML 保留不变… -->
-
-  <!-- 导航渲染脚本 -->
-  <script type="module" src="js/renderNav.js"></script>
-
-  <!-- 业务脚本 -->
   <script src="js/xd.js"></script>
-  <script src="js/yyss.js"></script>
-  <script src="js/sousuo.js"></script>
-  <script src="js/lianxiang.js"></script>
-  <script src="js/duration.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+</head>
 
-  <!-- 页脚等保留… -->
-</body>
+<body>
+  <div id="menu">
+    <i></i>
+  </div> 
+
+  <div class="list closed"> 
+    <ul>
+    <div style="text-align: center">今日一言：<br/>
+    <span id="hitokoto">正在加載今日一言....</span>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <!---->
+    <li class="title"><i class="iconfont icon-changyong"></i>常用</li> 
+    <li><a rel="nofollow" href="https://wckepdon.ap-northeast-1.clawcloudrun.com/" target="_blank"><i class="iconfont icon-openlist" style="color: #;"></i>網盤</a></li>
+    <li><a rel="nofollow" href="https://key.visualarts.gr.jp/" target="_blank"><i class="iconfont icon-Key" style="color: #;"></i>Key</a></li>
+    <li><a rel="nofollow" href="https://coolexe.com/" target="_blank"><i class="iconfont " style="color: #;"></i>雜貨庫</a></li>
+    <li><a rel="nofollow" href="https://suyin66.com/" target="_blank"><i class="iconfont " style="color: #;"></i>書音資源</a></li>
+    <li><a rel="nofollow" href="https://yxssp.com/" target="_blank"><i class="iconfont " style="color: #;"></i>異星</a></li>
+    <li><a rel="nofollow" href="https://steamdb.info/" target="_blank"><i class="iconfont " style="color: #;"></i>steamdb</a></li>
+    <li><a rel="nofollow" href="https://steambase.io/sales" target="_blank"><i class="iconfont " style="color: #;"></i>steam活動</a></li>
+    <!---->
+    <li class="title"><i class="iconfont icon-Ai"></i>Ai</li> 
+    <li><a rel="nofollow" href="https://chat.openai.com/" target="_blank"><i class="iconfont icon-OpenAi" style="color: #;"></i>OpenAi</a></li>
+    <li><a rel="nofollow" href="https://gemini.google.com/" target="_blank"><i class="iconfont icon-Google Bard" style="color: #;"></i>Gemini</a></li>
+    <li><a rel="nofollow" href="https://bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx" target="_blank"><i class="iconfont icon-Bing Ai" style="color: #;"></i>Bing Ai</a></li>
+    <li><a rel="nofollow" href="https://chat.scnet.cn/#/home" target="_blank"><i class="iconfont icon-ds" style="color: #;"></i>国家超算DS</a></li>
+    <li><a rel="nofollow" href="https://www.n.cn/" target="_blank"><i class="iconfont icon-N" style="color: #;"></i>纳米Ai</a></li>
+    <li><a rel="nofollow" href="https://metaso.cn/" target="_blank"><i class="iconfont icon-meta" style="color: #;"></i>秘塔ai</a></li>
+    <li><a rel="nofollow" href="https://suno.com/" target="_blank"><i class="iconfont icon-suno" style="color: #;"></i>suno</a></li>
+    <li><a rel="nofollow" href="https://perplexity.ai/" target="_blank"><i class="iconfont icon-perplexity" style="color: #;"></i>Perplexity</a></li>
+    <li><a rel="nofollow" href="https://popai.pro//" target="_blank"><i class="iconfont icon-Hebbia" style="color: #;"></i>Popai</a></li>
+    <li><a rel="nofollow" href="https://speak.ef.com/ja" target="_blank"><i class="iconfont icon-Speak" style="color: #;"></i>Speak</a></li>
+    <li><a rel="nofollow" href="https://app.myshell.ai/" target="_blank"><i class="iconfont icon-MyShell" style="color: #;"></i>MyShell</a></li>
+    <li><a rel="nofollow" href="https://langotalk.org/" target="_blank"><i class="iconfont icon-Langotalk" style="color: #;"></i>Langotalk</a></li>
+    <li><a rel="nofollow" href="https://firefly.adobe.com/" target="_blank"><i class="iconfont icon-Langotalk" style="color: #;"></i>firefly</a></li>
+    <li><a rel="nofollow" href="https://clipdrop.co/" target="_blank"><i class="iconfont icon-Langotalk" style="color: #;"></i>clipdrop</a></li>
+    <li><a rel="nofollow" href="https://skylum.com/jp/luminar" target="_blank"><i class="iconfont icon-Langotalk" style="color: #;"></i>Lumina NEO</a></li>
+    
+    
+    
+    <!----> 
+    <li class="title"><i class="iconfont icon-Anime Wallpapers"></i>動漫壁紙</li> 
+    <li><a rel="nofollow" href="https://pixiv.net/" target="_blank"><i class="iconfont icon-Pixiv" style="color: #;"></i>P站</a></li> 
+    <li><a rel="nofollow" href="https://e-hentai.org/" target="_blank"><i class="iconfont icon-Pixiv" style="color: #;"></i>E站</a></li> 
+    <li><a rel="nofollow" href="https://konachan.net/" target="_blank"><i class="iconfont icon-Konachan" style="color: #;"></i>K站</a></li>
+    <li><a rel="nofollow" href="https://yande.re/" target="_blank"><i class="iconfont icon-Yande" style="color: #;"></i>Y站</a></li>
+    <li><a rel="nofollow" href="https://anime-pictures.net/" target="_blank"><i class="iconfont icon-Pictures" style="color: #;"></i>Pictures</a></li>
+    <li><a rel="nofollow" href="https://safebooru.org/" target="_blank"><i class="iconfont icon-Safebooru.org/" style="color: #;"></i>Safebooru</a></li>
+    <li><a rel="nofollow" href="https://e-shuushuu.net/" target="_blank"><i class="iconfont icon-Shuushuu" style="color: #;"></i>Shuushuu</a></li>
+    <li><a rel="nofollow" href="https://booru.allthefallen.moe/" target="_blank"><i class="iconfont icon-Booru" style="color: #;"></i>Booru</a></li>
+    <li><a rel="nofollow" href="https://danbooru.donmai.us/" target="_blank"><i class="iconfont icon-Danbooru" style="color: #;"></i>Danbooru</a></li>
+    <li><a rel="nofollow" href="https://gelbooru.com/index.php" target="_blank"><i class="iconfont icon-Gelbooru" style="color: #;"></i>Gelbooru</a></li>
+    <li><a rel="nofollow" href="https://kurocore.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>kurocore</a></li>
+    <li><a rel="nofollow" href="https://chan.sankakucomplex.com/" target="_blank"><i class="iconfont icon-Sankaku " style="color: #;"></i>Sankaku</a></li>
+    <li><a rel="nofollow" href="http://iqdb.org/" target="_blank"><i class="iconfont icon-iqdb" style="color: #;"></i>iqdn</a></li>
+    <li><a rel="nofollow" href="https://saucenao.cn/" target="_blank"><i class="iconfont icon-Saucenao" style="color: #;"></i>Saucenao</a></li>
+    <li><a rel="nofollow" href="https://tineye.com/" target="_blank"><i class="iconfont icon-Tineye" style="color: #;"></i>Tineye</a></li>
+    <li><a rel="nofollow" href="https://ascii2d.net/" target="_blank"><i class="iconfont icon-Ascii2d" style="color: #;"></i>Ascii2d</a></li>
+    <li><a rel="nofollow" href="https://trace.moe/" target="_blank"><i class="iconfont icon-trace" style="color: #;"></i>trace</a></li>
+    <li><a rel="nofollow" href="https://google.com/imghp?hl=zh-TW&ogbl" target="_blank"><i class="iconfont icon-Google" style="color: #;"></i>Google</a></li>
+    
+    <!----> 
+    <li class="title"><i class="iconfont icon-shipin"></i>動漫</li> 
+    <li><a rel="nofollow" href="https://sp.nicovideo.jp/" target="_blank"><i class="iconfont icon-niconico" style="color:#515151;"></i>ニコニコ</a></li>
+    <li><a rel="nofollow" href="https://bilibili.com/" target="_blank"><i class="iconfont icon-bilibili" style="color:#1296db;"></i>bilbil</a></li>
+    <li><a rel="nofollow" href="https://anime.girigirilove.com/" target="_blank"><i class="iconfont icon-" style="color:#FD4C5D;"></i>ギリギリ</a></li>
+    <li><a rel="nofollow" href="https://animoe.org/" target="_blank"><i class="iconfont icon-" style="color:#FD4C5D;"></i>animoe</a></li>
+    <li><a rel="nofollow" href="https://mgnacg.com/" target="_blank"><i class="iconfont icon-" style="color:#FD4C5D;"></i>橘子動漫</a></li>
+    <li><a rel="nofollow" href="https://agedm.vip/" target="_blank"><i class="iconfont icon-" style="color:#FD4C5D;"></i>AGE动漫</a></li>
+    <li><a rel="nofollow" href="https://anime1.me/" target="_blank"><i class="iconfont icon-" style="color:#FD4C5D;"></i>anime1</a></li>
+    
+    
+    <!----> 
+    <li class="title"><i class="iconfont icon-shipin"></i>漫画</li> 
+    <li><a rel="nofollow" href="https://annas-archive.org/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>安娜的档案</a></li>
+    <li><a rel="nofollow" href="https://libgen.li/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>libgen</a></li>
+    <li><a rel="nofollow" href="https://z-lib.id/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>zlibrary</a></li>
+    <li><a rel="nofollow" href="https://mangadex.org/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>MangaDex</a></li>
+    <li><a rel="nofollow" href="https://manhuapdf.com/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>漫画PDF网</a></li>
+    <li><a rel="nofollow" href="https://jiumodiary.com/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>鸠摩搜书</a></li>
+    <li><a rel="nofollow" href="https://mangabz.com/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>Mangabz</a></li>
+    <li><a rel="nofollow" href="https://mheee.com/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>漫自由</a></li>
+    <li><a rel="nofollow" href="https://mangacopy.com/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>拷贝漫画</a></li>
+  <li><a rel="nofollow" href="https://wnacg.com/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>绅士漫画</a></li>
+  <li><a rel="nofollow" href="https://manhuabudangbbs.com/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>补档冰室</a></li>
+    
+    
+    <!----> 
+    <li class="title"><i class="iconfont icon-shipin"></i>影视</li>
+    <li><a rel="nofollow" href="https://m.yfsp.tv/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>愛壹帆</a></li>
+    <li><a rel="nofollow" href="https://duboku.tv/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>獨播库</a></li>
+    <li><a rel="nofollow" href="https://feitu.tv/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>飞飛兔视</a></li>
+    <li><a rel="nofollow" href="https://wuwu24n.shop/index/home.html" target="_blank"><i class="iconfont icon-" style="color:#;"></i>555影视</a></li>
+    <li><a rel="nofollow" href="https://nbyy.cc/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>泥巴影視</a></li>
+    <li><a rel="nofollow" href="https://novipnoad.net/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>no視頻</a></li>
+    <li><a rel="nofollow" href="https://hdmoli.pro/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>HDmoli</a></li>
+    <li><a rel="nofollow" href="https://jumi.tv/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>jumi</a></li>
+    <li><a rel="nofollow" href="https://pttplay.cc/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>pttplay</a></li>
+    <li><a rel="nofollow" href="https://en.loader.to/4/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>油管4k下載1</a></li>
+    <li><a rel="nofollow" href="https://y2mp3.top/en1/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>油管4k下載2</a></li>
+    <li><a rel="nofollow" href="https://youtube4kdownloader.com/en84/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>油管4k下載3</a></li>
+     
+    <!----> 
+    <li class="title"><i class="iconfont icon-youxiang"></i>郵箱</li> 
+    <li><a rel="nofollow" href="https://mail.google.com/mail/" target="_blank"><i class="iconfont icon-Gmail" style="color: #C5221F;"></i>Gmail</a></li> 
+    <li><a rel="nofollow" href="https://mail.yahoo.co.jp/" target="_blank"><i class="iconfont icon-Yahoo" style="color: #;"></i>Yahoo</a></li> 
+    <li><a rel="nofollow" href="https://login.yahoo.com/" target="_blank"><i class="iconfont icon-Yahoo-Global" style="color: #;"></i>Yahoo Global</a></li> 
+    <li><a rel="nofollow" href="https://app.tuta.com/" target="_blank"><i class="iconfont icon-TutaMall" style="color: #;"></i>TutaMall</a></li> 
+    <li><a rel="nofollow" href="https://mail.proton.me/" target="_blank"><i class="iconfont icon-Proton" style="color: #;"></i>Proton</a></li>
+    <li><a rel="nofollow" href="https://ctemplar.com/" target="_blank"><i class="iconfont icon-Ctemplar" style="color: #;"></i>Ctemplar</a></li>
+    <li><a rel="nofollow" href="https://outlook.live.com/" target="_blank"><i class="iconfont icon-Outlook" style="color: #;"></i>Outlook</a></li>
+    <li><a rel="nofollow" href="https://mail.com/" target="_blank"><i class="iconfont icon-Mail" style="color: #;"></i>Mail</a></li>
+    <li><a rel="nofollow" href="https://mailfence.com/" target="_blank"><i class="iconfont icon-Mailfence" style="color: #;"></i>Mailfence</a></li>
+    <li><a rel="nofollow" href="https://gmx.com/mail/" target="_blank"><i class="iconfont icon-GmxMail" style="color: #;"></i>GmxMail</a></li>
+    <li><a rel="nofollow" href="http://mail2tor.com/" target="_blank"><i class="iconfont icon-MailTor" style="color: #;"></i>MailTor</a></li>
+    <li><a rel="nofollow" href="https://tildamail.com/home" target="_blank"><i class="iconfont icon-Tildamail" style="color: #;"></i>Tildamail</a></li>
+    <li><a rel="nofollow" href="https://mail3.me/" target="_blank"><i class="iconfont icon-Mail3" style="color: #;"></i>Mail3</a></li>
+    <li><a rel="nofollow" href="https://metamail.ink" target="_blank"><i class="iconfont icon-Metamail" style="color: #;"></i>Metamail</a></li>
+    <li><a rel="nofollow" href="https://ethermail.io" target="_blank"><i class="iconfont icon-EtherMail" style="color: #;"></i>EtherMail</a></li>
+    <li><a rel="nofollow" href="https://360.yandex.com/mail/" target="_blank"><i class="iconfont icon-Yandex" style="color: #;"></i>Yandex</a></li>
+     
+    <!----> 
+    <li class="title"><i class="iconfont icon-msg"></i>社交</li> 
+    <li><a rel="nofollow" href="https://telegram.org" target="_blank"><i class="iconfont icon-telegram" style="color: #20B9F9;"></i>Telegram</a></li>
+    <li><a rel="nofollow" href="https://web.telegram.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Web電報</a></li>
+    <li><a rel="nofollow" href="https://whatsapp.com/" target="_blank"><i class="iconfont icon-Whatsapp" style="color: #;"></i>Whatsapp</a></li>
+    <li><a rel="nofollow" href="https://jami.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Jami</a></li>
+    <li><a rel="nofollow" href="https://xmpp.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>XMPP</a></li>
+    <li><a rel="nofollow" href="https://simplex.chat/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Simplex</a></li>
+    <li><a rel="nofollow" href="https://briarproject.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Briar</a></li>
+    <li><a rel="nofollow" href="https://signal.org/" target="_blank"><i class="iconfont icon-Signal" style="color: #;"></i>Signal</a></li>
+    <li><a rel="nofollow" href="https://getsession.org/" target="_blank"><i class="iconfont icon-Matrix" style="color: #;"></i>session</a></li>
+    <li><a rel="nofollow" href="https://letsconvene.im/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Convene</a></li>
+    <li><a rel="nofollow" href="https://tox.chat/" target="_blank"><i class="iconfont icon-Tox" style="color: #;"></i>Tox</a></li>
+    <li><a rel="nofollow" href="https://matrix.org/" target="_blank"><i class="iconfont icon-Matrix" style="color: #;"></i>Matrix</a></li>
+    <li><a rel="nofollow" href="https://wire.com/en/" target="_blank"><i class="iconfont icon-Matrix" style="color: #;"></i>wire</a></li>
+    <li><a rel="nofollow" href="https://element.io/" target="_blank"><i class="iconfont icon-Matrix" style="color: #;"></i>element</a></li>
+    <li><a rel="nofollow" href="https://usedust.com/" target="_blank"><i class="iconfont icon-Dust" style="color: #;"></i>Dust</a></li>
+    <li><a rel="nofollow" href="https://wickr.com/me/" target="_blank"><i class="iconfont icon-Wickr" style="color: #;"></i>Wickr</a></li>
+    <li><a rel="nofollow" href="https://twin.me/en/" target="_blank"><i class="iconfont icon-Wickr" style="color: #;"></i>twinme</a></li>
+    <li><a rel="nofollow" href="https://m.potato.im/" target="_blank"><i class="iconfont icon-Wickr" style="color: #;"></i>potato</a></li>
+    <li><a rel="nofollow" href="https://line.me/ja/" target="_blank"><i class="iconfont icon-Line" style="color: #3AAE36;"></i>Line</a></li>
+    <li><a rel="nofollow" href="https://mimicha.me/index-en.html" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Mimicha</a></li>
+    <li><a rel="nofollow" href="https://randomchat.pnyo.jp/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Randomchat</a></li>
+    <li><a rel="nofollow" href="https://c.kuku.lu/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>KuKu</a></li>
+    <li><a rel="nofollow" href="https://viber.com/en/" target="_blank"><i class="iconfont icon-Viber" style="color: #;"></i>Viber</a></li>
+    <li><a rel="nofollow" href="https://kakaocorp.com/page/service/service/KakaoTalk?lang=ko/" target="_blank"><i class="iconfont icon-Kakaocorp" style="color: #;"></i>Kakaocorp</a></li>
+    <li><a rel="nofollow" href="https://vk.me/" target="_blank"><i class="iconfont icon-ICQ" style="color: ;"></i>Vk</a></li>
+    <li><a rel="nofollow" href="https://x.com" target="_blank"><i class="iconfont icon-twiter" style="color: #1DA1F3;"></i>X</a></li>
+    <li><a rel="nofollow" href="https://m.facebook.com/" target="_blank"><i class="iconfont icon-Facebook" style="color: #3b5998;"></i>Facebook</a></li>
+    
+        <!----> 
+    <li class="title"><i class="iconfont icon-ai-tool"></i>工具</li> 
+    <li><a rel="nofollow" href="https://translate.google.cn/?hl=zh-CN" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Translation</a></li>
+    <li><a rel="nofollow" href="https://deepl.com/translator" target="_blank"><i class="iconfont icon-Deepl" style="color: #;"></i>Deepl</a></li>
+    <li><a rel="nofollow" href="https://ttsmaker.com/" target="_blank"><i class="iconfont icon-TTSMaker" style="color: #;"></i>TTSMaker</a></li>
+    <li><a rel="nofollow" href="https://v2.genshinvoice.top/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>原神TTS</a></li>
+    <li><a rel="nofollow" href="https://acgn.ttson.cn/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Acgtts</a></li>
+    <li><a rel="nofollow" href="https://ttson.cn/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ttson</a></li>
+    <li><a rel="nofollow" href="https://ping.chinaz.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Chinaz</a></li>
+    <li><a rel="nofollow" href="http://ip111.cn/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ip111</a></li>
+    <li><a rel="nofollow" href="https://ip.skk.moe/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>IP.skk</a></li>
+    <li><a rel="nofollow" href="https://scamalytics.com/ip" target="_blank"><i class="iconfont icon-" style="color: #;"></i>IP欺詐檢查</a></li>
+    <li><a rel="nofollow" href="https://www.browserscan.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>DNS洩漏檢查</a></li>
+    <li><a rel="nofollow" href="https://tcptest.cn/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>網站檢測</a></li> 
+    <li><a rel="nofollow" href="https://ip112.cn/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>IP112</a></li>
+    <li><a rel="nofollow" href="https://ipinfo.io/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>IPinfo</a></li>
+    <li><a rel="nofollow" href="https://whoer.net/zh" target="_blank"><i class="iconfont icon-" style="color: #;"></i>whoer</a></li>
+    <li><a rel="nofollow" href="https://ping.gd/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>IP Detection</a></li>
+    <li><a rel="nofollow" href="http://port.ping.pe/?source=evvcv.com" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ping.pe</a></li>
+    <li><a rel="nofollow" href="https://hanzi.unihan.com.cn/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>書同文</a></li>
+    <li><a rel="nofollow" href="https://vtool.pro/handwriting/index.html" target="_blank"><i class="iconfont icon-" style="color: #;"></i>手寫文稿</a></li>
+    <li><a rel="nofollow" href="https://socpk.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>移動芯片排行</a></li>
+    <li><a rel="nofollow" href="https://rank.kkj.cn/Computer73.shtml" target="_blank"><i class="iconfont icon" style="color: #;"></i>顯卡排行</a></li>
+    <li><a rel="nofollow" href="https://pcpartpicker.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Diy裝机</a></li>
+    <li><a rel="nofollow" href="https://tools.miku.ac/" target="_blank"><i class="iconfont icon" style="color: #;"></i>MikuTools</a></li>
+    <li><a rel="nofollow" href="https://tbtool.cn/" target="_blank"><i class="iconfont icon" style="color: #;"></i>圖吧工具箱</a></li>
+    <li><a rel="nofollow" href="http://fairymusicbox.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>FairyBox</a></li>
+                                                                                                                                                 
+    <!----> 
+    <li class="title"><i class="iconfont icon-shuaji"></i>開發</li> 
+    <li><a rel="nofolow" href="https://github.com/" target="_blank"><i class="iconfont icon-huaban88" style="color: #;"></i>Github</a></li>
+    <li><a rel="nofolow" href="https://github.com/features/copilot" target="_blank"><i class="iconfont icon-huaban88" style="color: #;"></i>Chatsonic</a></li>
+    <li><a rel="nofollow" href="https://microsoft.com/zh-cn/software-download" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Windows</a></li>
+    <li><a rel="nofollow" href="https://nvidia.com/en-us/geforce/geforce-experience/" target="_blank"><i class="iconfont icon" style="color: #;"></i>GeForce</a></li>
+    <li><a rel="nofollow" href="https://torproject.org/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Tor</a></li>
+    <li><a rel="nofollow" href="https://orbot.app/en/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Orbot</a></li>
+    <li><a rel="nofollow" href="https://tails.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>tails</a></li>
+    <li><a rel="nofollow" href="https://openwrt.org/zh/start" target="_blank"><i class="iconfont icon-" style="color: #;"></i>OpneWrt</a></li>
+    <li><a rel="nofollow" href="https://supes.top/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Opne在線編譯</a></li>
+    <li><a rel="nofollow" href="https://istoreos.com/device/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>iStoreOS</a></li>
+    <li><a rel="nofollow" href="https://wifilu.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>wifi之路</a></li>
+    <li><a rel="nofollow" href="https://pve.proxmox.com/wiki/Downloads" target="_blank"><i class="iconfont icon-" style="color: #;"></i>pve</a></li>
+    <li><a rel="nofollow" href="https://docs.vmware.com/tw/VMware-vSphere/7.0/com.vmware.esxi.upgrade.doc/GUID-016E39C1-E8DB-486A-A235-55CAB242C351.html" target="_blank"><i class="iconfont icon-" style="color: #;"></i>exsi</a></li>
+    <li><a rel="nofollow" href="https://ikuai8.com/component/download" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ikuai</a></li>
+    <li><a rel="nofollow" href="https://kslabs.ru/" target="_blank"><i class="iconfont " style="color: #;"></i>Ksweb</a></li>
+    <li><a rel="nofollow" href="https://blog.daliansky.net" target="_blank"><i class="iconfont " style="color: #;"></i>黑果小兵</a></li>
+    <li><a rel="nofollow" href="https://haconln.com/" target="_blank"><i class="iconfont " style="color: #;"></i>黑果在線</a></li>
+    <li><a rel="nofollow" href="https://ventoy.net/" target="_blank"><i class="iconfont " style="color: #;"></i>Ventoy</a></li>
+    <li><a rel="nofollow" href="https://home.edgeless.top/" target="_blank"><i class="iconfont " style="color: #;"></i>Edgeless</a></li>
+    <li><a rel="nofollow" href="https://firpe.cn/page-247" target="_blank"><i class="iconfont " style="color: #;"></i>FirPE</a></li>
+    <li><a rel="nofollow" href="https://hotpe.top/" target="_blank"><i class="iconfont " style="color: #;"></i>HotPE</a></li>
+    <li><a rel="nofollow" href="https://wepe.com.cn" target="_blank"><i class="iconfont " style="color: #;"></i>微PE</a></li>
+    <li><a rel="nofollow" href="https://msdn.itellyou.cn/" target="_blank"><i class="iconfont icon-msdn_itellyou" style="color: #FFCC00;"></i>MSDN</a></li>
+    <li><a rel="nofollow" href="https://winnew.cn/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>winnew</a></li>
+    <li><a rel="nofollow" href="https://msdn.sjjzm.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>山已几子木</a></li>
+    <li><a rel="nofollow" href="https://sysmini.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>級簡系統</a></li>
+    <li><a rel="nofollow" href="https://dash.cloudflare.com/" target="_blank"><i class="iconfont icon-cloudflare" style="color: #F38020;"></i>CFcdn</a></li>
+    <li><a rel="nofollow" href="https://developer.android.google.cn/studio/releases/platform-tools" target="_blank"><i class="iconfont icon" style="color: #;"></i>platform</a></li>
+    <li><a rel="nofollow" href="https://github.com/bmax121/APatch" target="_blank"><i class="iconfont icon" style="color: #;"></i>APatch</a></li>
+    <li><a rel="nofollow" href="https://kernelsu.org/zh_CN/" target="_blank"><i class="iconfont icon" style="color: #;"></i>KernelSU</a></li>
+    <li><a rel="nofollow" href="https://github.com/topjohnwu/Magisk/releases" target="_blank"><i class="iconfont icon" style="color: #;"></i>Magisk</a></li>
+    <li><a rel="nofollow" href="https://jesse205.github.io/MagiskChineseDocument/delta/main.html" target="_blank"><i class="iconfont icon" style="color: #;"></i>Kitsune</a></li>
+    <li><a rel="nofollow" href="https://developers.google.cn/android/images" target="_blank"><i class="iconfont icon" style="color: #;"></i>Pixel</a></li>
+    <li><a rel="nofollow" href="https://flash.android.com/welcome" target="_blank"><i class="iconfont icon" style="color: #;"></i>Pixel在線刷機</a></li>
+    <li><a rel="nofollow" href="https://calyxos.org/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Calyxos</a></li>
+    <li><a rel="nofollow" href="https://protonaosp.org/overview" target="_blank"><i class="iconfont icon" style="color: #;"></i>ProtonAOSP</a></li>
+    <li><a rel="nofollow" href="https://download.pixelexperience.org/" target="_blank"><i class="iconfont icon" style="color: #;"></i>PE</a></li>
+    <li><a rel="nofollow" href="https://paranoidandroid.co/" target="_blank"><i class="iconfont icon" style="color: #;"></i>AOSPA</a></li>
+    <li><a rel="nofollow" href="https://download.lineageos.org/" target="_blank"><i class="iconfont icon" style="color: #;"></i>LOS</a></li>
+    <li><a rel="nofollow" href="https://mindows.cn/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Mindows</a></li>
+    <li><a rel="nofollow" href="https://xiaomirom.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>MIUI ROM</a></li>
+    <li><a rel="nofollow" href="https://roms.miuier.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>MIUI ROMS</a></li>
+    <li><a rel="nofollow" href="https://nikgapps.com/" target=NikGapps"_blank"><i class="iconfont icon" style="color: #;"></i>NikGapps</a></li>
+    <li><a rel="nofollow" href="https://forum.xda-developers.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>XDA</a></li>
+    <li><a rel="nofollow" href="https://celsoazevedo.com/files/android/google-camera/" target="_blank"><i class="iconfont icon" style="color: #;"></i>谷歌相机</a></li>
+    <li><a rel="nofollow" href="https://qfiltool.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>QFIL</a></li>
+    <li><a rel="nofollow" href="https://sp-flashtool.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>SP Flash</a></li>
+    <li><a rel="nofollow" href="https://atmb.top/" target="_blank"><i class="iconfont icon" style="color: #;"></i>秋之盒</a></li>
+    <li><a rel="nofollow" href="https://lsdy.top/" target="_blank"><i class="iconfont icon" style="color: #;"></i>流水斷崖</a></li>
+    <li><a rel="nofollow" href="https://yun.daxiaamu.com/OnePlus_Roms/" target="_blank"><i class="iconfont icon" style="color: #;"></i>大俠阿木</a></li>
+    <li><a rel="nofollow" href="https://yhcres.top/" target="_blank"><i class="iconfont icon" style="color: #;"></i>螢火蟲資源站</a></li>
+
+    <!---->
+    <li class="title"><i class="iconfont icon-ai-tool"></i>海購</li> 
+    <li><a rel="nofollow" href="https://amazon.co.jp/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>日亞</a></li>
+    <li><a rel="nofollow" href="https://amazon.com" target="_blank"><i class="iconfont icon-" style="color: #;"></i>美亞</a></li>
+    <li><a rel="nofollow" href="https://amazon.co.uk/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>英亞</a></li>
+    <li><a rel="nofollow" href="https://amazon.de" target="_blank"><i class="iconfont icon-" style="color: #;"></i>德亞</a></li>
+    <li><a rel="nofollow" href="https://rakuten.co.jp" target="_blank"><i class="iconfont icon-" style="color: #;"></i>樂天市場</a></li>
+    <li><a rel="nofollow" href="https://fril.jp/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Rakuma</a></li>
+    <li><a rel="nofollow" href="https://bigboytoyz.jp/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Bigboy</a></li>
+    <li><a rel="nofollow" href="https://jp.mercari.com" target="_blank"><i class="iconfont icon" style="color: #;"></i>Mercari</a></li>
+    <li><a rel="nofollow" href="https://shopping.yahoo.co.jp/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>雅虎购物</a></li>
+    <li><a rel="nofollow" href="https://wowma.jp/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Wowma</a></li> 
+    <li><a rel="nofollow" href="https://paypayfleamarket.yahoo.co.jp/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Yahoフリマ</a></li>
+    <li><a rel="nofollow" href="https://animate-onlineshop.jp/sphone/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Animate</a></li>
+    <li><a rel="nofollow" href="https://suruga-ya.jp/" target="_blank"><i class="iconfont icon" style="color: #;"></i>駿河屋</a></li>
+    <li><a rel="nofollow" href="https://bookoff.co.jp/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Bookoff</a></li>
+    <li><a rel="nofollow" href="https://books.com.tw/" target="_blank"><i class="iconfont icon" style="color: #;"></i>博客來</a></li>
+    <li><a rel="nofollow" href="https://netmall.hardoff.co.jp/" target="_blank"><i class="iconfont icon" style="color: #;"></i>HardOff</a></li>
+    <li><a rel="nofollow" href="https://netoff.co.jp/sp/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Netoff</a></li>
+    <li><a rel="nofollow" href="https://ebay.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>eBay</a></li>
+    <!---->
+    
+    <!---->
+    <li class="title"><i class="iconfont icon-ai-tool"></i>转运</li> 
+    <li><a rel="nofollow" href="https://tenso.com/chs" target="_blank"><i class="iconfont icon-" style="color: #;"></i>tenso</a></li>
+    <li><a rel="nofollow" href="https://www.4px.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>递四方</a></li>
+    <li><a rel="nofollow" href="https://adiexpress.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>安达易</a></li>
+    <li><a rel="nofollow" href="https://sf-express.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>顺丰集运</a></li>
+    <!---->
+    
+    <!---->
+    <li class="title"><i class="iconfont icon-ai-tool"></i>網盤</li> 
+    <li><a rel="nofollow" href="https://microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage" target="_blank"><i class="iconfont icon-OneDrive" style="color: #28A8EA;"></i>OneDrive</a></li>
+    <li><a rel="nofollow" href="https://mypikpak.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>PikPak</a></li>
+    <li><a rel="nofollow" href="https://gofile.io/welcome" target="_blank"><i class="iconfont icon-" style="color: #;"></i>GoFile</a></li>
+    <li><a rel="nofollow" href="https://mediafire.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>MediaFire</a></li>
+    <li><a rel="nofollow" href="https://pixeldrain.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Pixel</a></li>
+    <li><a rel="nofollow" href="https://wenshushu.cn/" target="_blank"><i class="iconfont icon" style="color: #;"></i>文叔叔</a></li>
+    <li><a rel="nofollow" href="https://cowtransfer.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>奶牛快傳</a></li>
+    <li><a rel="nofollow" href="https://lanzou.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>蓝奏云</a></li>
+    <li><a rel="nofollow" href="https://app.tmp.link/" target="_blank"><i class="iconfont icon" style="color: #;"></i>TMP</a></li>
+    <li><a rel="nofollow" href="https://wormhole.app/" target="_blank"><i class="iconfont icon" style="color: #;"></i>Wormhole</a></li>
+    <li><a rel="nofollow" href="https://workupload.com/" target="_blank"><i class="iconfont icon" style="color: #;"></i>workupload</a></li>
+     
+    <!---->
+    <li class="title"><i class="iconfont icon-shipin"></i>論壇</li> 
+    <li><a rel="nofollow" href="https://tsdm39.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>天使動漫</a></li>
+    <li><a rel="nofollow" href="https://bbs.kfpromax.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>緋月論壇</a></li>
+    <li><a rel="nofollow" href="https://52pojie.cn/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>吾爱破解</a></li>
+    
+    <!---->
+    <li class="title"><i class="iconfont icon-kongzhitai"></i>模擬器</li> 
+    <li><a rel="nofollow" href="https://emulator-zone.com/
+" target="_blank"><i class="iconfont icon-ps2" style="color: #FFFFFF;"></i>emulator</a></li> 
+    <li><a rel="nofollow" href="https://epsxe.com/" target="_blank"><i class="iconfont icon-ps11" style="color: #FFFFFF;"></i>PS1</a></li> 
+    <li><a rel="nofollow" href="https://pcsx2.net/" target="_blank"><i class="iconfont icon-55-PS2ControllerFlat" style="color: #283238;"></i>PS2</a></li> 
+    <li><a rel="nofollow" href="https://aethersx2.gitlab.io/" target="_blank"><i class="iconfont icon-55-PS2ControllerFlat" style="color: #283238;"></i>以太PS2</a></li>
+    <li><a rel="nofollow" href="https://nethersx2.com/" target="_blank"><i class="iconfont icon-55-PS2ControllerFlat" style="color: #283238;"></i>红以太PS2</a></li>
+    <li><a rel="nofollow" href="https://rpcs3.net" target="_blank"><i class="iconfont icon-ps" style="color: #003C89;"></i>PS3</a></li> 
+    <li><a rel="nofollow" href="https://github.com/RPCSX/rpcsx-ui-android" target="_blank"><i class="iconfont icon-ps" style="color: #003C89;"></i>rpcsx</a></li> 
+    <li><a rel="nofollow" href="https://github.com/aenu1/aps3e" target="_blank"><i class="iconfont icon-ps" style="color: #003C89;"></i>aps3e</a></li> 
+    <li><a rel="nofollow" href="https://pcsx4.com/" target="_blank"><i class="iconfont icon-43-PS4Flat" style="color: #38454F;"></i>PS4</a></li> 
+    <li><a rel="nofollow" href="https://xemu.app" target="_blank"><i class="iconfont icon-xbox" style="color: #107C10;"></i>xemu</a></li> 
+    <li><a rel="nofollow" href="https://xenia.jp/" target="_blank"><i class="iconfont icon-xboxone" style="color: #516C7A;"></i>xbox360</a></li> 
+    <li><a rel="nofollow" href="https://cemu.info/" target="_blank"><i class="iconfont icon-wiiu" style="color: #1296db;"></i>cemu</a></li>
+    <li><a rel="nofollow" href="https://suyu.dev/" target="_blank"><i class="iconfont icon-switch" style="color: #261D50;"></i>suyu</a></li>
+    <li><a rel="nofollow" href="https://github.com/strato-emu/strato" target="_blank"><i class="iconfont icon-switch" style="color: #261D50;"></i>Strato</a></li>
+    <li><a rel="nofollow" href="https://ppsspp.org/" target="_blank"><i class="iconfont icon-pspgame" style="color: #ED5564;"></i>PPSSPP</a></li> 
+    <li><a rel="nofollow" href="https://vita3k.org/" target="_blank"><i class="iconfont icon-" style="color: #ED5564;"></i>Vita3K</a></li>
+    <li><a rel="nofollow" href="https://lime3ds.github.io/" target="_blank"><i class="iconfont icon-lemon" style="color: #FCF01A;"></i>lime3ds</a></li> 
+    <li><a rel="nofollow" href="https://github.com/weihuoya/citra" target="_blank"><i class="iconfont icon-lemon" style="color: #FCF01A;"></i>3DS-mmj</a></li> 
+    <li><a rel="nofollow" href="https://ja.dolphin-emu.org" target="_blank"><i class="iconfont icon-Dolphin" style="color: #1296db;"></i>Dolphin</a></li> 
+    <li><a rel="nofollow" href="https://github.com/weihuoya/dolphin" target="_blank"><i class="iconfont icon-Dolphin" style="color: #1296db;"></i>mmj</a></li> 
+    <li><a rel="nofollow" href="https://purei.org/" target="_blank"><i class="iconfont icon-play1" style="color: #1296db;"></i>play</a></li>
+    <li><a rel="nofol<li><a rel="nofollow" href="https://retroarch.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>RetroArch</a></li> 
+    <li><a rel="nofol<li><a rel="nofollow" href="https://retrobat.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Retrobat</a></li>
+    <li><a rel="nofol<li><a rel="nofollow" href="https://batocera.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Batocera</a></li>
+    <li><a rel="nofollow" href="http://openemu.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>openemu</a></li>
+    <li><a rel="nofollow" href="https://joiplay.cyou/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Joiplay</a></li>
+    <li><a rel="nofollow" href="https://pegasus-frontend.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>pegasus</a></li>
+    <li><a rel="nofollow" href="https://github.com/zeas2/Kirikiroid2" target="_blank"><i class="iconfont icon-" style="color: #;"></i>krkr2</a></li>
+    <li><a rel="nofollow" href="https://github.com/2468785842/krkr2" target="_blank"><i class="iconfont icon-" style="color: #;"></i>krkr2非官方</a></li>
+    <li><a rel="nofollow" href="https://github.com/YuriSizuku/OnscripterYuri" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Ons-Yuri</a></li>
+    <li><a rel="nofollow" href="https://winlator.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>winlator</a></li>
+    <li><a rel="nofollow" href="https://gamehub.xiaoji.com/zh-cn" target="_blank"><i class="iconfont icon-" style="color: #;"></i>盖世游戏</a></li>
+    <li><a rel="nofollow" href="https://github.com/KreitinnSoftware/MiceWine-Application?tab=readme-ov-file" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Micewine</a></li>
+    <li><a rel="nofollow" href="https://github.com/olegos2/mobox" target="_blank"><i class="iconfont icon-" style="color: #;"></i>mobox</a></li>
+    <li><a rel="nofollow" href="https://github.com/ptitSeb/box64" target="_blank"><i class="iconfont icon-" style="color: #;"></i>box64</a></li>
+    <li><a rel="nofollow" href="https://share.gistwillan.top/" target="_blank"><i class="iconfont icon-ps" style="color: #003C89;"></i>游戏下载</a></li> 
+    <li><a rel="nofollow" href="https://acgndog.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>次元狗</a></li>
+
+     <!---->
+    <li class="title"><i class="iconfont icon-kongzhitai"></i>遊戲</li> 
+    <li><a rel="nofollow" href="https://store.steampowered.com/" target="_blank"><i class="iconfont icon-steam" style="color: #136DA0;"></i>Steam</a></li>
+    <li><a rel="nofollow" href="https://steampp.net/" target="_blank"><i class="iconfont icon-瓦特" style="color: #;"></i>瓦特工具箱</a></li>
+    <li><a rel="nofollow" href="https://epicgames.com/store/ja/?lang=ja" target="_blank"><i class="iconfont icon-epic" style="color: #E333333;"></i>Epic</a></li>
+    <li><a rel="nofollow" href="https://m.3dmgame.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>3DM</a></li>
+    <li><a rel="nofollow" href="https://wemod.com//" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Wemod</a></li>
+    <li><a rel="nofollow" href="https://flingtrainer.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>風靈月影</a></li>
+    <li><a rel="nofollow" href="https://lmaoyx.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>老貓和一修</a></li>
+    <li><a rel="nofollow" href="https://online-fix.me/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>聯機補丁</a></li>
+    <li><a rel="nofollow" href="https://byruthub.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>byrutor</a></li>
+    <li><a rel="nofollow" href="https://byrut.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>byrut</a></li>
+    <li><a rel="nofollow" href="https://rutracker.org/forum/index.php" target="_blank"><i class="iconfont icon-" style="color: #;"></i>rutracker</a></li>
+    <li><a rel="nofollow" href="https://gamer520.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>xxxxx520</a></li>
+    <li><a rel="nofollow" href="https://ns211.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ns211</a></li>
+    <li><a rel="nofollow" href="https://nsboy.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>nsboy</a></li>
+    <li><a rel="nofollow" href="https://ifun.cool/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>coolgame</a></li>
+    <li><a rel="nofollow" href="https://koyso.to/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>wavse</a></li>
+    <li><a rel="nofollow" href="https://steamunlocked.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>steam下載1</a></li>
+    <li><a rel="nofollow" href="https://steamrip.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>steamrip</a></li>
+    <li><a rel="nofollow" href="https://steamunlocked.pro/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>steam下載2</a></li>
+    <li><a rel="nofollow" href="https://aimhaven.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>aimhaven</a></li>
+    <li><a rel="nofollow" href="https://xbgame.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>小白遊戲網</a></li>
+    <li><a rel="nofollow" href="https://zzzzz688.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>遊戲天堂</a></li>
+    <li><a rel="nofollow" href="https://xyg688.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>小妖怪分享</a></li>
+    <li><a rel="nofollow" href="https://steamzg.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>小嘰資源</a></li>
+    <li><a rel="nofollow" href="https://hisgames.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>hisgames</a></li>
+    <li><a rel="nofollow" href="https://switch618.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>switch618</a></li>
+    <li><a rel="nofollow" href="http://gbtgame.ysepan.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>GBT</a></li>
+    <li><a rel="nofollow" href="https://fitgirl-repacks.site/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>fitgirl</a></li>
+    <li><a rel="nofollow" href="https://oldmantvg.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>老男人遊戲網</a></li>
+    <li><a rel="nofollow" href="https://m.coolrom.com.au/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ps遊戲1</a></li>
+    <li><a rel="nofollow" href="https://romsfun.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ps遊戲2</a></li>
+    <li><a rel="nofollow" href="https://romspure.cc/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ps遊戲3</a></li>
+    <li><a rel="nofollow" href="https://downloadgamepsp.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ps遊戲4</a></li>
+    <li><a rel="nofollow" href="https://romspedia.com/roms" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ps遊戲5</a></li>
+    <li><a rel="nofollow" href="https://itch.io/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>itch</a></li>
+    <li><a rel="nofollow" href="https://savegameworld.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>存檔下載1</a></li>
+    <li><a rel="nofollow" href="https://savegame.pro/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>存檔下載2</a></li>
+    <li><a rel="nofollow" href="https://savegamefiles.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>存檔下載3</a></li>
+    <li><a rel="nofollow" href="https://yoursavegames.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>存檔下載4</a></li>
+    <li><a rel="nofollow" href="https://savegamedownload.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>存檔下載5</a></li>
+
+    <!---->
+    <li class="title"><i class="iconfont icon-shipin"></i>音樂</li> 
+    <li><a rel="nofollow" href="https://downloads.khinsider.com" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Vigm</a></li>
+    <li><a rel="nofollow" href="https://okamimiost.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>okamimi</a></li>
+    <li><a rel="nofollow" href="https://doujinstyle.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>douj</a></li>
+    <li><a rel="nofollow" href="https://sittingonclouds.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>sicloud</a></li>
+    <li><a rel="nofollow" href="https://silenthilltowncenter.com/descargas?categoria=15&sort_bef_combine=created_DESC" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Desc</a></li>   
+    <li><a rel="nofollow" href="https://sukidesuost.info/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>suki</a></li>
+    <li><a rel="nofollow" href="https://archive.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>archive</a></li>
+    <li><a rel="nofollow" href="https://ffshrine.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ffshrine</a></li>
+    <li><a rel="nofollow" href="https://exactaudiocopy.de/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>EAC</a></li>
+    <li><a rel="nofollow" href="https://poikosoft.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>EZCD</a></li>
+    <li><a rel="nofollow" href="https://www.foobar2000.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>foobar</a></li>
+    <li><a rel="nofollow" href="https://lrc-maker.github.io/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>LRC歌词制作</a></li>
+
+    <!---->
+    <li class="title"><i class="iconfont icon-shipin"></i>VPN</li> 
+    <li><a rel="nofollow" href="https://hiddify.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>hiddify</a></li>
+    <li><a rel="nofollow" href="https://sing-box.sagernet.org/zh/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>sing-box</a></li>
+    <li><a rel="nofollow" href="https://getflclash.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>FlClash</a></li>
+    <li><a rel="nofollow" href="https://karing.app/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>karing</a></li>
+    <li><a rel="nofollow" href="https://v2rayn.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>v2rayn</a></li>
+    <li><a rel="nofollow" href="https://clashxhub.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>clash</a></li>
+    
+    <!---->
+     <li class="title"><i class="iconfont icon-bt"></i>磁力</li>
+     <li><a rel="nofollow" href="https://mypikpak.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>PikPak</a></li>
+     <li><a rel="nofollow" href="https://freedownloadmanager.org/zh/download.htm" target="_blank"><i class="iconfont icon-" style="color: #;"></i>FDM</a></li>
+     <li><a rel="nofollow" href="https://bitcomet.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Bitcomet</a></li>
+     <li><a rel="nofollow" href="https://motrix.app/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Motrix</a></li>
+     <li><a rel="nofollow" href="https://qbittorrent.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>QBit</a></li>
+     <li><a rel="nofollow" href="https://raidrive.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>RaiDrive</a></li>
+     <li><a rel="nofollow" href="https://gopeed.com/zh-CN" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Gopeed</a></li>
+     <li><a rel="nofollow" href="https://tokyotosho.info/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>东京图书馆</a></li>
+     <li><a rel="nofollow" href="https://ffshrine.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ffshrine</a></li>
+     <li><a rel="nofollow" href="https://nyaa.si" target="_blank"><i class="iconfont icon-" style="color: #;"></i>nyaa</a></li>
+     <li><a rel="nofollow" href="https://sukebei.nyaa.si/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>sukebei</a></li>
+     <li><a rel="nofollow" href="https://anirena.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>anirena</a></li>
+     <li><a rel="nofollow" href="https://bt83.foxs.vip/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>磁力狐</a></li>
+     <li><a rel="nofollow" href="https://nyaa.land" target="_blank"><i class="iconfont icon-" style="color: #;"></i>nyaa1</a></li>
+     <li><a rel="nofollow" href="https://vgmdb.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Motrix</a></li>
+     <li><a rel="nofollow" href="https://share.dmhy.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>動漫花園</a></li>
+     <li><a rel="nofollow" href="https://dongmanhuayuan.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>花園資源站</a></li>
+     <li><a rel="nofollow" href="http://kisssub.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>愛戀動漫</a></li>
+     <li><a rel="nofollow" href="https://comicat.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>漫貓動漫</a></li>
+     <li><a rel="nofollow" href="https://share.acgnx.se/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>末日動漫</a></li>
+     <li><a rel="nofollow" href="https://hggard.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>紳士の庭</a></li>
+     <li><a rel="nofollow" href="https://animetosho.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>AnimeTosho</a></li>
+     <li><a rel="nofollow" href="https://en.btdig.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>btdig</a></li>
+     <li><a rel="nofollow" href="https://acg.rip/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>AcgRip</a></li>
+     <li><a rel="nofollow" href="https://vcb-s.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>VCB-Studio</a></li>
+     <li><a rel="nofollow" href="https://bangumi.moe/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>萌番组</a></li>
+     <li><a rel="nofollow" href="https://rutracker.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>rutracker</a></li>
+     <li><a rel="nofollow" href="https://potplayer.info" target="_blank"><i class="iconfont icon-" style="color: #;"></i>PotPlayer</a></li>
+     <li><a rel="nofollow" href="https://mkvtoolnix.download/downloads.html" target="_blank"><i class="iconfont icon-" style="color: #;"></i>mkvtoolnix</a></li>
+     <li><a rel="nofollow" href="https://aegisub.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Aegisub</a></li>
+     <li><a rel="nofollow" href="https://www.nikse.dk/subtitleedit/help" target="_blank"><i class="iconfont icon-" style="color: #;"></i>SubEdit</a></li>
+     <li><a rel="nofollow" href="https://editsub.com/zh" target="_blank"><i class="iconfont icon-" style="color: #;"></i>在线字幕翻译</a></li>
+     <li><a rel="nofollow" href="https://mikanani.me/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Mikanani</a></li>
+     <li><a rel="nofollow" href="https://subhd.tv/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Subhd</a></li>
+     <li><a rel="nofollow" href="https://kitsunekko.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>日语字幕</a></li>
+     <li><a rel="nofollow" href="https://zimuku.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>字幕库</a></li>
+     <li><a rel="nofollow" href="https://assrt.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>伪射手网</a></li>
+     <li><a rel="nofollow" href="https://subs.kamigami.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>诸神字幕组</a></li>
+      <li><a rel="nofollow" href="https://bbs.acgrip.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Acg字幕</a></li>
+     <li><a rel="nofollow" href="https://themoviedb.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>TMDB</a></li>
+     <li><a rel="nofollow" href="https://anidb.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>AniDB</a></li>
+     <li><a rel="nofollow" href="https://myanimelist.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Anilist</a></li>
+     
+
+    <!---->
+    <li class="title"><i class="iconfont icon-kongzhitai"></i>galgame</li> 
+    <li><a rel="nofollow" href="https://soraacg.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>窮の下</a></li>
+    <li><a rel="nofollow" href="https://aozoracafe.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>樱赞繁星</a></li>
+    <li><a rel="nofollow" href="https://qingju.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>青秸网</a></li>
+    <li><a rel="nofollow" href="https://lzacg.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>量子Acg</a></li>
+    <li><a rel="nofollow" href="https://ttloli.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>优郁的弟弟</a></li>
+    <li><a rel="nofollow" href="https://fufugal.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>初音的青葱</a></li>
+    <li><a rel="nofollow" href="https://hgamefree.info/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>H Game</a></li>
+    <li><a rel="nofollow" href="https://vikacg.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>vikacg</a></li>
+    <li><a rel="nofollow" href="https://loverslab.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>loverslab</a></li>
+    <li><a rel="nofollow" href="https://ryuugames.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ryuugames</a></li>
+    <li><a rel="nofollow" href="https://new.lewd.ninja/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>lewd</a></li>
+    <li><a rel="nofollow" href="https://dl.betterrepack.com/public/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>bette</a></li>
+    <li><a rel="nofollow" href="https://t-satoru.top/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>小鳥遊暁</a></li>
+    <li><a rel="nofollow" href="https://moyu.moe/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>鲲</a></li>
+    <li><a rel="nofollow" href="https://acgyyg.ru/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>acg嘤嘤怪</a></li>
+    <li><a rel="nofollow" href="https://amemei-lists.top/posts/49e03169/#%E9%81%8A%E6%88%B2%E6%B8%85%E5%96%AE" target="_blank"><i class="iconfont icon-" style="color: #;"></i>在线玩的</a></li>
+    <li><a rel="nofollow" href="https://fap-nation.org/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>nation</a></li>
+    <li><a rel="nofollow" href="https://galgamer.moe/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>galgamer</a></li>
+    <li><a rel="nofollow" href="https://shinnku.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>失落小站</a></li>
+    <li><a rel="nofollow" href="https://limulu.moe/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>莉斯坦</a></li>
+    <li><a rel="nofollow" href="https://game.acgs.one/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>绮梦acg</a></li>
+    <li><a rel="nofollow" href="https://galgamex.win/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>gal其他</a></li>
+    <li><a rel="nofollow" href="https://ci-en.dlsite.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ci-en</a></li>
+    <li><a rel="nofollow" href="https://lewdzone.com/games/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>lewdzone</a></li>
+    <li><a rel="nofollow" href="https://kimochi.info/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>kimochi</a></li>
+    <li><a rel="nofollow" href="https://otomi-games.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>otomi</a></li>
+    <li><a rel="nofollow" href="https://ero-labs.com/cn/index.html" target="_blank"><i class="iconfont icon-" style="color: #;"></i>erolabs</a></li>
+    <li><a rel="nofollow" href="https://kagurafan.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>kagurafan</a></li>
+    <li><a rel="nofollow" href="https://denpasoft.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>denpasoft</a></li>
+    <li><a rel="nofollow" href="https://xplay.me/" target="_blank"><i class="iconfont icon-Gelbooru " style="color: #;"></i>xplay</a></li>
+    <li><a rel="nofollow" href="https://r18manga.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>18manga</a></li>
+    <li><a rel="nofollow" href="https://hentai-sharing.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>hensha</a></li>
+    
+    
+
+    <li class="title"><i class="iconfont icon-kongzhitai"></i>ASMR</li> 
+    <li><a rel="nofollow" href="https://asmrgay.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>ASMR中心</a></li>
+    <li><a rel="nofollow" href="https://asmr-labo.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>labo</a></li>
+    <li><a rel="nofollow" href="https://hentaiasmr.moe/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>heniasmr</a></li>
+    <li><a rel="nofollow" href="https://japaneseasmr.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>jasmr</a></li>
+    <li><a rel="nofollow" href="https://koe-koe.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>koekoe</a></li>
+    <li><a rel="nofollow" href="https://asmrhentai.net/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>asmrh</a></li>
+    <li><a rel="nofollow" href="https://otobanana.com/deep/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>otoban</a></li>
+    
+     
+    <!---->
+    <li class="title"><i class="iconfont icon-kongzhitai"></i>GameBuying</li>
+    <li><a rel="nofollow" href="https://dlsite.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Dlsite</a></li>
+    <li><a rel="nofollow" href="https://dmm.co.jp/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Fanza</a></li>
+    <li><a rel="nofollow" href="https://dojindb.net/discount/?g=game" target="_blank"><i class="iconfont icon-" style="color: #;"></i>dojindb</a></li>
+    <li><a rel="nofollow" href="https://store.hikarifield.co.jp/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>HF</a></li>
+    <li><a rel="nofollow" href="https://dlsoft.dmm.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>DMM</a></li>
+    <li><a rel="nofollow" href="https://kaguragames.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Kagura</a></li>
+
+    <!---->
+    <li class="title"><i class="iconfont icon-kongzhitai"></i>gal网盘直链</li>
+    <li><a rel="nofollow" href="https://zi0.cc/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>梓澪の妙妙屋</a></li>
+    <li><a rel="nofollow" href="https://pan.t-satoru.top/ode5/Galgames" target="_blank"><i class="iconfont icon-" style="color: #;"></i>小鳥遊曉</a></li>
+    <li><a rel="nofollow" href="https://list.sakustar.com/?page=1" target="_blank"><i class="iconfont icon-" style="color: #;"></i>Galgame</a></li>
+    <li><a rel="nofollow" href="https://pan.zhacg.com/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>acg资源网</a></li>
+    <li><a rel="nofollow" href="https://yanyugal.top/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>烟郁</a></li>
+    <li><a rel="nofollow" href="https://pan.jlbx.xyz/" target="_blank"><i class="iconfont icon-" style="color: #;"></i>白雪の小站</a></li>
+    <!---->
+      
+       </ul>
+  </div>
+    <!----> 
+   <div id="search" class="s-search">
+   <div id="search-list" class="hide-type-list">
+    <div class="s-type">
+     <span></span>
+     <div class="s-type-list animated fadeInUp">
+        <label for="type-Bing">常用</label>
+        <label for="type-Google">搜索</label>  
+     </div>
+    </div>
+    <div class="search-group group-a">
+      <span class="type-text">常用</span>
+      <ul class="search-type">
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Bing" value="https://bing.com/search?q=" data-placeholder="Bing搜索"/><label for="type-Bing">Bing</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-bilbil" value="https://search.bilibili.com/all?keyword=" data-placeholder="b站搜索"/><label for="type-bilbil">哔哩哔哩搜索</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-GitHub" value="https://github.com/search?q=" data-placeholder="GitHub项目搜索"/><label for="type-GitHub">GitHub</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Steam" value="https://store.steampowered.com/account/registerkey?key=" data-placeholder="输入cdk码回车激活"/><label for="type-Steam">Steam cdk激活</label></li>
+       </ul>
+      </div>
+     <div class="search-group group-b">
+      <span class="type-text">搜索</span>
+      <ul class="search-type">
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Google" value="https://google.com/search?q=" data-placeholder="Google搜索"/><label for="type-search">Google</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Bing" value="https://bing.com/search?q=" data-placeholder="Bing搜索"/><label for="type-Bing">Bing</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-DuckDuckGo" value="https://duckduckgo.com/?q=" data-placeholder="DuckDuckGo搜索"/><label for="type-DuckDuckGo">DuckDuckGo</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Yandex" value="https://yandex.com/search/?text=" data-placeholder="Yandex搜索"/><label for="type-Yandex">Yandex</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-Yahoo" value="https://search.yahoo.com/search?p=" data-placeholder="Yahoo搜索"/><label for="type-Yahoo">Yahoo</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-WebCrawler" value="https://webcrawler.com/serp?q=" data-placeholder="webcrawler搜索"/><label for="type-WebCrawler">WebCrawler</label></li>
+      <li><input onclick="bw()" hidden="" type="radio" name="type" id="type-You" value="https://you.com/search?q=" data-placeholder="You是第一个将聊天助手集成到其搜索结果中的已知搜索引擎"/><label for="type-You">You</label></li> 
+      </ul>
+    </div>
+   </div>
+    <form action="https://www.google.com/search?q=" method="get" target="_blank" id="super-search-fm">
+    <input type="text" id="search-text" placeholder="输入关键字搜索" style="outline:0" />
+    <button type="submit"><i class="iconfont icon-search"></i></button>
+    <ul id="ul" class="ko"></ul>
+   </form>
+   <div id="yy" style="display:none;">
+    <input type="text" id="kos" placeholder="<?php echo $word; ?>" />
+    <button type="submit" id="kob"><i class="iconfont icon-xdss"></i></button>
+    <ul id="kol" class="ko"></ul>
+   </div>
+  <div class="set-check hidden-xs">
+    <input type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off" />
+   </div>
+</script>
+  </div> 
+   <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> <!--看板娘-->
+    <script type="text/javascript" src="js/yyss.js"></script>
+    <script type="text/javascript" src="js/sousuo.js"></script>
+    <script type="text/javascript" src="js/lianxiang.js"></script>
+    <script type="text/javascript" src="js/duration.js"></script>
+    <div class="bgo"></div>
+    <div style="position: absolute;bottom: 50px;text-align: center;width:100%;">Powered By Search | CopyRight@copy2019</div>
+    <div style="position: absolute;bottom: 25px;text-align: center;width:100%;">
+    <span id="timeDate">载入天数...</span>
+    <span id="times">载入时分秒...</span>
+    </div>
+    <div id="music" key="67629c0cf3742" api="https://music.zbiwl.com"></div>
+    <script id="xplayer" src="https://music.zbiwl.com/Static/player9/js/player.js"></script>
+   </body>
 </html>
+<!--
+
+                Search，started 2019.8.31 end 2021.8.17
+-->
