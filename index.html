@@ -490,3 +490,113 @@
   <li><a rel="nofollow" href="https://pan.zhacg.com/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>acg资源网</a></li>
   <li><a rel="nofollow" href="https://yanyugal.top/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>烟郁</a></li>
   <li><a rel="nofollow" href="https://pan.jlbx.xyz/" target="_blank"><i class="iconfont icon-" style="color:#;"></i>白雪の小站</a></li>
+  </ul>
+</div>
+
+<div id="search" class="s-search">
+    <div id="search-list" class="hide-type-list">
+        <div class="s-type">
+            <span></span>
+            <div class="s-type-list animated fadeInUp">
+                <label for="type-Bing">常用</label>
+                <label for="type-Google">搜索</label>  
+            </div>
+        </div>
+
+        <!-- 常用搜索组 -->
+        <div class="search-group group-a">
+            <span class="type-text">常用</span>
+            <ul class="search-type">
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-Bing" value="https://bing.com/search?q=" data-placeholder="Bing搜索" />
+                    <label for="type-Bing">Bing</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-bilibili" value="https://search.bilibili.com/all?keyword=" data-placeholder="b站搜索" />
+                    <label for="type-bilibili">哔哩哔哩搜索</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-GitHub" value="https://github.com/search?q=" data-placeholder="GitHub项目搜索" />
+                    <label for="type-GitHub">GitHub</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-Steam" value="https://store.steampowered.com/account/registerkey?key=" data-placeholder="输入CDK码回车激活" />
+                    <label for="type-Steam">Steam CDK激活</label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 搜索组 -->
+        <div class="search-group group-b">
+            <span class="type-text">搜索</span>
+            <ul class="search-type">
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-Google" value="https://google.com/search?q=" data-placeholder="Google搜索" />
+                    <label for="type-Google">Google</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-Bing2" value="https://bing.com/search?q=" data-placeholder="Bing搜索" />
+                    <label for="type-Bing2">Bing</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-DuckDuckGo" value="https://duckduckgo.com/?q=" data-placeholder="DuckDuckGo搜索" />
+                    <label for="type-DuckDuckGo">DuckDuckGo</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-Yandex" value="https://yandex.com/search/?text=" data-placeholder="Yandex搜索" />
+                    <label for="type-Yandex">Yandex</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-Yahoo" value="https://search.yahoo.com/search?p=" data-placeholder="Yahoo搜索" />
+                    <label for="type-Yahoo">Yahoo</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-WebCrawler" value="https://webcrawler.com/serp?q=" data-placeholder="WebCrawler搜索" />
+                    <label for="type-WebCrawler">WebCrawler</label>
+                </li>
+                <li>
+                    <input onclick="bw()" hidden type="radio" name="type" id="type-You" value="https://you.com/search?q=" data-placeholder="You搜索" />
+                    <label for="type-You">You</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 搜索表单 -->
+    <form action="https://www.google.com/search?q=" method="get" target="_blank" id="super-search-fm">
+        <input type="text" id="search-text" placeholder="输入关键字搜索" style="outline:0" />
+        <button type="submit"><i class="iconfont icon-search"></i></button>
+        <ul id="ul" class="ko"></ul>
+    </form>
+
+    <!-- 隐藏高级搜索 -->
+    <div id="yy" style="display:none;">
+        <input type="text" id="kos" placeholder="<?php echo $word; ?>" />
+        <button type="submit" id="kob"><i class="iconfont icon-xdss"></i></button>
+        <ul id="kol" class="ko"></ul>
+    </div>
+
+    <div class="set-check hidden-xs">
+        <input type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off" />
+    </div>
+</div>
+
+<!-- JS 引入 -->
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> <!-- 看板娘 -->
+<script type="text/javascript" src="js/yyss.js"></script>
+<script type="text/javascript" src="js/sousuo.js"></script>
+<script type="text/javascript" src="js/lianxiang.js"></script>
+<script type="text/javascript" src="js/duration.js"></script>
+
+<div class="bgo"></div>
+
+<!-- 页脚 -->
+<div style="position: absolute; bottom: 50px; text-align: center; width:100%;">Powered By Search | CopyRight@copy2019</div>
+<div style="position: absolute; bottom: 25px; text-align: center; width:100%;">
+    <span id="timeDate">载入天数...</span>
+    <span id="times">载入时分秒...</span>
+</div>
+
+<!-- 音乐播放器 -->
+<div id="music" key="67629c0cf3742" api="https://music.zbiwl.com"></div>
+<script id="xplayer" src="https://music.zbiwl.com/Static/player9/js/player.js"></script>
