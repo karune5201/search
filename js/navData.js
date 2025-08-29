@@ -1,36 +1,28 @@
-// js/renderNav.js
-import { navData } from './navData.js';
+// js/navData.js
 
-const sidebar = document.getElementById('sidebar');
-
-function makeSection(section) {
-  const container = document.createElement('section');
-  container.classList.add('nav-section');
-
-  // 标题
-  const h2 = document.createElement('h2');
-  h2.className = 'nav-title';
-  h2.innerHTML = `<i class="iconfont ${section.icon}"></i>${section.title}`;
-  container.appendChild(h2);
-
-  // 链接列表
-  const ul = document.createElement('ul');
-  ul.className = 'nav-list';
-  section.links.forEach(link => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <a href="${link.href}" target="_blank" rel="nofollow noopener">
-        <i class="iconfont ${link.icon}"></i>${link.label}
-      </a>`;
-    ul.appendChild(li);
-  });
-  container.appendChild(ul);
-
-  return container;
-}
-
-// 清空旧内容（如果有）再渲染
-sidebar.innerHTML = '';
-navData.forEach(section => {
-  sidebar.appendChild(makeSection(section));
-});
+export const navData = [
+  {
+    title: '常用',
+    icon: 'icon-changyong',
+    links: [
+      { label: '网盘', href: 'https://wckepdon.ap-northeast-1.clawcloudrun.com/', icon: 'icon-openlist' },
+      { label: 'Key',   href: 'https://key.visualarts.gr.jp/',                        icon: 'icon-Key' },
+      { label: '杂货库', href: 'https://coolexe.com/',                                 icon: '' },
+      { label: '书音资源', href: 'https://suyin66.com/',                              icon: '' },
+      // …剩余常用项请按此格式补全
+    ]
+  },
+  {
+    title: 'AI',
+    icon: 'icon-Ai',
+    links: [
+      { label: 'OpenAi',     href: 'https://chat.openai.com/', icon: 'icon-OpenAi' },
+      { label: 'Gemini',     href: 'https://gemini.google.com/', icon: 'icon-Google Bard' },
+      { label: 'Bing AI',    href: 'https://bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx', icon: 'icon-Bing Ai' },
+      { label: '国家超算DS', href: 'https://chat.scnet.cn/#/home',   icon: 'icon-ds' },
+      { label: '纳米AI',     href: 'https://www.n.cn/',             icon: 'icon-N' },
+      // …后续项同理
+    ]
+  },
+  // …其它分类同理：动漫壁纸、动漫、漫画、影视、邮箱、社交、工具、开发、海购、转运、网盘、论坛、模拟器、游戏、音乐、VPN、磁力、ASMR、GameBuying、gal网盘直链
+];
