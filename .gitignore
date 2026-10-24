@@ -1,0 +1,13 @@
+# 一言原始数据包：体积大且只用来生成 data/hitokoto.json，不需要上传
+data/raw/
+
+# 编辑器 / 系统垃圾文件
+.DS_Store
+Thumbs.db
+*.bak
+*.log
+node_modules/
+
+# Python 缓存（tools/ 下跑过脚本会生成）
+__pycache__/
+*.pyc

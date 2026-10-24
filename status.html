@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#16181d" />
+  <title>站点状态 · 简单搜索</title>
+  <meta name="description" content="所有收录站点的可用性检测结果：死链、受限与可疑站点一览。" />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="favicon.ico" sizes="32x32 48x48" />
+  <link rel="apple-touch-icon" href="icon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preload" href="ziti/font.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link href="css/bizhi.css" rel="stylesheet" />
+  <link href="css/status.css" rel="stylesheet" />
+</head>
+<body class="status-page">
+  <div class="status-wrap">
+    <a class="status-back" href="index.html">← 返回首页</a>
+
+    <h1 class="status-title">站点状态</h1>
+    <p class="status-sub" id="status-sub">
+      正在读取检测数据…
+    </p>
+
+    <div class="status-stats" id="status-stats" hidden>
+      <div class="stat is-dead">
+        <span class="stat-num" id="stat-dead">0</span>
+        <span class="stat-label">死链</span>
+      </div>
+      <div class="stat is-warn">
+        <span class="stat-num" id="stat-unknown">0</span>
+        <span class="stat-label">可疑</span>
+      </div>
+      <div class="stat is-blocked">
+        <span class="stat-num" id="stat-blocked">0</span>
+        <span class="stat-label">受限</span>
+      </div>
+      <div class="stat is-ok">
+        <span class="stat-num" id="stat-ok">0</span>
+        <span class="stat-label">正常</span>
+      </div>
+    </div>
+
+    <div class="status-filters" id="status-filters" hidden>
+      <button type="button" class="filter-btn is-active" data-kind="all">全部</button>
+      <button type="button" class="filter-btn" data-kind="dead">死链</button>
+      <button type="button" class="filter-btn" data-kind="unknown">可疑</button>
+      <button type="button" class="filter-btn" data-kind="blocked">受限</button>
+      <button type="button" class="filter-btn" data-kind="ok">正常</button>
+    </div>
+
+    <div id="status-list"></div>
+
+    <div class="status-note">
+      <b>正常</b>：返回 2xx，能正常打开。<br />
+      <b>死链</b>：返回 404 / 410 / 5xx 或域名解析失败，基本可以确认打不开了。<br />
+      <b>可疑</b>：请求超时或连接失败，通常是网络、区域限制或站点临时抽风，<b>不一定真的失效</b>。<br />
+      <b>受限</b>：返回 401 / 403 / 429，站点其实还在，只是拒绝了自动检测的请求。
+    </div>
+
+    <p class="status-foot">数据由 GitHub Actions 定期自动检测生成 · 仅供导航参考</p>
+  </div>
+
+  <script src="js/link-status.js"></script>
+  <script src="js/status.js"></script>
+</body>
+</html>

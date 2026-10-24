@@ -31,3 +31,154 @@ Wap
 
 
 ## 十分感谢三位作者，谢谢！
+
+---
+
+## 本地预览
+
+纯静态站点，不需要构建，任选一种方式起个本地服务即可（直接双击 `index.html` 也能看，但部分浏览器对本地文件的外部资源加载有限制）：
+
+```bash
+# Python（任意一台装了 python3 的机器）
+python3 -m http.server 8080
+
+# 或者 Node
+npx serve .
+```
+
+然后打开 <http://127.0.0.1:8080/>。
+
+## 目录说明
+
+```
+index.html          # 页面主文件：搜索区 + 右侧站点收纳面板
+favicon.svg         # 站点图标（0.5KB，优先使用）
+favicon.ico         # 旧浏览器回退用（注意：体积偏大，见 CHANGELOG）
+css/bizhi.css       # 背景、字体、右侧收纳面板
+css/sousuo.css      # 搜索框、搜索类型、页脚
+css/anim.css        # 入场、折叠与互动过渡动画
+css/ipinfo.css      # 页脚 IP / 归属地胶囊样式
+css/weather.css     # 左上角天气挂件样式
+source/css/custom.css  # 自定义鼠标指针（可选）
+js/xd.js            # 收纳面板开关、遮罩、快捷键（原生 JS）
+js/panel.js         # 面板增强：搜索过滤、最近访问
+js/clock.js         # 主界面：时间 / 日期 / 翻牌时钟
+js/fun.js           # 随机站点、一言打字机提示、方向键彩蛋、壁纸视差
+js/recent.js        # 最近访问（面板分区，本地记录）
+js/sousuo.js        # 搜索源切换 / 提交逻辑
+js/duration.js      # 页脚运行时间
+js/ipinfo.js        # 页脚访客 IPv4 + IPv6 / 国内海外 / 中文归属地
+js/visits.js        # 页脚游客访问量（abacus 计数）
+js/wallpaper.js     # 随机壁纸（每次刷新都换，带缓存穿透）
+js/weather.js       # 左上角天气（按 IP 定位）
+js/yyss.js          # 已停用：依赖 PHP 后端 api.php
+js/lianxiang.js     # 已停用：依赖失效的百度联想接口
+ziti/font.woff2     # 自定义字体（已子集化：656KB / 4065 字形）
+CHANGELOG.md        # 本次修复与优化清单
+tools/subset-font.py   # 字体子集化脚本（改文案后重建字体用）
+tools/check-links.py   # 死链检测（纯标准库，可本地跑或由 Actions 定时跑）
+status.html          # 站点状态页（游客可看的死链报告）
+css/status.css       # 站点状态页样式
+js/link-status.js    # 检测结果数据（Actions 自动生成并提交）
+js/status.js         # 站点状态页渲染
+tools/make-icons.py    # 站点图标生成器（纯标准库，输出 favicon/PWA 图标）
+manifest.webmanifest   # PWA 配置
+data/hitokoto.json     # 本地一言句库（5082 条精简版，约 470KB，gzip 后约 210KB）
+data/raw/              # 一言原始数据包存放处（已在 .gitignore 中，不会上传）
+tools/build-hitokoto.py  # 把原始数据包压成 data/hitokoto.json
+```
+
+> 具体的修复项、美化项和待优化建议见 [CHANGELOG.md](CHANGELOG.md)。
+
+## 添加 / 管理站点
+
+站点数据全部在 `js/sites.js`，**不需要改 HTML**：
+
+```js
+window.SITE_DATA = [
+    { cat: 'Ai', emoji: '✨', sites: [
+        ['OpenAi', 'https://chat.openai.com/'],   // ← 加一行就是一个站点
+    ] },
+];
+```
+
+也可以用页面上更省事的办法：面板 → 右上「编辑」→ 添加/删除（**改动只存在本设备**，要永久生效请改 `js/sites.js`）。
+
+新增或修改站点后，如果出现了字体里没有的生僻字，跑一次 `tools/subset-font.py` 重建字体即可（脚本会自动扫描 `js/*.js`）。
+
+## 页脚 IP / 访问量 与 左上角天气
+
+页脚从上到下三行：
+
+1. **访客 IP**（在「本站已运行」上一行）：`IPv4 1.2.3.4  IPv6 2408:826a:…:c647  [国内] · 中国 · 贵州 · 贵阳`
+   - IPv4：`v4.ident.me`（强制 IPv4，附带坐标），失败回退 `api.ip.sb`
+   - IPv6：`v6.ident.me`；设备没有 IPv6 出口时这一段自动隐藏（不会显示空白或报错）
+   - 中文地名：`ip.zxinc.org`（国内外都返回中文），失败则用内置国家对照表兜底
+   - 每次刷新页面都会重新查询，换网络/换 IP 后立刻能看到新结果；`localStorage` 只作为请求失败时的兜底
+   - 悬停可看完整 IP、运营商；点一下复制 IP 并刷新
+2. **游客访问量**：`abacus.jasoncameron.dev` 计数，同一会话只 +1，刷新不重复累加
+   - 换站点请改 `js/visits.js` 顶部的 `NS`（命名空间，用你自己的名字）
+3. **本站已运行**：原有运行天数/时分秒
+
+左上角**天气**：按 IP 定位的城市显示图标 + 温度 + 描述（`api.open-meteo.com`，免 key），缓存 30 分钟；IP 拿不到坐标时自动隐藏。想固定城市，改 `js/weather.js` 里 `geo:ready` 监听直接传固定坐标即可。
+
+## 随机壁纸
+
+壁纸原先写在 CSS 里（固定 URL），浏览器缓存后每次刷新都是同一张。现在交给 `js/wallpaper.js`：
+
+- 从多个图源随机挑选，地址后加时间戳，**每次刷新都是新图**
+- 先预加载，加载成功才替换背景；失败自动换下一个源，全部失败保留 CSS 渐变兜底，不会白屏
+- 桌面端优先大图源，移动端优先小体积图源；`background-image` 里始终保留渐变作为第二层
+
+想固定某张图：把 `js/wallpaper.js` 里的 `DESKTOP` / `MOBILE` 数组换成一个固定地址并去掉 `cacheBust` 即可。
+
+## 搜索框一言提示
+
+搜索框里的打字机文字来自「一言」，本地库和联网接口混用：
+
+- **本地库** `data/hitokoto.json`：默认 5082 条，页面空闲时才加载，加载后存进 `localStorage`，不会每次都下载
+- **联网接口** `v1.hitokoto.cn`：约三成句子来自这里，让内容保持新鲜；被墙或断网会自动跳过
+- **兜底**：两者都不可用时用 `js/fun.js` 里的 6 句内置句子
+
+换成自己的句子包：
+
+```bash
+# 把一言原始数据包丢进 data/raw/，然后重新生成
+python3 tools/build-hitokoto.py
+```
+
+也支持直接喂自定义 JSON（纯字符串数组、`{"text","source"}` 数组都行）：
+
+```bash
+python3 tools/build-hitokoto.py 我的句子.json -o data/hitokoto.json
+```
+
+调节混用比例、打字速度、句子长度上限，改 `js/fun.js` 顶部的 `MIX_REMOTE_RATE` / `SPEED_TYPE` / `QUOTE_MAX_CHARS` 即可；想纯本地就把 `QUOTE_API` 置空字符串。
+
+## 死链检测
+
+站点会失效，定期查一次比手动点省事：
+
+```bash
+python3 tools/check-links.py                  # 全量
+python3 tools/check-links.py --limit 20       # 先抽查
+python3 tools/check-links.py --report r.md    # 输出 markdown 报告
+```
+
+结果分四类：**正常 / 受限（403、429 等，站点还活着）/ 死链（404、410、5xx、DNS 失败）/ 可疑（超时，多为网络问题）**。超时不会被当成死链，避免误删还能用的站点。
+
+仓库里的 `.github/workflows/check-links.yml` 会每周一自动跑一次，也可以在 Actions 页面点「Run workflow」手动触发，报告直接写进 Job Summary。
+
+## 站点状态页
+
+`status.html` 是给游客看的死链报告，不需要后端：
+
+- 统计卡：死链 / 可疑 / 受限 / 正常
+- 按分类列出全部站点及检测结果，标出原因（200、404、403、超时…）
+- 可按状态筛选（含「正常」），`status.html#dead` 这样能直接分享某一类
+
+页面数据来自 `js/link-status.js`，由 Actions 每周自动检测后提交回仓库，所以内容会自己更新。想手动刷新：
+
+```bash
+python3 tools/check-links.py --json js/link-status.js --report link-report.md
+```

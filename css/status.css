@@ -1,0 +1,289 @@
+/* =========================================================
+   站点状态页（死链报告）样式
+   独立于首页：首页是 position:fixed 的居中布局，这里要用文档流和滚动
+   ========================================================= */
+
+/* 覆盖首页的 overflow:hidden / height:100%，否则页面无法滚动 */
+html,
+body {
+    width: 100%;
+    height: auto !important;
+    min-height: 100%;
+    overflow: auto !important;
+    background-image: none !important;
+    background-color: #12141a;
+}
+
+body.status-page {
+    background-image:
+        radial-gradient(900px 500px at 50% -10%, rgba(72, 106, 178, .28), transparent 70%),
+        linear-gradient(180deg, #171a22 0%, #12141a 100%) !important;
+    color: #eef1f6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.status-wrap {
+    width: min(880px, 92vw);
+    margin: 0 auto;
+    padding: 40px 0 72px;
+}
+
+/* ---------- 顶部 ---------- */
+.status-back {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 22px;
+    color: rgba(238, 241, 246, .62);
+    font-size: 13px;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.status-back:hover {
+    color: #fff;
+}
+
+.status-title {
+    margin-bottom: 8px;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: .5px;
+}
+
+.status-sub {
+    margin-bottom: 26px;
+    color: rgba(238, 241, 246, .55);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.status-sub code {
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, .1);
+    font-size: 12px;
+}
+
+/* ---------- 统计卡 ---------- */
+.status-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.stat {
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .045);
+}
+
+.stat-num {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+    display: block;
+    margin-top: 2px;
+    color: rgba(238, 241, 246, .5);
+    font-size: 12px;
+}
+
+.stat.is-dead .stat-num { color: #ff7b7b; }
+.stat.is-warn .stat-num { color: #ffbe5c; }
+.stat.is-blocked .stat-num { color: #8ab4f8; }
+.stat.is-ok .stat-num { color: #7bdca0; }
+
+/* ---------- 筛选 ---------- */
+.status-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 7px 14px;
+    color: rgba(238, 241, 246, .72);
+    font-family: inherit;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .04);
+    cursor: pointer;
+    transition: color .2s ease, border-color .2s ease, background-color .2s ease;
+}
+
+.filter-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, .3);
+}
+
+.filter-btn.is-active {
+    color: #12141a;
+    border-color: #fff;
+    background: #fff;
+}
+
+/* ---------- 列表 ---------- */
+.status-group {
+    margin-bottom: 24px;
+}
+
+.group-title {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    color: rgba(238, 241, 246, .82);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.group-count {
+    color: rgba(238, 241, 246, .38);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.status-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 9px 10px;
+    border-radius: 8px;
+    transition: background-color .18s ease;
+}
+
+.status-item:hover {
+    background: rgba(255, 255, 255, .05);
+}
+
+.item-link {
+    overflow: hidden;
+    flex: 1;
+    color: #eef1f6;
+    font-size: 14px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.item-host {
+    display: block;
+    overflow: hidden;
+    margin-top: 1px;
+    color: rgba(238, 241, 246, .38);
+    font-size: 11.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-badge {
+    flex: none;
+    padding: 2px 8px;
+    font-size: 11.5px;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .08);
+}
+
+.item-badge.kind-dead {
+    color: #ff9a9a;
+    background: rgba(255, 90, 90, .14);
+}
+
+.item-badge.kind-unknown {
+    color: #ffcb84;
+    background: rgba(255, 180, 80, .14);
+}
+
+.item-badge.kind-blocked {
+    color: #9dc2ff;
+    background: rgba(110, 160, 255, .14);
+}
+
+.item-badge.kind-ok {
+    color: #8fe6b4;
+    background: rgba(90, 220, 150, .14);
+}
+
+/* 正常条目在「全部」里不用太抢眼 */
+.status-item .item-badge.kind-ok {
+    opacity: .85;
+}
+
+/* ---------- 空态 / 提示 ---------- */
+.status-empty {
+    padding: 46px 20px;
+    color: rgba(238, 241, 246, .5);
+    font-size: 14px;
+    text-align: center;
+    border: 1px dashed rgba(255, 255, 255, .14);
+    border-radius: 12px;
+}
+
+.status-note {
+    margin-top: 26px;
+    padding: 14px 16px;
+    color: rgba(238, 241, 246, .5);
+    font-size: 12.5px;
+    line-height: 1.8;
+    border-left: 2px solid rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, .03);
+    border-radius: 0 8px 8px 0;
+}
+
+.status-note b {
+    color: rgba(238, 241, 246, .78);
+    font-weight: 500;
+}
+
+.status-foot {
+    margin-top: 34px;
+    color: rgba(238, 241, 246, .32);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* ---------- 移动端 ---------- */
+@media (max-width: 640px) {
+    .status-wrap {
+        padding: 28px 0 56px;
+    }
+
+    .status-title {
+        font-size: 21px;
+    }
+
+    .status-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item-link {
+        font-size: 13.5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .status-back,
+    .filter-btn,
+    .status-item {
+        transition: none;
+    }
+}

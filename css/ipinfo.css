@@ -1,0 +1,144 @@
+/* =========================================================
+   页脚：访客 IP（IPv4 + IPv6）与游客访问量
+   数据与逻辑见 js/ipinfo.js、js/visits.js
+   ========================================================= */
+
+/* ---------- IP 行（在「本站已运行」上一行） ---------- */
+.site-footer-ip {
+    display: flex;
+    gap: 7px;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 8px;
+    color: rgba(255, 255, 255, .8);
+    font-size: 12px;
+    line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+    /* 页脚整体 pointer-events:none，这里单独放行，否则点不动 */
+    pointer-events: auto;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .3s ease, color .2s ease;
+}
+
+.site-footer-ip.is-ready {
+    opacity: 1;
+}
+
+.site-footer-ip:hover {
+    color: #fff;
+}
+
+.site-footer-ip[hidden] {
+    display: none !important;
+}
+
+/* 小圆点：国内绿、海外蓝 */
+.site-footer-ip .ip-dot {
+    flex: none;
+    width: 5px;
+    height: 5px;
+    margin-bottom: 1px;
+    border-radius: 50%;
+    background: #8fe6b4;
+    box-shadow: 0 0 7px rgba(143, 230, 180, .7);
+}
+
+.site-footer-ip.abroad .ip-dot {
+    background: #8ab4f8;
+    box-shadow: 0 0 7px rgba(138, 180, 248, .7);
+}
+
+.site-footer-ip .ip-pair {
+    display: inline-flex;
+    gap: 4px;
+    align-items: baseline;
+    font-variant-numeric: tabular-nums;
+}
+
+.site-footer-ip .ip-pair[hidden] {
+    display: none !important;
+}
+
+.site-footer-ip .ip-label {
+    padding: 0 5px;
+    color: rgba(255, 255, 255, .55);
+    font-size: 10.5px;
+    letter-spacing: .3px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 999px;
+}
+
+.site-footer-ip #ip-v4,
+.site-footer-ip #ip-v6 {
+    color: #fff;
+}
+
+.site-footer-ip .ip-tag {
+    padding: 0 6px;
+    font-size: 10.5px;
+    border-radius: 999px;
+}
+
+.site-footer-ip .ip-tag.is-cn {
+    color: #a6f0c6;
+    background: rgba(90, 220, 150, .16);
+}
+
+.site-footer-ip .ip-tag.is-abroad {
+    color: #a9c8ff;
+    background: rgba(110, 160, 255, .16);
+}
+
+.site-footer-ip #ip-loc {
+    color: rgba(255, 255, 255, .58);
+}
+
+/* ---------- 游客访问量（IP 下一行） ---------- */
+.site-footer-visits {
+    color: rgba(255, 255, 255, .62);
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: .3px;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.site-footer-visits.is-ready {
+    opacity: 1;
+}
+
+.site-footer-visits[hidden] {
+    display: none !important;
+}
+
+.site-footer-visits #visit-count {
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+    .site-footer-ip {
+        gap: 5px;
+        font-size: 11px;
+    }
+
+    .site-footer-ip .ip-label,
+    .site-footer-ip .ip-tag {
+        font-size: 10px;
+    }
+
+    /* 窄屏上 IPv6 太长，让它在自己那一行 */
+    .site-footer-ip #ip-loc {
+        flex-basis: 100%;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-footer-ip,
+    .site-footer-visits {
+        transition: none;
+    }
+}

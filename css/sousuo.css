@@ -1,782 +1,428 @@
+@charset "utf-8";
+/* ---------------------------------------------------------------
+   搜索框 / 搜索类型 / 页脚
+   注：原文件每个声明之间夹了两行空行（格式化残留），此处已整理
+   --------------------------------------------------------------- */
+
+/* ---------- 搜索区域 ---------- */
 #search {
-
-
-	width: 717px;
-
-
-	margin: 56px auto 14px;
-
-
 	position: absolute;
-
-
 	z-index: 99;
-
-
 	top: 40%;
-
-
 	left: 50%;
-
-
+	width: min(717px, 90%);
+	margin: 0;
 	transform: translate(-50%, -50%);
-
-
 }
 
+/* ---------- 时间 / 问候 ----------
+   绝对定位挂在搜索区上方，不占据布局高度，
+   这样搜索框仍停在原本的位置，不会被时间块顶下去 */
+.hero-greet {
+	position: absolute;
+	right: 0;
+	bottom: calc(100% + 14px);
+	left: 0;
+	text-align: center;
+	text-shadow: 0 2px 14px rgba(0, 0, 0, .5);
+	pointer-events: none;
+	user-select: none;
+}
 
+.greet-time {
+	font-size: 46px;
+	font-weight: 300;
+	line-height: 1.1;
+	letter-spacing: 2px;
+	font-variant-numeric: tabular-nums;
+}
 
+.greet-text {
+	margin-top: 4px;
+	font-size: 15px;
+	opacity: .92;
+}
 
+.greet-date {
+	margin-top: 2px;
+	font-size: 12.5px;
+	letter-spacing: .5px;
+	opacity: .7;
+}
 
 #search form {
-
-
-	position: relative
-
-
+	position: relative;
 }
-
-
-
-
 
 #search-text,
-
-
-#kos{
-
-
-	color: white;
-
-
+#kos {
+	box-sizing: border-box;
+	font-family: inherit;
+	-webkit-appearance: none;
 	width: 100%;
-
-
 	height: 50px;
-
-
-	font-size: 1pc;
-
-
-	border: 0;
-
-
-	border-radius: 9px;
-
-
-	background-color: rgba(240,240,240,0.3);
-
-
-	text-indent: 50px;
-
-
+	padding: 0 56px 0 50px;
+	font-size: 16px;
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, .38);
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, .16);
+	-webkit-backdrop-filter: blur(20px) saturate(1.6);
+	backdrop-filter: blur(20px) saturate(1.6);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 8px 30px rgba(0, 0, 0, .22);
+	transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
-
-
-
+#search-text:focus,
+#kos:focus {
+	border-color: rgba(255, 255, 255, .65);
+	background-color: rgba(255, 255, 255, .24);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), 0 10px 34px rgba(0, 0, 0, .28), 0 0 0 3px rgba(255, 255, 255, .16);
+}
 
 #search button {
-
-
 	position: absolute;
-
-
-	top: 0px;
-
-
+	top: 0;
 	left: 0;
-
-
-	background: none;
-
-
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	margin: 0;
+	padding: 0;
 	border: 0;
-
-
-	width: 30px;
-
-
-	height: 36px;
-
-
-	margin: 7px 9pt 0;
-
-
-	line-height: 36px;
-
-
-	border-radius: 3px;
-
-
+	border-radius: 10px 0 0 10px;
+	background: none;
 	cursor: pointer;
-
-
+	transition: background-color .2s ease;
 }
 
+#search button:hover {
+	background-color: rgba(255, 255, 255, .12);
+}
 
+/* 用纯 CSS 画放大镜，避免依赖缺失的 iconfont 字体 */
+#search button i {
+	position: relative;
+	display: block;
+	width: 15px;
+	height: 15px;
+	font-size: 0;
+	border: 2px solid rgba(255, 255, 255, .9);
+	border-radius: 50%;
+}
 
-
+#search button i::after {
+	content: "";
+	position: absolute;
+	right: -5px;
+	bottom: -2px;
+	width: 7px;
+	height: 2px;
+	border-radius: 2px;
+	background: rgba(255, 255, 255, .9);
+	transform: rotate(45deg);
+}
 
 #search label:hover {
-
-
-	background: rgba(240,240,240,0.3);
-
-
-	cursor: pointer
-
-
+	background: rgba(240, 240, 240, .3);
+	cursor: pointer;
 }
 
-
-
-
-
-#search button i {
-
-
-	color: #fff;
-
-
-	font-size: 18px
-
-
-}
-
-
-
-
-
+/* ---------- 搜索类型 ---------- */
 .search-group {
-
-
 	display: none;
-
-
-	padding-left: 75px
-
-
+	padding-left: 75px;
 }
-
-
-
-
-
-.s-current .search-type {
-
-
-	padding-left: 0;
-
-
-	display: block
-
-
-}
-
-
-
-
 
 .s-current {
-
-
-	display: block
-
-
+	display: block;
 }
 
-
-
-
+.s-current .search-type {
+	display: block;
+	padding-left: 0;
+}
 
 #search-list,
-
-
-#yy{
-
-
-	position: relative
-
-
+#yy {
+	position: relative;
 }
-
-
-
-
 
 .s-type {
-
-
 	position: absolute;
-
-
 	top: 0;
-
-
 	left: 0;
-
-
 	z-index: 13;
-
-
-	width: 75px
-
-
+	width: 75px;
 }
-
-
-
-
 
 .s-type:hover {
-
-
-	height: auto
-
-
+	height: auto;
 }
 
-
-
-
-
-.s-type>span {
-
-
+.s-type > span {
 	display: block;
-
-
+	width: 75px;
 	height: 31px;
-
-
-	width: 75px
-
-
 }
-
-
-
-
 
 .s-type-list {
-
-
-	display: none;
-
-
 	position: absolute;
-
-
 	top: 31px;
-
-
+	display: none;
 	width: 70px;
-
-
-	background: rgba(0,0,0,0.9);
-
-
-	border-radius: 6px;
-
-
-	box-shadow: 0 0 6px rgba(0,0,0,.16);
-
-
-	padding: 9pt 0;
-
-
+	padding: 9px 0;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, .14);
+	background: rgba(16, 18, 24, .58);
+	-webkit-backdrop-filter: blur(18px) saturate(1.3);
+	backdrop-filter: blur(18px) saturate(1.3);
+	box-shadow: 0 10px 26px rgba(0, 0, 0, .28);
 }
-
-
-
-
-
-.s-type-list:before {
-
-
-	position: absolute;
-
-
-	top: -1pc;
-
-
-	left: 10px;
-
-
-	content: ' ';
-
-
-	display: block;
-
-
-	width: 0;
-
-
-	height: 0;
-
-
-	border: 10px solid transparent;
-
-
-	border-bottom-color: rgba(0,0,0,0.9);
-
-
-}
-
-
-
-
 
 .s-type-list label {
-
-
 	display: block;
-
-
-	font-size: 15px;
-
-
-	text-align: center;
-
-
 	padding: 2px 0;
-
-
+	font-size: 15px;
+	text-align: center;
 }
-
-
-
-
-
-.s-type-list .tile-lg {
-
-
-	color: #fff;
-
-
-	width: 3pc;
-
-
-	height: 3pc;
-
-
-	font-size: 1.25rem;
-
-
-	line-height: 3rem;
-
-
-	border-radius: .3rem;
-
-
-	display: block;
-
-
-	margin: auto
-
-
-}
-
-
-
-
 
 .s-type-list label:hover {
-
-
-	color: #fff
-
-
+	color: #fff;
 }
 
-
-
-
+.s-type-list .tile-lg {
+	display: block;
+	width: 3pc;
+	height: 3pc;
+	margin: auto;
+	color: #fff;
+	font-size: 1.25rem;
+	line-height: 3rem;
+	border-radius: .3rem;
+}
 
 .s-type:hover .s-type-list {
-
-
 	display: block;
-
-
-	padding-top: 8px
-
-
+	padding-top: 8px;
 }
-
-
-
-
 
 .type-text {
-
-
 	position: absolute;
-
-
 	left: 0;
-
-
 	width: 75px;
-
-
 	padding-left: 9pt;
-
-
-	font-size: 1pc;
-
-
-	line-height: 31px
-
-
+	font-size: 16px;
+	line-height: 31px;
+	transition: color .2s ease;
 }
 
-
-
-
-
-.type-text:after {
-	content: "\e6aa";
-	font-family: iconfont;
-	margin: 0 0 0 10px;
+/* 原版这里用 iconfont 字形做下拉箭头，字体缺失时什么都不显示，改为 CSS 三角 */
+.type-text::after {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 6px;
+	vertical-align: middle;
+	border-top: 5px solid currentColor;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	opacity: .75;
+	transition: transform .2s ease;
 }
 
+.s-type:hover ~ .search-group .type-text::after {
+	transform: rotate(180deg);
+}
 
-
-
+.s-type:hover ~ .search-group .type-text {
+	color: #fff;
+}
 
 .search-type {
-
-
 	white-space: nowrap;
-
-
-	margin: 0
-
-
+	margin: 0;
 }
-
-
-
-
 
 .search-type label {
-
-
-	margin: 0
-
-
+	margin: 0;
 }
-
-
-
-
 
 .search-type li {
-
-
-	display: inline-block
-
-
+	display: inline-block;
+	list-style: none;
 }
-
-
-
-
 
 .search-type li label {
-
-
 	display: inline-block;
-
-
 	padding: 0 11px;
-
-
 	font-size: 14px;
-
-
 	line-height: 31px;
-
-
-	border-radius: 3px 3px 0 0;
-
-
-	cursor: pointer
-
-
+	border-radius: 4px 4px 0 0;
+	cursor: pointer;
+	transition: background-color .2s ease, color .2s ease;
 }
 
-
-
-
-
-.search-type input:checked+label,.search-type input:hover+label {
-
-
-	background-color: rgba(240,240,240,0.3);
-
-
+.search-type input:checked + label,
+.search-type input:hover + label {
+	background-color: rgba(240, 240, 240, .3);
 }
-
-
-
-
 
 .set-check {
-
-
 	margin-top: 3px;
-
-
-	font-size: 9pt
-
-
+	font-size: 9pt;
 }
-
-
-
-
 
 .set-check label {
-
-
-	margin-left: 3px
-
-
+	margin-left: 3px;
 }
 
-
-
-
-
-.set-check input,.set-check label {
-
-
+.set-check input,
+.set-check label {
 	opacity: 0;
-
-
-	transition: all .3s ease
-
-
+	transition: all .3s ease;
 }
-
-
-
-
-
-.search-type li {
-
-
-	list-style: none;
-
-
-	display: inline-block
-
-
-}
-
-
-
-
-
-@media screen and (max-width:767px) {
-
-
-.search-list {
-
-
-		height: 30px;
-
-
-		overflow-y: hidden;
-
-
-		overflow-x: scroll;
-
-
-		white-space: nowrap
-
-
-	}
-
-
-}
-
-
-
-
-
-@media screen and (max-width:768px) {
-
-
-	#search {
-
-
-		width: 90%;
-
-
-	}
-
-
-
-
-
-	.search-type {
-
-
-		overflow: auto;
-
-
-	}
-
-
-
-
-
-	.search-list {
-
-
-		height: 30px;
-
-
-		overflow-y: hidden;
-
-
-		overflow-x: scroll;
-
-
-		white-space: nowrap;
-
-
-	}
-
-
-}
-
-
-
-
 
 .fa-2x {
-
-
 	padding-top: 15px;
-
-
 	font-size: 1.5em;
-
-
 }
 
-
-.wei{
-
-
-    list-style: none;
-
-
-    position: relative;
-
-
-    text-indent: 10px;
-
-
-    cursor: pointer;
-
-
-}
-
-
-.wei:hover{
-
-
-     background: rgba(240,240,240,0.3);
-
-
-}
-
-
-.a{
-
-
-     display: inline-block;
-
-
-     width: 90%;
-
-
-     color: #fff ;
-
-
-     height: 27px;
-
-
-     line-height: 30px;
-
-
-     overflow:hidden;
-
-
-     text-overflow: ellipsis;
-
-
-}
-
-
-.ko{
-
-
+/* ---------- 输入联想下拉（保留样式，接口可按需接入） ---------- */
+.ko {
+	position: relative;
+	top: 10px;
 	display: none;
-
-
-    top: 10px;
-
-
-    position: relative;
-
-
+	padding: 6px 0;
+	border-radius: 10px;
+	background: rgba(16, 18, 24, .55);
+	-webkit-backdrop-filter: blur(18px) saturate(1.3);
+	backdrop-filter: blur(18px) saturate(1.3);
+	overflow: hidden;
 }
 
-
-#kol{
-
-
+#kol {
+	position: relative;
+	top: 10px;
 	display: none;
-
-
-    top: 10px;
-
-
-    position: relative;
-
-
-    height: 300px;
-
-
-    overflow: auto;
-
-
-    width: 98%;
-
-
+	width: 98%;
+	height: 300px;
+	overflow: auto;
 }
 
-
-@media (max-width: 640px) {
-
-
-#kol{
-
-
-	height: 158px;
-
-
-	overflow-y: auto;
-
-
+.wei {
+	position: relative;
+	list-style: none;
+	text-indent: 10px;
+	cursor: pointer;
 }
 
+.wei:hover {
+	background: rgba(240, 240, 240, .3);
+}
 
+.a {
+	display: inline-block;
+	width: 90%;
+	height: 27px;
+	color: #fff;
+	line-height: 30px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1998;
+	width: 100%;
+	padding: 0 12px 16px;
+	color: rgba(255, 255, 255, .88);
+	font-size: 13px;
+	line-height: 1.9;
+	text-align: center;
+	text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+	pointer-events: none;
+}
+
+.site-footer-main {
+	letter-spacing: .5px;
+}
+
+.site-footer-meta {
+	font-size: 12px;
+	opacity: .75;
+}
+
+/* 页脚「站点状态」链接：和其它页脚文字同一风格 */
+.footer-status {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 2px 6px;
+	color: inherit;
+	text-decoration: none;
+	/* 页脚整体是 pointer-events:none（避免挡住壁纸交互），
+	   这里单独放行，否则整条链接点不动 */
+	pointer-events: auto;
+	cursor: pointer;
+	transition: color .2s ease;
+}
+
+.footer-status:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+/* ---------- 移动端 ---------- */
+@media screen and (max-width: 768px) {
+	#search {
+		width: 90%;
+		top: 36%;
+	}
+
+	.search-type {
+		overflow-x: auto;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+	}
+
+	.search-type::-webkit-scrollbar {
+		display: none;
+	}
+
+	#kol {
+		height: 158px;
+		overflow-y: auto;
+	}
+
+	.site-footer {
+		padding-bottom: 12px;
+		font-size: 12px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#search-text,
+	#kos,
+	#search button,
+	.type-text::after,
+	.search-type li label {
+		transition: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.greet-time {
+		font-size: 34px;
+	}
+
+	.hero-greet {
+		bottom: calc(100% + 10px);
+	}
 }

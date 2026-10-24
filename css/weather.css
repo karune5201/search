@@ -1,0 +1,88 @@
+/* =========================================================
+   左上角天气胶囊
+   渲染逻辑见 js/weather.js
+   ========================================================= */
+
+.weather-pill {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1998;
+    display: inline-flex;
+    gap: 5px;
+    align-items: baseline;
+    box-sizing: border-box;
+    max-width: 66vw;
+    padding: 6px 11px;
+    color: rgba(255, 255, 255, .9);
+    font-size: 12.5px;
+    line-height: 1.35;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 999px;
+    background: rgba(14, 16, 21, .46);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    backdrop-filter: blur(14px) saturate(1.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .2), inset 0 1px 0 rgba(255, 255, 255, .1);
+    opacity: 0;
+    pointer-events: auto;
+    transition: opacity .35s ease, background-color .2s ease;
+}
+
+.weather-pill.is-ready {
+    opacity: 1;
+}
+
+.weather-pill:hover {
+    background: rgba(20, 24, 32, .6);
+}
+
+.weather-pill[hidden] {
+    display: none !important;
+}
+
+.weather-pill .wx-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.weather-pill .wx-temp {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.weather-pill .wx-desc {
+    color: rgba(255, 255, 255, .82);
+}
+
+.weather-pill .wx-city {
+    overflow: hidden;
+    max-width: 30vw;
+    color: rgba(255, 255, 255, .55);
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 640px) {
+    .weather-pill {
+        top: 8px;
+        left: 8px;
+        padding: 5px 9px;
+        font-size: 12px;
+    }
+
+    .weather-pill .wx-temp {
+        font-size: 13px;
+    }
+
+    .weather-pill .wx-city {
+        max-width: 26vw;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .weather-pill {
+        transition: none;
+    }
+}

@@ -6,6 +6,11 @@ github：https://github.com/hacamer/home-search
                      Hacamer，2021.7.25
 */
 
+:root {
+    /* 收纳面板宽度：菜单按钮、面板、移动端都跟着它走 */
+    --panel-w: min(400px, 88vw);
+}
+
 input::-webkit-input-placeholder{
 color:white;
 }
@@ -26,13 +31,20 @@ body {
     position: relative;
     overflow: hidden;
 }
-.bgo{
-	background: url(https://www.dmoe.cc/random.php);
-    background-size: cover;
-    filter: brightness(0.9);
+.bgo {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    background-color: #1a1d24;
+    /* 随机图加载失败时保留渐变兜底，不会白屏 */
+    background-image: url(https://www.dmoe.cc/random.php),
+        linear-gradient(160deg, #2b3a55 0%, #1a1d24 55%, #0f1115 100%);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0.9);
 }
 
 html {
@@ -42,14 +54,37 @@ html {
 }
 
 @font-face{
-    font-family:'zuziaaa' ;  /* 字体名自定义即可 */
-    src:url('https://cdn.jsdelivr.net/gh/Karune-SHI-E/search/ziti/font.woff2'); /* 字体文件路径 */
-    font-display : swap;
+    font-family:'zuziaaa';  /* 字体名自定义即可 */
+    src:url('../ziti/font.woff2') format('woff2'); /* 本地字体：已按站内实际用字做子集化（约 140KB）；改文案后可跑 tools/subset-font.py 重建 */
+    font-display: swap;
   }
   
   h1#site-title {
     font-family: 'zuziaaa', sans-serif;
   }
+
+.panel-sec .title i.iconfont {
+    font-style: normal;
+    font-size: 15px;
+}
+
+.panel-sec .title i.iconfont::before {
+    content: "◆";
+}
+
+/* 分类图标兜底（原 iconfont 字体未引入，图标一直是空白） */
+.panel-sec .title i.icon-changyong::before { content: "⭐"; }
+.panel-sec .title i.icon-Ai::before { content: "✨"; }
+.panel-sec .title i.icon-AnimeWallpapers::before { content: "🖼️"; }
+.panel-sec .title i.icon-shipin::before { content: "🎬"; }
+.panel-sec .title i.icon-manhua::before { content: "📖"; }
+.panel-sec .title i.icon-youxiang::before { content: "✉️"; }
+.panel-sec .title i.icon-msg::before { content: "💬"; }
+.panel-sec .title i.icon-ai-tool::before { content: "🛠️"; }
+.panel-sec .title i.icon-shuaji::before { content: "💻"; }
+.panel-sec .title i.icon-kongzhitai::before { content: "🎮"; }
+.panel-sec .title i.icon-bt::before { content: "🧲"; }
+.panel-sec .title i.icon-recent::before { content: "🕘"; }
 
 /*form,
 input,
@@ -90,6 +125,12 @@ a {
     transition: 0.5s;
 }
 
+#menu:focus-visible {
+    outline: 2px solid rgba(255,255,255,.75);
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
 #menu i {
     position: absolute;
     left: 0;
@@ -124,7 +165,7 @@ a {
 }
 
 #menu.on {
-    right: 380px;
+    right: calc(var(--panel-w) + 18px);
     background: rgba(1,1,1,0.5);
     border-radius: 25px;
    /* box-shadow: 0 6px 8px rgba(36, 159, 253, .3);*/
@@ -153,90 +194,158 @@ a {
     background: #fff;
 }
 
+/* ---------- 侧栏（站点收纳面板） ---------- */
 .list {
-    width: 337px;
-    padding: 0 20px;
-    height: 100%;
-    overflow: hidden;
-    overflow-y: auto;
     position: absolute;
-    right: 0px;
+    top: 0;
+    right: 0;
     z-index: 2000;
-    background: rgba(1,1,1,0.7);
-    transition: 0.3s all linear;
-}
-.list.closed {
-    right: -380px;
-}
-
-.list ul {
-    width: 330px;
-    float: left;
-    padding: 0 0 20px;
-    margin-bottom: 20px;
-}
-
-.list ul li {
-    float: left;
-    margin: 5px;
-    width: 100px;
-    height: 30px;
-    text-align: left;
-    line-height: 30px;
-}
-
-.list ul li a {
-    width: 100%;
-    border-radius: 5px;
-    transition: 0.2s all linear;
+    box-sizing: border-box;
+    width: var(--panel-w);
     height: 100%;
-    display: block;
-    color: #fff;
-    font-weight: 500;
-    background: rgba(0,0,0,0.3);
+    padding: 0 18px 72px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(10, 12, 16, .55);
+    -webkit-backdrop-filter: blur(22px) saturate(1.3);
+    backdrop-filter: blur(22px) saturate(1.3);
+    border-left: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: -12px 0 32px rgba(0, 0, 0, .28);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, .22) transparent;
+    transition: transform .32s cubic-bezier(.4, 0, .2, 1);
+}
+
+.list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .22);
+    border-radius: 3px;
+}
+
+.list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 用位移代替 right 动画，滑入滑出更顺滑 */
+.list.closed {
+    transform: translateX(100%);
+    box-shadow: none;
+}
+
+/* 网格布局：列宽自适应，字数多的条目也不会顶出来 */
+.panel-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(102px, 1fr));
+    gap: 8px;
+    width: auto;
+    margin: 0;
+    padding: 8px 0 0;
+}
+
+/* 分区之间留出间隔，标题吸顶时不会互相挤压 */
+.panel-sec + .panel-sec {
+    margin-top: 20px;
+}
+
+.panel-links li {
+    float: none;
+    width: auto;
+    height: 32px;
+    margin: 0;
+    line-height: 32px;
     text-align: left;
-    font-size: 12px;
 }
 
-.list ul li a i {
-    margin-right: 5px;
-    margin-left: 15px;
-    transition: 0.2s all linear;
+.panel-links li a {
+    display: block;
+    height: 32px;
+    padding: 0 8px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, .08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+    transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
-.list ul li a i.iconfont {
-    font-size: 14px;
+/* 原 iconfont 字体未引入，图标占位改成小圆点；带 inline color 的仍显示品牌色 */
+.panel-links li a i {
+    transition: opacity .2s ease;
 }
 
-.list ul li:hover a {
+.panel-links li a i.iconfont {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 0 7px 2px 1px;
+    vertical-align: middle;
+    overflow: hidden;
+    font-size: 0;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: .55;
+}
+
+.panel-links li a:hover,
+.panel-links li a:focus-visible {
     color: #fff;
     background-color: #29f;
-    background-image: linear-gradient(135deg, rgba(35, 153, 255) 0%, rgba(84, 175, 253) 100%);
-    box-shadow: 0 3px 3px rgba(0, 40, 70, .3);
+    background-image: linear-gradient(135deg, rgba(35, 153, 255) 1%, rgba(84, 175, 253) 100%);
+    box-shadow: 0 4px 12px rgba(0, 60, 110, .45);
+    transform: translateY(-1px);
+    outline: none;
 }
 
-.list ul li:hover a i {
-    color: #fff !important;
+.panel-links li a:hover i {
+    opacity: 1;
 }
 
-.list ul li.title {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    margin: 30px 0 0;
-    text-align: left;
-    text-indent: 10px;
-    /*border-bottom: 1px dashed #dedede;*/
+/* 分类标题：只在所属分区内吸顶，滑走时被下一个分区顶出去 */
+.panel-sec .title {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: block;
+    box-sizing: border-box;
+    height: 38px;
+    margin: 20px 0 0;
     color: #fff;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 38px;
+    text-align: left;
+    text-indent: 0;
+    padding: 0 10px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 9px;
+    /* 毛玻璃：透出后面的壁纸，而不是一条纯黑色带 */
+    background: rgba(255, 255, 255, .10);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 2px 10px rgba(0, 0, 0, .12);
 }
 
-.list ul li.title i {
+.panel-sec:first-child .title {
+    margin-top: 4px;
+}
+
+.panel-sec .title i {
+    margin-right: 6px;
     color: #29f;
-    margin-right: 5px;
     font-weight: normal;
 }
+
 .logo{
     position: absolute;
     z-index: 99;
@@ -246,31 +355,443 @@ a {
     width: 200px;
     opacity: 0.9;
 }
+
 @media (max-width: 640px) {
+    :root {
+        --panel-w: min(286px, 86vw);
+    }
+
     .list {
-        width: 227px;
+        padding: 0 12px 64px;
     }
-    .list ul {
-        width: 220px;
+
+    .panel-links {
+        grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
+        gap: 7px;
     }
+
+    .panel-links li,
+    .panel-links li a {
+        height: 34px;
+        line-height: 34px;
+    }
+
+    .panel-links li a {
+        font-size: 12px;
+    }
+
     #menu {
         top: 5px;
     }
-      #menu.on {
-        right: 270px;
-    }
-.bgo{
-    	background: url(https://app.zichen.zone/api/acg/api.php);
+
+    .bgo{
+        background-image: url(https://app.zichen.zone/api/acg/api.php),
+            linear-gradient(160deg, #2b3a55 0%, #1a1d24 55%, #0f1115 100%);
+        background-position: center;
         background-size: cover;
+        background-repeat: no-repeat;
     }
-.logo{
-width: 35%;
+
+    .logo{
+        width: 35%;
+    }
+
+    .ko{
+        height: 158px;
+        overflow-y: scroll;
+    }
 }
-.ko{
-	height: 158px;
-	overflow-y: scroll;
-}
-}
+
 .ssln:hover{
-            background: #f2f2f2;
+    background: #f2f2f2;
+}
+
+/* =========================================================
+   面板增强：过滤栏 / 遮罩 / 站点图标 / 最近访问
+   ========================================================= */
+
+/* 作者样式里的 ul,li{display:block} 会盖掉 [hidden] 的 UA 规则，
+   过滤功能依赖 hidden，这里必须显式声明 */
+[hidden] {
+    display: none !important;
+}
+
+/* ---------- 遮罩：点击面板外部关闭 ---------- */
+.panel-mask {
+    position: fixed;
+    inset: 0;
+    z-index: 1999;
+    background: rgba(0, 0, 0, .35);
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.panel-mask.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ---------- 过滤栏（吸顶） ---------- */
+.panel-tools {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+    padding: 12px 0 10px;
+    background: linear-gradient(180deg, rgba(14, 16, 21, .96) 0%, rgba(14, 16, 21, .88) 70%, rgba(14, 16, 21, 0) 100%);
+}
+
+.panel-tools .panel-filter {
+    flex: 1;
+    min-width: 0;
+}
+
+.panel-edit-btn {
+    flex: none;
+    padding: 0 12px;
+    color: rgba(255, 255, 255, .85);
+    font-size: 12.5px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, .08);
+    cursor: pointer;
+    transition: color .2s ease, background-color .2s ease;
+}
+
+.panel-edit-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, .18);
+}
+
+.panel-filter {
+    box-sizing: border-box;
+    width: 100%;
+    height: 34px;
+    padding: 0 12px;
+    color: #fff;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, .08);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.panel-filter::placeholder {
+    color: rgba(255, 255, 255, .45);
+}
+
+.panel-filter:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, .45);
+    background: rgba(255, 255, 255, .14);
+}
+
+/* 分类标题要吸在过滤栏下方，不能压在它上面 */
+.panel-sec .title {
+    top: 56px;
+}
+
+/* ---------- 站点图标 ---------- */
+/** 站点图标已停用：第三方 favicon 服务在部分网络下不可达，
+ *  加载失败时会留下空白方块。保留圆点作为统一视觉。
+ *  如需恢复，可接一个本地/可访问的图标服务，见 js/panel.js 注释。 */
+
+/* ---------- 空结果提示 ---------- */
+.panel-empty {
+    padding: 28px 4px;
+    color: rgba(255, 255, 255, .55);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ---------- 壁纸暗色遮罩：保证白字可读 ---------- */
+.bgo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(8, 10, 14, .28) 0%,
+        rgba(8, 10, 14, .42) 50%,
+        rgba(8, 10, 14, .62) 100%);
+}
+
+@media (max-width: 640px) {
+    .panel-sec .title {
+        top: 54px;
+    }
+
+    .panel-tools {
+        padding: 10px 0 8px;
+    }
+
+    .panel-filter {
+        height: 32px;
+        font-size: 12.5px;
+    }
+}
+
+/* =========================================================
+   站点数据化管理：分类 emoji / 数量 / 页面内编辑 / 导出
+   ========================================================= */
+
+/* 分类标题里的 emoji 和数量 */
+.panel-sec .title .panel-emoji {
+    margin-right: 7px;
+    font-size: 13px;
+    font-style: normal;
+}
+
+.panel-sec .title .sec-count {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 10.5px;
+    font-weight: 400;
+    opacity: .42;
+}
+
+/* 编辑态：数量给删除按钮让位 */
+.panel-sec.editing .title .sec-count {
+    right: 32px;
+}
+
+/* ---------- 删除按钮 ---------- */
+.sec-del,
+.site-del {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #fff;
+    font-size: 13px;
+    line-height: 1;
+    border: 0;
+    border-radius: 50%;
+    background: #e5484d;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+    transition: transform .15s ease, background-color .15s ease;
+}
+
+.sec-del:hover,
+.site-del:hover {
+    background: #f2555a;
+    transform: scale(1.12);
+}
+
+.sec-del {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    margin-top: -9px;
+}
+
+.site-del {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    font-size: 12px;
+}
+
+/* 编辑态条目的定位与让位 */
+.panel-sec.editing .panel-links li {
+    position: relative;
+}
+
+.panel-sec.editing .panel-links li a {
+    padding-right: 20px;
+}
+
+/* ---------- 编辑工具区 ---------- */
+.panel-editor {
+    padding: 0 0 4px;
+}
+
+.site-add {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.site-add select,
+.site-add input {
+    box-sizing: border-box;
+    min-width: 0;
+    height: 30px;
+    padding: 0 8px;
+    color: #fff;
+    font-size: 12.5px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .08);
+}
+
+/* 分类下拉占满一行 */
+.site-add select {
+    grid-column: 1 / -1;
+}
+
+.site-add select option {
+    color: #111;
+    background: #fff;
+}
+
+.site-add input::placeholder {
+    color: rgba(255, 255, 255, .42);
+}
+
+.site-add input:focus,
+.site-add select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, .45);
+    background: rgba(255, 255, 255, .14);
+}
+
+.site-add button {
+    grid-column: 1 / -1;
+    height: 30px;
+    color: #fff;
+    font-size: 12.5px;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(41, 159, 255, .85);
+    cursor: pointer;
+}
+
+.site-add button:hover {
+    background: rgba(41, 159, 255, 1);
+}
+
+.panel-editor-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.panel-editor-actions button {
+    flex: 1;
+    height: 28px;
+    color: rgba(255, 255, 255, .82);
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .08);
+    cursor: pointer;
+}
+
+.panel-editor-actions button:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, .18);
+}
+
+.panel-editor-tip {
+    margin: 8px 0 0;
+    color: #ffca6b;
+    font-size: 11.5px;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .panel-edit-btn {
+        padding: 0 9px;
+        font-size: 12px;
+    }
+
+    .site-add {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   分类折叠（折叠状态记在 localStorage，刷新后保留）
+   ========================================================= */
+.panel-sec .title {
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* 折叠箭头：展开时向下，折叠后转成向右 */
+.sec-caret {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 10px;
+    font-weight: 400;
+    opacity: .5;
+    transition: transform .2s ease;
+}
+
+.panel-sec.is-collapsed .sec-caret {
+    transform: rotate(-90deg);
+}
+
+/* 折叠收起的具体过渡在 css/anim.css 里用 max-height 实现 */
+
+.panel-sec.is-collapsed + .panel-sec {
+    margin-top: 12px;
+}
+
+.list.filtering .panel-sec.is-collapsed .sec-caret {
+    transform: none;
+}
+
+/* 标题悬停时轻微提亮，提示可点 */
+.panel-sec .title:hover {
+    background: rgba(255, 255, 255, .16);
+    border-color: rgba(255, 255, 255, .26);
+}
+
+/* ---------- 面板底部的「站点状态」入口 ---------- */
+.panel-status {
+    display: block;
+    margin: 18px 0 4px;
+    padding: 11px 14px;
+    color: rgba(255, 255, 255, .8);
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, .06);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+.panel-status:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, .34);
+    background: rgba(255, 255, 255, .12);
+}
+
+.panel-status:active {
+    background: rgba(255, 255, 255, .18);
+}
+
+/* 触屏设备减少误触，并为键盘用户保留清晰焦点 */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid rgba(142, 211, 255, .9);
+    outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    #search-text,
+    #kos {
+        height: 48px;
+        font-size: 15px;
+    }
 }

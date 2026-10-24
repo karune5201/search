@@ -1,0 +1,376 @@
+/* =========================================================
+   过渡动画 / 动效层
+   单独成文件，方便整体开关：删掉 index.html 里对它的引用即可全部关闭。
+   ========================================================= */
+
+/* ---------- 关键帧 ---------- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---------- 壁纸淡入（避免一进页面就"啪"地亮起来） ---------- */
+.bgo {
+    animation: fadeIn 1s ease both;
+}
+
+/* ---------- 首屏入场：依次浮现，形成节奏 ---------- */
+.hero-greet {
+    animation: fadeUp .62s cubic-bezier(.22, .61, .36, 1) .05s both;
+}
+
+.s-search form {
+    animation: fadeUp .62s cubic-bezier(.22, .61, .36, 1) .14s both;
+}
+
+/* #menu 自带 transform: scale(.8)，只动透明度，避免覆盖它 */
+#menu {
+    animation: fadeIn .5s ease .22s both;
+}
+
+.site-footer {
+    animation: fadeUp .62s cubic-bezier(.22, .61, .36, 1) .26s both;
+}
+
+/* ---------- 搜索框：聚焦时轻微上浮 ---------- */
+#search-text,
+#kos {
+    transition: background-color .25s ease, border-color .25s ease,
+        box-shadow .25s ease, transform .25s ease;
+}
+
+#search-text:focus,
+#kos:focus {
+    transform: translateY(-1px);
+}
+
+/* 搜索源下拉：悬停展开时轻微缩放淡入（display 由 .s-type:hover 控制） */
+.s-type:hover .s-type-list {
+    animation: popIn .18s ease both;
+}
+
+/* 搜索源标签悬停微浮起 */
+.s-type-list label {
+    transition: color .2s ease, transform .2s ease;
+}
+
+.s-type-list label:hover {
+    transform: translateX(2px);
+}
+
+/* ---------- 侧边面板：更顺滑的滑入曲线 ---------- */
+.list {
+    transition: transform .38s cubic-bezier(.32, .72, 0, 1),
+        box-shadow .38s ease;
+    will-change: transform;
+}
+
+.panel-mask {
+    transition: opacity .38s ease;
+}
+
+/* 面板条目悬停时轻微右移 */
+.panel-links li a:hover {
+    transform: translateX(2px);
+}
+
+/* ---------- 分类折叠：高度过渡（取代原来的 display:none 硬切换） ----------
+   --links-h 由 js/panel.js 量出实际高度后写入；
+   未测量到时用 3000px 兜底，行为仍然正确，只是收起时前段看不出变化。 */
+.panel-links {
+    overflow: hidden;
+    max-height: var(--links-h, 3000px);
+    transition: max-height .3s cubic-bezier(.4, 0, .2, 1), opacity .22s ease;
+}
+
+.panel-sec.is-collapsed .panel-links {
+    max-height: 0;
+    opacity: 0;
+}
+
+/* 搜索时强制展开（覆盖折叠） */
+.list.filtering .panel-sec.is-collapsed .panel-links {
+    max-height: var(--links-h, 3000px);
+    opacity: 1;
+}
+
+/* ---------- 尊重系统的"减少动态效果"设置 ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+    .bgo,
+    .hero-greet,
+    .s-search form,
+    #menu,
+    .site-footer,
+    .s-type:hover .s-type-list {
+        animation: none !important;
+    }
+
+    #search-text,
+    #kos,
+    .list,
+    .panel-mask,
+    .panel-links,
+    .panel-links li a,
+    .s-type-list label {
+        transition: none !important;
+    }
+
+    #search-text:focus,
+    #kos:focus,
+    .panel-links li a:hover,
+    .s-type-list label:hover {
+        transform: none !important;
+    }
+}
+
+/* ---------- 随机站点骰子 ---------- */
+#search form {
+    position: relative;
+}
+
+#search button.search-random {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    left: auto !important;
+    z-index: 2;
+    display: grid;
+    width: 42px;
+    height: 50px;
+    place-items: center;
+    padding: 0;
+    color: #fff;
+    font-size: 19px;
+    border: 0;
+    border-radius: 0 10px 10px 0;
+    background: transparent;
+    cursor: pointer;
+    transition: transform .2s ease, background-color .2s ease;
+}
+
+.search-random:hover {
+    transform: rotate(18deg) scale(1.08);
+    background: rgba(255, 255, 255, .12);
+}
+
+.search-random:active {
+    transform: rotate(90deg) scale(.94);
+}
+
+/* 为右侧骰子留空间，搜索文字不进入按钮下方 */
+#search-text {
+    padding-right: 56px;
+}
+
+/* ---------- Toast ---------- */
+.fun-toast {
+    position: fixed;
+    bottom: 64px;
+    left: 50%;
+    z-index: 10001;
+    max-width: min(84vw, 420px);
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 8px;
+    background: rgba(18, 20, 25, .82);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .24);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 8px);
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.fun-toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ---------- Konami 彩蛋：星屑爆发 ---------- */
+.easter-burst {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    overflow: hidden;
+    place-items: center;
+    pointer-events: none;
+    animation: easter-fade 1.65s ease both;
+}
+
+.easter-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 0 2px 24px rgba(255, 255, 255, .7), 0 4px 28px rgba(40, 130, 255, .7);
+    animation: easter-title .55s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.easter-spark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: hsl(var(--hue, 0), 95%, 76%);
+    font-size: 20px;
+    font-style: normal;
+    text-shadow: 0 0 14px currentColor;
+    animation: easter-spark .9s cubic-bezier(.15, .7, .25, 1) var(--delay) both;
+}
+
+@keyframes easter-fade {
+    0%, 75% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes easter-title {
+    from { opacity: 0; transform: scale(.7) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes easter-spark {
+    from { opacity: 0; transform: rotate(var(--angle)) translateY(0) scale(.4); }
+    18% { opacity: 1; }
+    to { opacity: 0; transform: rotate(var(--angle)) translateY(var(--distance)) scale(1.2); }
+}
+
+/* ---------- 背景轻视差 ---------- */
+.bgo {
+    transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1.035);
+    transition: transform .18s ease-out;
+    will-change: transform;
+}
+
+/* ---------- 数字翻牌时钟 ---------- */
+.greet-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 1.1em;
+    perspective: 500px;
+}
+
+.flip-cell,
+.time-colon {
+    position: relative;
+    display: inline-grid;
+    width: .64em;
+    height: 1.08em;
+    overflow: hidden;
+    place-items: center;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.time-colon {
+    width: .3em;
+    overflow: visible;
+    animation: colon-pulse 1s steps(2, start) infinite;
+}
+
+.flip-cell.is-flipping {
+    overflow: visible;
+}
+
+.flip-face {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    backface-visibility: hidden;
+    transform-origin: center center;
+}
+
+.flip-old {
+    animation: flip-out .36s ease-in both;
+}
+
+.flip-new {
+    opacity: 0;
+    transform: rotateX(90deg);
+    animation: flip-in .36s ease-out both;
+}
+
+@keyframes flip-out {
+    to { opacity: .15; transform: rotateX(-90deg); }
+}
+
+@keyframes flip-in {
+    to { opacity: 1; transform: rotateX(0); }
+}
+
+@keyframes colon-pulse {
+    to { opacity: .45; }
+}
+
+@media (max-width: 640px) {
+    .search-random {
+        right: 3px;
+        width: 38px;
+    }
+
+    .easter-title {
+        font-size: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bgo {
+        transform: none !important;
+        transition: none !important;
+        will-change: auto;
+    }
+
+    .search-random,
+    .fun-toast,
+    .flip-cell,
+    .time-colon,
+    .flip-face,
+    .easter-burst,
+    .easter-title,
+    .easter-spark {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .search-random:hover,
+    .search-random:active {
+        transform: none !important;
+    }
+}
+
+/* 首屏加载遮罩已按需求移除（连同 js/boot.js），页面直接显示搜索区 */

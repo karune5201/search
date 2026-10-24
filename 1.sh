@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# 说明：脚本用到 echo -e 输出颜色，/bin/sh 在 Debian/Ubuntu 上是 dash 不支持该选项，
+# 因此这里显式使用 bash（若系统无 bash，请把下面的 echo -e 改为 printf）。
 # Git 项目管理脚本 - 开源自由使用，请保留出处
 # 作者：ChatGPT 改写
 

@@ -1,0 +1,69 @@
+name: 死链检测
+
+# 每周一凌晨跑一次，也可以在 Actions 页面手动触发
+on:
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 不加 --strict：超时/连接失败多半是区域限制，不当成死链；
+      # continue-on-error 让报告无论如何都能产出
+      - name: 运行死链检测
+        continue-on-error: true
+        run: |
+          python3 tools/check-links.py \
+            --workers 16 \
+            --timeout 12 \
+            --json js/link-status.js \
+            --report link-report.md
+
+      - name: 把报告摘要写进 Job Summary
+        if: always()
+        run: |
+          if [ -f link-report.md ]; then
+            cat link-report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "没有生成报告，检查日志" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: 上传报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-report
+          path: link-report.md
+          if-no-files-found: warn
+
+      # 提交数据文件，站点状态页（status.html）读的就是它。
+      # 没有变化时不会产生空提交。
+      - name: 提交状态数据
+        if: always()
+        run: |
+          if [ ! -f js/link-status.js ]; then
+            echo "没有生成 js/link-status.js，跳过提交"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/link-status.js
+          if git diff --cached --quiet; then
+            echo "数据没有变化，无需提交"
+          else
+            git commit -m "chore: 更新站点状态数据 $(date -u '+%Y-%m-%d')"
+            git push
+          fi

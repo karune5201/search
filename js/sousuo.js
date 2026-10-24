@@ -10,7 +10,8 @@
     }    		
     	}
     function z() {
-        return document.querySelector('input[name="type"]:checked').getAttribute("onclick")
+        var selected = document.querySelector('input[name="type"]:checked');
+        return selected ? selected.getAttribute("onclick") : ''
     }
     function h() {
         d.checked = s()
@@ -35,11 +36,17 @@
     }
 
     function m(a, b) {
-        window.localStorage.setItem("superSearch" + a, b)
+        try {
+            window.localStorage.setItem("superSearch" + a, b)
+        } catch (e) { /* 隐私模式或存储被禁用时继续工作 */ }
     }
 
     function n(a) {
-        return window.localStorage.getItem("superSearch" + a)
+        try {
+            return window.localStorage.getItem("superSearch" + a)
+        } catch (e) {
+            return null
+        }
     }
 
     function o(a) {
@@ -56,7 +63,18 @@
     }
 
     function r(a) {
-        return a.preventDefault(), "" == c.value ? (c.focus(), !1) : (w(t() + c.value), x(s()), s() ? window.open(b.action, +new Date) : location.href = b.action, void 0)
+        a.preventDefault();
+        var query = c.value.trim();
+        if (!query) {
+            c.focus();
+            return false;
+        }
+        // 查询词必须编码，避免空格、#、& 等字符破坏目标地址。
+        w(t() + encodeURIComponent(query));
+        x(s());
+        if (s()) window.open(b.action, '_blank', 'noopener');
+        else location.href = b.action;
+        return false;
     }
 
     function s() {
@@ -65,11 +83,13 @@
     }
 
     function t() {
-        return document.querySelector('input[name="type"]:checked').value
+        var selected = document.querySelector('input[name="type"]:checked');
+        return selected ? selected.value : a[0].value
     }
 
     function u() {
-        return document.querySelector('input[name="type"]:checked').getAttribute("data-placeholder")
+        var selected = document.querySelector('input[name="type"]:checked');
+        return selected ? selected.getAttribute("data-placeholder") : '输入关键字搜索'
     }
 
 
@@ -91,7 +111,7 @@
         e = document.querySelectorAll(".search-group"),
         f = a[0];
     for (g(), y = 0; y < a.length; y++) a[y].addEventListener("change", o);
-    d.addEventListener("change", q), b.addEventListener("submit", r)
+    d && d.addEventListener("change", q), b && b.addEventListener("submit", r)
 }();
 	function bq(){
 		document.getElementById('super-search-fm').style.display = 'none';
