@@ -15,6 +15,8 @@
 
 /* iOS 横屏时不要自作主张放大字号 */
 html {
+    /* 禁止双击放大；双指放大由 viewport 的 user-scalable=no 控制 */
+    touch-action: manipulation;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
