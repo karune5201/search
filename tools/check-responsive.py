@@ -149,6 +149,17 @@ for name, vw, vh in VIEWPORTS:
     print(f'{name:<18} {panel_show:<30} {sw:<20} {st:<8} {gt:<8} {sf:<8}')
 
 print()
+print('=== 横屏 / 矮屏隐藏项核对 ===')
+for name, vw, vh in VIEWPORTS:
+    date_hidden = resolve('.greet-date', 'display', vw, vh) == 'none'
+    main_hidden = resolve('.site-footer-main', 'display', vw, vh) == 'none'
+    visits_hidden = resolve('.site-footer-visits', 'display', vw, vh) == 'none'
+    orient = '横' if vw > vh else '竖'
+    print(f'{name:<18} {orient}屏 | 日期{"隐藏" if date_hidden else "显示"}'
+          f' | 页脚标语{"隐藏" if main_hidden else "显示"}'
+          f' | 访问量{"隐藏" if visits_hidden else "显示"}')
+
+print()
 print('=== 页面高度占用估算（防止页脚压住搜索框）===')
 for name, vw, vh in VIEWPORTS:
     sf_fs = resolve('.site-footer', 'font-size', vw, vh) or '13px'

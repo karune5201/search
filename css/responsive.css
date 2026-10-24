@@ -222,6 +222,17 @@ html {
     }
 }
 
+/* 手机 / 平板横屏：隐藏日期和页脚标语，把高度让给搜索框 */
+@media (orientation: landscape) and (max-width: 1024px) {
+    .greet-date {
+        display: none;
+    }
+
+    .site-footer-main {
+        display: none;
+    }
+}
+
 /* 横屏时侧栏不必占太宽 */
 @media (orientation: landscape) and (max-height: 560px) {
     :root {
