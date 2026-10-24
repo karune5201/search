@@ -4,7 +4,7 @@
 
 根据上游版本改造的html版本，可Fork后修改信息使用
 
-演示：[https://home-karune.vercel.app/]
+演示：[https://karune5201.github.io/search/]
 演示：[https://search-3re.pages.dev/]
 
 ---
