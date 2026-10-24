@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-24 05:51",
+ "generatedAt": "2026-10-24 07:10",
  "checked": 413,
- "elapsed": 73.0,
+ "elapsed": 35.3,
  "summary": {
-  "ok": 319,
-  "blocked": 52,
+  "ok": 311,
+  "blocked": 75,
   "dead": 18,
-  "unknown": 24
+  "unknown": 9
  },
  "items": [
   {
@@ -15,7 +15,7 @@ window.LINK_STATUS = {
    "name": "Key",
    "url": "https://key.visualarts.gr.jp/",
    "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "detail": "超时"
   },
   {
    "cat": "常用",
@@ -71,7 +71,7 @@ window.LINK_STATUS = {
    "name": "Gemini",
    "url": "https://gemini.google.com/",
    "kind": "ok",
-   "detail": "204"
+   "detail": "200"
   },
   {
    "cat": "Ai",
@@ -91,22 +91,22 @@ window.LINK_STATUS = {
    "cat": "Ai",
    "name": "Grok",
    "url": "https://grok.com/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "Ai",
    "name": "国家超算DS",
    "url": "https://chat.scnet.cn/ui/chatbot/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "206"
   },
   {
    "cat": "Ai",
    "name": "纳米Ai",
    "url": "https://www.n.cn/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "206"
   },
   {
    "cat": "Ai",
@@ -126,8 +126,8 @@ window.LINK_STATUS = {
    "cat": "Ai",
    "name": "Perplexity",
    "url": "https://perplexity.ai/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "206"
   },
   {
    "cat": "Ai",
@@ -196,8 +196,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "K站",
    "url": "https://konachan.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "動漫壁紙",
@@ -259,8 +259,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "连接被重置"
   },
   {
    "cat": "動漫壁紙",
@@ -280,8 +280,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Tineye",
    "url": "https://tineye.com/",
-   "kind": "ok",
-   "detail": "206"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "動漫壁紙",
@@ -308,8 +308,8 @@ window.LINK_STATUS = {
    "cat": "動漫",
    "name": "ニコニコ",
    "url": "https://sp.nicovideo.jp/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "動漫",
@@ -329,8 +329,8 @@ window.LINK_STATUS = {
    "cat": "動漫",
    "name": "animoe",
    "url": "https://animoe.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "動漫",
@@ -357,8 +357,8 @@ window.LINK_STATUS = {
    "cat": "動漫",
    "name": "anime1",
    "url": "https://anime1.me/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "漫画",
@@ -385,8 +385,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "library",
    "url": "https://z-library.sk/",
-   "kind": "blocked",
-   "detail": "307"
+   "kind": "unknown",
+   "detail": "连接被重置"
   },
   {
    "cat": "漫画",
@@ -399,8 +399,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "漫画PDF网",
    "url": "https://manhuapdf.com/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "漫画",
@@ -420,8 +420,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "漫自由",
    "url": "https://mheee.com/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "漫画",
@@ -448,8 +448,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "漫画柜",
    "url": "https://manhuagui.com/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "206"
   },
   {
    "cat": "漫画",
@@ -504,8 +504,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "henthand",
    "url": "https://hentaihand.com/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "漫画",
@@ -518,8 +518,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "guro",
    "url": "https://guro.cx/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "漫画",
@@ -553,8 +553,8 @@ window.LINK_STATUS = {
    "cat": "影视",
    "name": "金牌影视",
    "url": "https://ksnnhbj.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "影视",
@@ -581,22 +581,22 @@ window.LINK_STATUS = {
    "cat": "影视",
    "name": "HDmoli",
    "url": "https://hdmoli.pro/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "影视",
    "name": "gimy",
    "url": "https://gimytw.cc/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "影视",
    "name": "pttplay",
    "url": "https://pttplay.cc/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "影视",
@@ -777,8 +777,8 @@ window.LINK_STATUS = {
    "cat": "社交",
    "name": "Deltachat",
    "url": "https://delta.chat/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "206"
   },
   {
    "cat": "社交",
@@ -826,8 +826,8 @@ window.LINK_STATUS = {
    "cat": "社交",
    "name": "wire",
    "url": "https://wire.com/en/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "社交",
@@ -910,8 +910,8 @@ window.LINK_STATUS = {
    "cat": "社交",
    "name": "Vk",
    "url": "https://vk.me/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "社交",
@@ -1016,7 +1016,7 @@ window.LINK_STATUS = {
    "name": "IP112",
    "url": "https://ip112.cn/",
    "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "detail": "超时"
   },
   {
    "cat": "工具",
@@ -1050,8 +1050,8 @@ window.LINK_STATUS = {
    "cat": "工具",
    "name": "手寫文稿",
    "url": "https://vtool.pro/handwriting/index.html",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "工具",
@@ -1190,8 +1190,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "開發",
@@ -1218,8 +1218,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "Ventoy",
    "url": "https://ventoy.net/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "開發",
@@ -1358,8 +1358,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "AOSPA",
    "url": "https://paranoidandroid.co/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "開發",
@@ -1379,8 +1379,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "MIUI ROM",
    "url": "https://xiaomirom.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "開發",
@@ -1429,7 +1429,7 @@ window.LINK_STATUS = {
    "name": "秋之盒",
    "url": "https://atmb.top/",
    "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "detail": "超时"
   },
   {
    "cat": "開發",
@@ -1464,28 +1464,28 @@ window.LINK_STATUS = {
    "name": "日亞",
    "url": "https://amazon.co.jp/",
    "kind": "ok",
-   "detail": "202"
+   "detail": "200"
   },
   {
    "cat": "海購",
    "name": "美亞",
    "url": "https://amazon.com",
    "kind": "ok",
-   "detail": "202"
+   "detail": "200"
   },
   {
    "cat": "海購",
    "name": "英亞",
    "url": "https://amazon.co.uk/",
    "kind": "ok",
-   "detail": "206"
+   "detail": "200"
   },
   {
    "cat": "海購",
    "name": "德亞",
    "url": "https://amazon.de",
    "kind": "ok",
-   "detail": "202"
+   "detail": "200"
   },
   {
    "cat": "海購",
@@ -1562,7 +1562,7 @@ window.LINK_STATUS = {
    "name": "博客來",
    "url": "https://books.com.tw/",
    "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "detail": "超时"
   },
   {
    "cat": "海購",
@@ -1638,8 +1638,8 @@ window.LINK_STATUS = {
    "cat": "網盤",
    "name": "MediaFire",
    "url": "https://mediafire.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "網盤",
@@ -1666,8 +1666,8 @@ window.LINK_STATUS = {
    "cat": "網盤",
    "name": "蓝奏云",
    "url": "https://lanzou.com/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "網盤",
@@ -1694,8 +1694,8 @@ window.LINK_STATUS = {
    "cat": "論壇",
    "name": "天使動漫",
    "url": "https://tsdm39.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "論壇",
@@ -1876,8 +1876,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "play",
    "url": "https://purei.org/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "模擬器",
@@ -1946,8 +1946,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "winlator",
    "url": "https://winlator.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "模擬器",
@@ -2065,15 +2065,15 @@ window.LINK_STATUS = {
    "cat": "遊戲",
    "name": "xxxxx520",
    "url": "https://gamer520.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "遊戲",
    "name": "大自然搬运工",
    "url": "https://yoooyo.com",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "遊戲",
@@ -2093,8 +2093,8 @@ window.LINK_STATUS = {
    "cat": "遊戲",
    "name": "nsboy",
    "url": "https://nsboy.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "遊戲",
@@ -2233,8 +2233,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "QBit",
    "url": "https://qbittorrent.org/",
-   "kind": "ok",
-   "detail": "206"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "磁力",
@@ -2254,8 +2254,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "东京图书馆",
    "url": "https://tokyotosho.info/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "磁力",
@@ -2282,8 +2282,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "anirena",
    "url": "https://anirena.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "磁力",
@@ -2373,8 +2373,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "绅士の庭",
    "url": "https://hggard.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "磁力",
@@ -2387,15 +2387,15 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "btdig",
    "url": "https://en.btdig.com/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "blocked",
+   "detail": "429"
   },
   {
    "cat": "磁力",
    "name": "AcgRip",
    "url": "https://acg.rip/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2415,8 +2415,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "rutracker",
    "url": "https://rutracker.org/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2464,8 +2464,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "Subhd",
    "url": "https://subhd.tv/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "磁力",
@@ -2562,8 +2562,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "H Game",
    "url": "https://hgamefree.info/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "galgame",
@@ -2660,15 +2660,15 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "绮梦acg",
    "url": "https://game.acgs.one/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "galgame",
    "name": "gal其他",
    "url": "https://galgamex.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "galgame",
@@ -2681,15 +2681,15 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "lewdzone",
    "url": "https://lewdzone.com/games/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "galgame",
    "name": "kimochi",
    "url": "https://kimochi.info/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "galgame",
@@ -2737,8 +2737,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "hensha",
    "url": "https://hentai-sharing.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "galgame",
@@ -2779,8 +2779,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "sharing",
    "url": "https://www.anime-sharing.com/",
-   "kind": "ok",
-   "detail": "206"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "galgame",
@@ -2814,8 +2814,8 @@ window.LINK_STATUS = {
    "cat": "ASMR",
    "name": "jasmr",
    "url": "https://japaneseasmr.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "ASMR",
@@ -2871,7 +2871,7 @@ window.LINK_STATUS = {
    "name": "DMM",
    "url": "https://dlsoft.dmm.com/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "206"
   },
   {
    "cat": "GameBuying",
