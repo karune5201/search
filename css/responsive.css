@@ -168,10 +168,6 @@ html {
    按高度收敛，避免问候语、搜索框、页脚互相压住
    ========================================================= */
 @media (max-height: 620px) {
-    .greet-date {
-        display: none;
-    }
-
     .greet-time {
         font-size: 30px;
     }
@@ -184,11 +180,6 @@ html {
         top: 45%;
     }
 
-    /* 页脚最上面那行装饰文字让位，只留信息行 */
-    .site-footer-main {
-        display: none;
-    }
-
     .site-footer {
         padding-bottom: calc(8px + var(--safe-bottom));
         line-height: 1.55;
@@ -196,11 +187,6 @@ html {
 }
 
 @media (max-height: 460px) {
-    .greet-text,
-    .greet-date {
-        display: none;
-    }
-
     .greet-time {
         font-size: 24px;
     }
@@ -209,8 +195,20 @@ html {
         top: 50%;
     }
 
+    /* 页脚四行仍全部保留，只把行高压紧一点，多让出几十像素 */
+    .site-footer {
+        padding-bottom: calc(6px + var(--safe-bottom));
+        font-size: 11.5px;
+        line-height: 1.4;
+    }
+
+    .site-footer-ip,
     .site-footer-visits {
-        display: none;
+        font-size: 11px;
+    }
+
+    .greet-date {
+        font-size: 11.5px;
     }
 
     :root {
@@ -219,17 +217,6 @@ html {
 
     .list {
         padding-bottom: calc(48px + var(--safe-bottom));
-    }
-}
-
-/* 手机 / 平板横屏：隐藏日期和页脚标语，把高度让给搜索框 */
-@media (orientation: landscape) and (max-width: 1024px) {
-    .greet-date {
-        display: none;
-    }
-
-    .site-footer-main {
-        display: none;
     }
 }
 
