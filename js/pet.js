@@ -1038,12 +1038,10 @@
 
     function updateToggle() {
         if (!toggleEl) return;
-        toggleEl.classList.toggle('is-on', enabled);
-        toggleEl.classList.toggle('is-hidden', enabled);   // 鱼出来了，把手收回屏幕外
+        // 和原版一样：看板娘收起来时把手露一条，鱼在桌上就整条缩回屏幕外
+        toggleEl.classList.toggle('is-shown', !enabled);
         toggleEl.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-        toggleEl.setAttribute('aria-label', enabled ? '收起桌宠大肥鱼' : '打开桌宠大肥鱼');
-        var text = toggleEl.querySelector('.pet-toggle-text');
-        if (text) text.textContent = enabled ? (LABEL.hide || '收起') : (LABEL.show || '看板娘');
+        toggleEl.setAttribute('aria-label', enabled ? '收起桌宠小肥鱼' : '打开桌宠小肥鱼');
     }
 
     function startPet() {

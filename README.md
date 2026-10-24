@@ -228,10 +228,12 @@ python3 tools/check-links.py --json js/link-status.js --report link-report.md
 左侧边缘那只蓝色大肥鱼，素材来自开源项目 [dsh-pet](https://github.com/PC2005-cloud/dsh-pet)（MIT），
 桌面移植版 [dsh-pet-indesktop](https://github.com/MerZlin/dsh-pet-indesktop)。
 
-**默认不加载**：页面上只有屏幕左边一条窄窄的「看板娘」小把手，点它才会开始下载视频、把鱼放出来。
+**默认不加载**：页面上只有屏幕左边一条橙色的「小肥鱼」小把手，点它才会开始下载视频、把鱼放出来。
 交互照 [live2d-widget](https://github.com/stevenjoezhang/live2d-widget) 的看板娘做的：
 
-- 手感：把手平时只从左边露一条，鼠标移上去（或键盘 Tab 聚焦）整条滑出来
+- 外观：和原版 `#waifu-toggle` 一模一样——橙底白字的竖排小把手，上面就「小肥鱼」三个字
+  （`#fa0` 底、12px 白字、60px 宽、圆角 5px、`bottom: 66px`、`margin-left` 1s 过渡）
+- 手感：把手平时只从左边露一条（-50px 露 10px），鼠标移上去（或键盘 Tab 聚焦）滑到 -30px
 - 入场：鱼从屏幕左外侧滑进来；收起时先滑出去，滑完再把视频层卸掉，内存还给浏览器
 - 收纳：鱼出来之后把手自己缩回屏幕外，鱼旁边出现两个 hover 才显形的小圆按钮，
   `…` 开动作菜单、`×` 收起；触屏没有 hover，这两个按钮常显半透明
