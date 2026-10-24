@@ -76,9 +76,11 @@
 }
 
 .site-footer-ip .ip-tag {
-    padding: 0 6px;
-    font-size: 10.5px;
+    padding: 0 8px;
+    font-size: 11px;
     border-radius: 999px;
+    /* 标签里是「国家 城市」，整体不折行 */
+    white-space: nowrap;
 }
 
 .site-footer-ip .ip-tag.is-cn {
@@ -93,6 +95,11 @@
 
 .site-footer-ip #ip-loc {
     color: rgba(255, 255, 255, .58);
+}
+
+/* 空的时候不占位，否则 flex gap 会在行尾多出一段空隙 */
+.site-footer-ip #ip-loc:empty {
+    display: none;
 }
 
 /* ---------- 游客访问量（IP 下一行） ---------- */
@@ -124,15 +131,12 @@
         font-size: 11px;
     }
 
-    .site-footer-ip .ip-label,
-    .site-footer-ip .ip-tag {
+    .site-footer-ip .ip-label {
         font-size: 10px;
     }
 
-    /* 窄屏上 IPv6 太长，让它在自己那一行 */
-    .site-footer-ip #ip-loc {
-        flex-basis: 100%;
-        text-align: center;
+    .site-footer-ip .ip-tag {
+        font-size: 11px;
     }
 }
 

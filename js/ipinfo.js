@@ -129,10 +129,10 @@
             if (v && parts.indexOf(v) === -1) parts.push(v);
         };
 
+        // 显示成「国家 城市」，例如「日本 东京」「中国 贵阳」
         if (place) {
             push(place.country);
-            push(place.province);
-            push(place.city);
+            push(place.city || place.province);
         } else if (geo) {
             push(COUNTRY_ZH[geo.cc] || geo.country);
             push(geo.city);
@@ -149,14 +149,18 @@
         var place = joinPlace(geo, info.place);
 
         v4El.textContent = geo.ip;
-        tagEl.textContent = isCN ? '国内' : '海外';
+        // 标签里直接放「国家 城市」，国内/海外由标签颜色区分
+        tagEl.textContent = place || (isCN ? '国内' : '海外');
         tagEl.className = 'ip-tag ' + (isCN ? 'is-cn' : 'is-abroad');
-        locEl.textContent = place ? '· ' + place : '';
+        locEl.textContent = '';
         line.classList.toggle('abroad', !isCN);
 
         var isp = info.place && info.place.isp;
+        var country = (info.place && info.place.country) ||
+            COUNTRY_ZH[geo.cc] || geo.country || '';
         line.title = 'IPv4：' + geo.ip +
-            '\n归属：' + (isCN ? '国内' : '海外') + (place ? ' · ' + place : '') +
+            '\n归属：' + (isCN ? '国内' : '海外') +
+            (country ? ' · ' + country : '') + (place ? ' · ' + place : '') +
             (isp ? ' · ' + isp : '') +
             '\n点击刷新并复制';
 
