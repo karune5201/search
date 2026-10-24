@@ -28,7 +28,11 @@ def parse(path):
                     elif s[j] == '}': depth -= 1
                     j += 1
                 body = s[i + 1:j - 1]
-                rules.append((head, body, list(stack)))
+                # 逗号分隔的选择器要拆开，否则按单个选择器查不到
+                for one in head.split(','):
+                    one = one.strip()
+                    if one:
+                        rules.append((one, body, list(stack)))
                 i = j
                 buf = ''
                 continue
@@ -87,7 +91,7 @@ def decls(body):
     for part in body.split(';'):
         if ':' in part:
             k, v = part.split(':', 1)
-            out[k.strip()] = v.strip()
+            out[k.strip()] = v.strip().replace('!important', '').strip()
     return out
 
 ALL = []
@@ -158,6 +162,20 @@ for name, vw, vh in VIEWPORTS:
     print(f'{name:<18} {orient}屏 | 日期{"隐藏" if date_hidden else "显示"}'
           f' | 页脚标语{"隐藏" if main_hidden else "显示"}'
           f' | 访问量{"隐藏" if visits_hidden else "显示"}')
+
+print()
+print('=== 页脚 / 时间日期 是否显示 ===')
+for name, vw, vh in VIEWPORTS:
+    footer_hidden = resolve('.site-footer', 'display', vw, vh) == 'none'
+    greet_hidden = resolve('.hero-greet', 'display', vw, vh) == 'none'
+    if footer_hidden and greet_hidden:
+        verdict = '隐藏（宽屏极简）'
+    elif footer_hidden or greet_hidden:
+        verdict = '⚠️ 只隐藏了一半'
+    else:
+        verdict = '显示'
+    orient = '横' if vw > vh else '竖'
+    print(f'{name:<18} {orient}屏 → 页脚{"隐藏" if footer_hidden else "显示":<3} 时间日期{"隐藏" if greet_hidden else "显示":<3} | {verdict}')
 
 print()
 print('=== 页面高度占用估算（防止页脚压住搜索框）===')
