@@ -302,3 +302,34 @@ python3 tools/check-links.py --report link-report.md
 首次全量检测结果（413 个站点）：正常 203、受限 27、死链 19（含 13 个域名解析失败）、可疑 164。可疑偏多是因为本机网络访问受限，Actions 的结果会更准。
 
 字体子集化脚本的扫描范围加入了 `status.html`，新页面的字不会掉到系统字体。
+
+---
+
+## 十七、页脚 IP 不再复制、小肥鱼把手只在横屏出现
+
+两件小改动，各自只落在一个模块里，想回滚单独删即可。
+
+### 1. 页脚 IP 彻底不可复制
+
+原来点一下 IP 会 `navigator.clipboard.writeText()` 复制、顺手刷新归属地。现在整条链路拆干净：
+
+| 位置 | 处理 |
+|---|---|
+| `js/ipinfo.js` | 删掉 `copyText()` / `copyIp()` 以及 click、keydown 监听；IP 只用 `textContent` 渲染 |
+| `index.html` | `#ip-v4` 去掉 `role="button" tabindex="0" title="点击复制 IP"` |
+| `css/ipinfo.css` | 去掉 `cursor: copy`、hover/active 高亮、`:focus-visible` 描边；`.site-footer-ip` 不再 `pointer-events: auto`（页脚本体是 `pointer-events: none`，于是这一行彻底收不到点击），另加 `user-select: none` 关掉手机长按选中 |
+
+顺带的收益：`.site-footer-ip` 之前为了能点而放行点击，可页脚是 `position: fixed` 撑满宽度压在左下角，正好盖住桌宠把手——这层现在一起还回去了。悬停提示（IP / 归属 / 运营商）保留，纯展示。
+
+### 2. 小肥鱼把手只在横屏出现
+
+竖屏手机屏幕窄，左边那条 10px 把手贴着内容还挡字，所以：
+
+- **竖屏**（`(orientation: landscape)` 不匹配）→ 把手加 `.pet-toggle.is-off`（`display: none`），整条不给
+- **横屏** → 把手出现，并在 `localStorage` 写 `dsh-pet-landscape=1`
+- **横过一次就记住**：之后再转回竖屏、甚至下次进来仍在竖屏，也照样显示，不用再转一次屏
+- 清掉 `dsh-pet-landscape` 就回到「只有横屏才显示」
+
+监听 `resize` + `orientationchange` + MQL 的 `change`（iOS Safari 转屏不一定派发 `resize`）。逻辑在 `js/pet.js` 的 `syncHandle()`，样式在 `css/pet.css` 的 `.pet-toggle.is-off`。
+
+顺带修掉一个陈年小毛病：iOS 上桌宠本来就不加载（不支持透明 VP9），但把手还留在屏幕边上，点了没反应；现在检测到 iOS 时把手一并撤掉。

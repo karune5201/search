@@ -54,7 +54,8 @@
   </div>
 
   <!-- 看板娘把手：结构和样式都照 live2d-widget 的 #waifu-toggle（div + 竖排三个字），
-       不用 button 是因为浏览器会把按钮内容居中，字就被挤出露出的那一条了 -->
+       不用 button 是因为浏览器会把按钮内容居中，字就被挤出露出的那一条了。
+       竖屏手机先不显示，横过屏（或曾经横过屏）才出现，见 js/pet.js 的 syncHandle() -->
   <div class="pet-toggle is-shown" id="pet-toggle" role="button" tabindex="0"
        aria-pressed="false" aria-label="打开桌宠小肥鱼"><span>小肥鱼</span></div>
 
@@ -229,8 +230,7 @@
     <!-- 访客 IPv4 与中文归属地，见 js/ipinfo.js -->
     <p class="site-footer-ip" id="ip-line" hidden>
         <span class="ip-dot" aria-hidden="true"></span>
-        <span class="ip-pair"><span class="ip-label">IPv4</span><span id="ip-v4" role="button" tabindex="0"
-              title="点击复制 IP" aria-label="复制 IP 地址">--</span></span>
+        <span class="ip-pair"><span class="ip-label">IPv4</span><span id="ip-v4">--</span></span>
         <span class="ip-tag" id="ip-tag"></span>
         <span id="ip-loc" aria-live="polite"></span>
     </p>

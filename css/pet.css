@@ -39,6 +39,11 @@
     outline: none;
 }
 
+/* 竖屏（且还没横过屏）时把手整条不给，见 js/pet.js 的 syncHandle() */
+.pet-toggle.is-off {
+    display: none;
+}
+
 .pet {
     /* --fw 是「鱼身宽度」，其余尺寸按 640×360 画布里鱼的实际位置换算 */
     --fw: 152px;

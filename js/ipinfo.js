@@ -2,7 +2,7 @@
    - 只显示 IPv4：v4.ident.me（强制 IPv4，附带坐标），失败回退 api.ip.sb
    - 中文地名：ip.zxinc.org（国内外都回中文），失败则用内置国家对照表
    - 拿到坐标后派发 geo:ready，供 js/weather.js 取天气
-   - 缓存 6 小时；点一下复制 IP 并刷新；拿不到就整行隐藏
+   - 缓存 6 小时；纯展示，不响应点击（复制功能已彻底去掉）；拿不到就整行隐藏
    无第三方依赖。 */
 (function () {
     var CACHE_KEY = 'superSearch.ipinfo';
@@ -158,12 +158,11 @@
         var isp = info.place && info.place.isp;
         var country = (info.place && info.place.country) ||
             COUNTRY_ZH[geo.cc] || geo.country || '';
-        // 提示只挂在地址本身；整行不再暗示「点哪都能复制」
+        // 悬停提示只是把查到的信息摊开，不暗示可点（复制已去掉）
         line.title = 'IPv4：' + geo.ip +
             '\n归属：' + (isCN ? '国内' : '海外') +
             (country ? ' · ' + country : '') + (place ? ' · ' + place : '') +
             (isp ? ' · ' + isp : '');
-        v4El.title = '点击复制 IP 地址';
 
         line.hidden = false;
         line.classList.add('is-ready');
@@ -214,53 +213,6 @@
             } else {
                 line.hidden = true;
             }
-        });
-    }
-
-    function copyText(text) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).catch(function () { /* 忽略 */ });
-            return;
-        }
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); } catch (e) { /* 忽略 */ }
-        document.body.removeChild(ta);
-    }
-
-    // 只有点到 IP 那一截才复制；点这行左右空白不该有反应
-    function copyIp() {
-        var cached = readCache();
-        var ip = (cached && cached.ipv4 && cached.ipv4.ip) || v4El.textContent;
-        if (!ip || !isIPv4(ip)) return;
-
-        copyText(ip);
-
-        var original = locEl.textContent;
-        locEl.textContent = '· 已复制 IP';
-        setTimeout(function () {
-            if (locEl.textContent === '· 已复制 IP') locEl.textContent = original;
-        }, 1400);
-
-        load(true);
-    }
-
-    var copyEl = v4El;      // 只有 IP 地址本身可点，标签和两侧空白都不响应
-    if (copyEl) {
-        copyEl.addEventListener('click', function (ev) {
-            if (ev && ev.stopPropagation) ev.stopPropagation();
-            copyIp();
-        });
-        // 能 Tab 到，就用 Enter / 空格 也能复制
-        copyEl.addEventListener('keydown', function (ev) {
-            var key = ev.key;
-            if (key !== 'Enter' && key !== ' ' && key !== 'Spacebar') return;
-            if (ev.preventDefault) ev.preventDefault();
-            copyIp();
         });
     }
 

@@ -117,7 +117,7 @@ window.SITE_DATA = [
    - IPv6：`v6.ident.me`；设备没有 IPv6 出口时这一段自动隐藏（不会显示空白或报错）
    - 中文地名：`ip.zxinc.org`（国内外都返回中文），失败则用内置国家对照表兜底
    - 每次刷新页面都会重新查询，换网络/换 IP 后立刻能看到新结果；`localStorage` 只作为请求失败时的兜底
-   - 悬停可看完整 IP、运营商；点一下复制 IP 并刷新
+   - 悬停可看完整 IP、归属、运营商；**这一行纯展示，点了不会有任何反应**（复制功能已去除）
 2. **游客访问量**：`abacus.jasoncameron.dev` 计数，同一会话只 +1，刷新不重复累加
    - 换站点请改 `js/visits.js` 顶部的 `NS`（命名空间，用你自己的名字）
 3. **本站已运行**：原有运行天数/时分秒
@@ -242,6 +242,10 @@ python3 tools/check-links.py --json js/link-status.js --report link-report.md
   `…` 开动作菜单、`×` 收起；触屏没有 hover，这两个按钮常显半透明
 - 记忆：开关状态记在 `localStorage` 的 `dsh-pet-on`，下次进来按上次的选择走
   （清掉这条就是回到默认的关闭）
+- 横屏才出现：手机竖屏时屏幕窄，把手贴着内容还挡字，所以先把把手收起来；
+  屏幕横过来（`(orientation: landscape)`）才露出。**横过一次就记住了**
+  （`localStorage` 的 `dsh-pet-landscape`），之后再转回竖屏也照样显示，
+  想看随时点得到，不用再转一次屏；清掉这条即回到「只有横屏才显示」
 
 - 代码：`js/pet.js` + `css/pet.css`
 - 台词：`js/pet-lines.js`（**所有说的话都在这里**，改文案只动这一个文件）
@@ -277,7 +281,7 @@ python3 tools/check-links.py --json js/link-status.js --report link-report.md
 - 不闪白：每个片段各占一个 `<video>` 层，新片缓冲出画面才切换显示（旧画面撑到那一刻），
   所以连点、甩出不会出现白框或闪烁
 - 无障碍：系统开启「减少动态效果」时只保留待机，不再自己走动、不甩出惯性；桌宠整体 `aria-hidden`，不会被读屏打断
-- 兼容：iOS Safari 不支持透明 VP9，脚本会检测到 iOS 后**不加载桌宠**；Android 长按会有一次轻微震动
+- 兼容：iOS Safari 不支持透明 VP9，脚本会检测到 iOS 后**不加载桌宠，连把手一起撤掉**（否则是个点了没反应的橙条）；Android 长按会有一次轻微震动
 - 台词用字控制在 GB2312 一级常用字内，否则会掉到系统字体（字体子集的规则见 `tools/subset-font.py`）
 - 想换姿势/加动作：把同名 webm 丢进 `assets/pet/` 覆盖即可，`js/pet.js` 顶部的 `CLIPS`（基础片段）
   或 `ACTS`（菜单动作片）里登记新文件名；再加一行台词组和菜单文案到 `js/pet-lines.js`

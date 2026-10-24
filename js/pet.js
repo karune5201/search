@@ -17,6 +17,9 @@
     if (/iPad|iPhone|iPod/.test(ua) ||
         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
         root.parentNode && root.parentNode.removeChild(root);
+        // 把手也跟着撤掉：桌宠在 iOS 上放不出来，留着就是个点了没反应的橙条
+        var deadToggle = document.getElementById('pet-toggle');
+        if (deadToggle && deadToggle.parentNode) deadToggle.parentNode.removeChild(deadToggle);
         return;
     }
 
@@ -1134,6 +1137,27 @@
 
     root.hidden = true;
 
+    /* ---------------- 把手只在横屏露面 ----------------
+       竖屏手机上屏幕窄，左边那条把手贴着内容还挡字，先不给；
+       屏幕横过来（够宽）才露出来。横过一次就记在本机，之后转回竖屏也继续留着
+       —— 想看随时点得到，不用再转一次屏。 */
+    var HANDLE_KEY = 'dsh-pet-landscape';
+    var handleUnlocked = storeGet(HANDLE_KEY) === '1';
+    var orientMQ = window.matchMedia ? window.matchMedia('(orientation: landscape)') : null;
+
+    function isLandscape() {
+        return orientMQ ? orientMQ.matches : window.innerWidth > window.innerHeight;
+    }
+
+    function syncHandle() {
+        if (!toggleEl) return;
+        if (!handleUnlocked && isLandscape()) {
+            handleUnlocked = true;
+            storeSet(HANDLE_KEY, '1');     // 横过屏 = 解锁，竖屏也保留
+        }
+        toggleEl.classList.toggle('is-off', !handleUnlocked);
+    }
+
     /* ---------------- 看板娘开关 ---------------- */
     toggleEl = document.getElementById('pet-toggle');
     if (toggleEl) {
@@ -1146,6 +1170,15 @@
             togglePet();
         });
         updateToggle();
+
+        syncHandle();
+        window.addEventListener('orientationchange', syncHandle);
+        window.addEventListener('resize', syncHandle);
+        // 部分浏览器（iOS Safari）转屏只派发 MQL 变化、不派发 resize
+        if (orientMQ) {
+            if (orientMQ.addEventListener) orientMQ.addEventListener('change', syncHandle);
+            else if (orientMQ.addListener) orientMQ.addListener(syncHandle);
+        }
     }
 
     // 鱼旁边的小工具列：⋯ 开菜单、× 收起

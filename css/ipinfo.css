@@ -15,8 +15,13 @@
     font-size: 12px;
     line-height: 1.6;
     text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
-    /* 页脚整体 pointer-events:none，这里单独放行，否则点不动 */
-    pointer-events: auto;
+    /* 复制功能已彻底去掉：这里不再放行点击，点这一行没有任何反应
+       （页脚是 fixed 且撑满宽度、压在左下角，之前就是它把桌宠把手挡住了）；
+       顺手关掉文字选中，免得手机长按弹出「复制」又把 IP 带走 */
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
     opacity: 0;
     transition: opacity .3s ease, color .2s ease;
 }
@@ -74,27 +79,6 @@
     color: #fff;
 }
 
-/* 可点范围只到地址本身（点标签或两侧空白都不复制） */
-.site-footer-ip #ip-v4 {
-    cursor: copy;
-    border-radius: 5px;
-    padding: 0 3px;
-    margin: 0 -1px;
-    transition: background-color .18s ease;
-}
-
-.site-footer-ip #ip-v4:hover {
-    background-color: rgba(255, 255, 255, .08);
-}
-
-.site-footer-ip #ip-v4:active {
-    background-color: rgba(255, 255, 255, .14);
-}
-
-.site-footer-ip #ip-v4:focus-visible {
-    outline: 1px solid rgba(140, 190, 255, .6);
-    outline-offset: 1px;
-}
 
 .site-footer-ip .ip-tag {
     padding: 0 8px;
