@@ -1,0 +1,384 @@
+@charset "utf-8";
+/* =========================================================
+   响应式适配补丁（电脑端 / 平板 / 手机）
+   只做布局自适应与可点区域优化，不改原有视觉风格。
+   加载顺序放在最后，同优先级下覆盖前面样式表。
+   ========================================================= */
+
+/* ---------- 0. 安全区（刘海屏 / 圆角屏 / 手势条） ---------- */
+:root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+}
+
+/* iOS 横屏时不要自作主张放大字号 */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* ---------- 1. 贴边元素避开安全区 ---------- */
+#menu {
+    top: calc(5px + var(--safe-top));
+    right: calc(10px + var(--safe-right));
+}
+
+#menu.on {
+    right: calc(var(--panel-w) + 18px + var(--safe-right));
+}
+
+.weather-pill {
+    top: calc(10px + var(--safe-top));
+    left: calc(10px + var(--safe-left));
+}
+
+.site-footer {
+    padding-right: calc(12px + var(--safe-right));
+    padding-bottom: calc(16px + var(--safe-bottom));
+    padding-left: calc(12px + var(--safe-left));
+}
+
+.list {
+    padding-bottom: calc(72px + var(--safe-bottom));
+}
+
+/* 原有下边距 4px，叠加安全区而不是覆盖掉 */
+.panel-status {
+    margin-bottom: calc(4px + var(--safe-bottom));
+}
+
+/* ---------- 2. 移动端浏览器地址栏收放时不跳动 ---------- */
+@supports (height: 100dvh) {
+    html,
+    body {
+        height: 100dvh;
+    }
+
+    .list {
+        height: 100dvh;
+    }
+}
+
+/* =========================================================
+   大屏电脑（≥1440px）：内容稍微放大，留白更舒展
+   ========================================================= */
+@media (min-width: 1440px) {
+    :root {
+        --panel-w: min(440px, 30vw);
+    }
+
+    #search {
+        width: min(760px, 58vw);
+    }
+
+    .greet-time {
+        font-size: 52px;
+    }
+
+    .panel-links {
+        grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+        gap: 9px;
+    }
+}
+
+/* =========================================================
+   平板（768px ~ 1023px）：面板收窄，搜索框不再顶满
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+    :root {
+        --panel-w: min(360px, 58vw);
+    }
+
+    #search {
+        top: 38%;
+        width: min(620px, 88%);
+    }
+
+    .greet-time {
+        font-size: 38px;
+    }
+}
+
+/* =========================================================
+   小屏手机（≤767px）
+   ========================================================= */
+@media (max-width: 767px) {
+    .greet-time {
+        font-size: 32px;
+    }
+
+    .site-footer {
+        line-height: 1.7;
+    }
+
+    /* 输入框左右内边距收一点，窄屏上能多显示几个字 */
+    #search-text,
+    #kos {
+        padding-right: 52px;
+        padding-left: 46px;
+    }
+
+    #search button {
+        width: 46px;
+    }
+
+    .panel-links {
+        grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    }
+}
+
+/* 超小屏（≤380px，如 iPhone SE） */
+@media (max-width: 380px) {
+    .greet-time {
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+
+    .greet-text {
+        font-size: 13.5px;
+    }
+
+    .site-footer {
+        font-size: 11.5px;
+    }
+
+    .site-footer-ip {
+        font-size: 10.5px;
+    }
+
+    .weather-pill {
+        padding: 4px 8px;
+        font-size: 11.5px;
+    }
+
+    .search-type li label {
+        padding: 0 9px;
+        font-size: 13px;
+    }
+
+    :root {
+        --panel-w: min(280px, 92vw);
+    }
+}
+
+/* =========================================================
+   矮屏（手机横屏、分屏窗口、小笔记本）
+   按高度收敛，避免问候语、搜索框、页脚互相压住
+   ========================================================= */
+@media (max-height: 620px) {
+    .greet-date {
+        display: none;
+    }
+
+    .greet-time {
+        font-size: 30px;
+    }
+
+    .hero-greet {
+        bottom: calc(100% + 8px);
+    }
+
+    #search {
+        top: 45%;
+    }
+
+    /* 页脚最上面那行装饰文字让位，只留信息行 */
+    .site-footer-main {
+        display: none;
+    }
+
+    .site-footer {
+        padding-bottom: calc(8px + var(--safe-bottom));
+        line-height: 1.55;
+    }
+}
+
+@media (max-height: 460px) {
+    .greet-text,
+    .greet-date {
+        display: none;
+    }
+
+    .greet-time {
+        font-size: 24px;
+    }
+
+    #search {
+        top: 50%;
+    }
+
+    .site-footer-visits {
+        display: none;
+    }
+
+    :root {
+        --panel-w: min(320px, 55vw);
+    }
+
+    .list {
+        padding-bottom: calc(48px + var(--safe-bottom));
+    }
+}
+
+/* 横屏时侧栏不必占太宽 */
+@media (orientation: landscape) and (max-height: 560px) {
+    :root {
+        --panel-w: min(300px, 46vw);
+    }
+}
+
+/* =========================================================
+   iOS 聚焦放大兜底
+   Safari 在输入框字号小于 16px 时，一聚焦就会把整个页面放大，
+   这里统一兜到 16px，避免点搜索框时页面跳一下。
+   ========================================================= */
+@supports (-webkit-touch-callout: none) {
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   触屏设备：放大可点区域（≥36px 才好点）
+   ========================================================= */
+@media (pointer: coarse) {
+    .search-type li label {
+        padding: 0 12px;
+        line-height: 36px;
+    }
+
+    .s-type > span {
+        height: 36px;
+    }
+
+    .s-type-list {
+        top: 36px;
+    }
+
+    .s-type-list label {
+        padding: 6px 0;
+    }
+
+    .panel-links li,
+    .panel-links li a {
+        height: 38px;
+    }
+
+    /* 行高也要跟着放大，否则文字会贴在框顶 */
+    .panel-links li,
+    .panel-links li a {
+        line-height: 38px;
+    }
+
+    .panel-filter,
+    .panel-edit-btn {
+        min-height: 34px;
+    }
+
+    .panel-status {
+        padding: 9px 12px;
+    }
+
+    .site-footer-ip {
+        padding: 4px 0;
+    }
+
+    /* 触屏没有 hover：点一下展开，点别处自动收起 */
+    .s-type:focus .s-type-list,
+    .s-type:focus-within .s-type-list {
+        display: block;
+        padding-top: 8px;
+    }
+}
+
+/* 键盘用户聚焦到搜索组时给个可见提示 */
+.s-type:focus {
+    outline: none;
+}
+
+.s-type:focus-visible {
+    border-radius: 8px;
+    outline: 2px solid rgba(255, 255, 255, .6);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   宽窗口下的鼠标手型（自定义光标只在能悬停的设备生效）
+   ========================================================= */
+@media (hover: none) {
+    body,
+    html {
+        cursor: auto !important;
+    }
+}
+
+/* =========================================================
+   打印：去掉背景与固定定位，避免打出一堆重叠文字
+   ========================================================= */
+@media print {
+    .bgo,
+    #menu,
+    .weather-pill,
+    #search,
+    .list,
+    .panel-mask,
+    #music {
+        display: none !important;
+    }
+
+    .site-footer {
+        position: static;
+        color: #000;
+        text-shadow: none;
+    }
+}
+
+/* =========================================================
+   状态页（status.html）
+   首页那套是固定居中布局，这里是文档流，只补安全区与触屏尺寸
+   ========================================================= */
+.status-wrap {
+    padding-bottom: calc(72px + var(--safe-bottom));
+    padding-left: var(--safe-left);
+    padding-right: var(--safe-right);
+}
+
+@media (min-width: 1440px) {
+    .status-wrap {
+        width: min(960px, 78vw);
+    }
+}
+
+@media (max-width: 640px) {
+    .status-wrap {
+        padding-bottom: calc(56px + var(--safe-bottom));
+    }
+
+    .status-item {
+        gap: 8px;
+    }
+
+    .item-badge {
+        padding: 2px 6px;
+        font-size: 11px;
+    }
+}
+
+@media (pointer: coarse) {
+    .filter-btn {
+        min-height: 36px;
+        padding: 8px 14px;
+    }
+
+    .status-item {
+        padding: 11px 10px;
+    }
+
+    .status-back {
+        padding: 8px 4px;
+    }
+}
