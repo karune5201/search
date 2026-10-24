@@ -33,6 +33,7 @@
   <link href="css/anim.css" rel="stylesheet" />
   <link href="css/ipinfo.css" rel="stylesheet" />
   <link href="css/weather.css" rel="stylesheet" />
+  <link href="css/pet.css" rel="stylesheet" />
   <link href="source/css/custom.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
@@ -51,6 +52,12 @@
   <div id="menu" role="button" tabindex="0" aria-label="打开站点导航" aria-expanded="false">
    <i></i>
   </div>
+
+  <!-- 看板娘开关：默认关着，点了才会加载大肥鱼（视频不进首屏，状态记在本机） -->
+  <button type="button" class="pet-toggle" id="pet-toggle" aria-pressed="false" aria-label="打开桌宠大肥鱼">
+    <span class="pet-toggle-icon" aria-hidden="true">🐟</span>
+    <span class="pet-toggle-text">看板娘</span>
+  </button>
 
   <!-- 点击遮罩关闭面板 -->
   <div class="panel-mask" id="panel-mask"></div>
@@ -205,10 +212,10 @@
 <script defer src="js/wallpaper.js"></script>
 <script defer src="js/ipinfo.js"></script>
 <script defer src="js/visits.js"></script>
+  <script defer src="js/pet-lines.js"></script>
+  <script defer src="js/pet.js"></script>
 <script defer src="js/weather.js"></script>
 
-<!-- 看板娘（第三方组件，异步加载，失败不影响主功能） -->
-<script async src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 
 <!-- 已停用：
      js/yyss.js  —— 依赖仓库里不存在的 api.php（PHP 后端），静态站无法使用
@@ -242,6 +249,23 @@
 <!-- 音乐播放器 -->
 <div id="music" key="67629c0cf3742" api="https://music.zbiwl.com"></div>
 <script id="xplayer" src="https://music.zbiwl.com/Static/player9/js/player.js"></script>
+
+  <!-- 桌宠（素材来自 dsh-pet，MIT；见 assets/pet/README.md）
+       长按鱼身可以选动作，台词在 js/pet-lines.js -->
+  <div class="pet" id="pet" hidden aria-hidden="true">
+    <div class="pet-tilt">
+      <div class="pet-inner">
+        <!-- JS 会按片段动态加层，这一层固定当待机层 -->
+        <video class="pet-video" muted playsinline webkit-playsinline preload="auto"
+               disablepictureinpicture x-webkit-airplay="deny" tabindex="-1"></video>
+      </div>
+    </div>
+    <!-- 鱼旁边的小工具（hover 才出现）：动作菜单 / 收起，tabindex=-1 免得和 aria-hidden 打架 -->
+    <div class="pet-tool">
+      <button type="button" class="pet-tool-btn" id="pet-menu-btn" tabindex="-1" aria-label="动作菜单">…</button>
+      <button type="button" class="pet-tool-btn" id="pet-close-btn" tabindex="-1" aria-label="收起桌宠">×</button>
+    </div>
+  </div>
 
 </body>
 </html>
