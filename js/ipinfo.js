@@ -158,11 +158,12 @@
         var isp = info.place && info.place.isp;
         var country = (info.place && info.place.country) ||
             COUNTRY_ZH[geo.cc] || geo.country || '';
+        // 提示只挂在地址本身；整行不再暗示「点哪都能复制」
         line.title = 'IPv4：' + geo.ip +
             '\n归属：' + (isCN ? '国内' : '海外') +
             (country ? ' · ' + country : '') + (place ? ' · ' + place : '') +
-            (isp ? ' · ' + isp : '') +
-            '\n点击刷新并复制';
+            (isp ? ' · ' + isp : '');
+        v4El.title = '点击复制 IP 地址';
 
         line.hidden = false;
         line.classList.add('is-ready');
@@ -248,7 +249,7 @@
         load(true);
     }
 
-    var copyEl = document.getElementById('ip-copy');
+    var copyEl = v4El;      // 只有 IP 地址本身可点，标签和两侧空白都不响应
     if (copyEl) {
         copyEl.addEventListener('click', function (ev) {
             if (ev && ev.stopPropagation) ev.stopPropagation();
