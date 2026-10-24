@@ -231,7 +231,8 @@
         document.body.removeChild(ta);
     }
 
-    line.addEventListener('click', function () {
+    // 只有点到 IP 那一截才复制；点这行左右空白不该有反应
+    function copyIp() {
         var cached = readCache();
         var ip = (cached && cached.ipv4 && cached.ipv4.ip) || v4El.textContent;
         if (!ip || !isIPv4(ip)) return;
@@ -245,7 +246,22 @@
         }, 1400);
 
         load(true);
-    });
+    }
+
+    var copyEl = document.getElementById('ip-copy');
+    if (copyEl) {
+        copyEl.addEventListener('click', function (ev) {
+            if (ev && ev.stopPropagation) ev.stopPropagation();
+            copyIp();
+        });
+        // 能 Tab 到，就用 Enter / 空格 也能复制
+        copyEl.addEventListener('keydown', function (ev) {
+            var key = ev.key;
+            if (key !== 'Enter' && key !== ' ' && key !== 'Spacebar') return;
+            if (ev.preventDefault) ev.preventDefault();
+            copyIp();
+        });
+    }
 
     // 页面加载就强制拉一次：换 IP、换网络后刷新能立刻看到新结果；
     // localStorage 里的缓存只在请求失败时兜底

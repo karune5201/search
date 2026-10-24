@@ -17,7 +17,6 @@
     text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
     /* 页脚整体 pointer-events:none，这里单独放行，否则点不动 */
     pointer-events: auto;
-    cursor: pointer;
     opacity: 0;
     transition: opacity .3s ease, color .2s ease;
 }
@@ -55,6 +54,25 @@
     gap: 4px;
     align-items: baseline;
     font-variant-numeric: tabular-nums;
+    /* 只有这一截可点（复制 IP），左右的空白不再误触 */
+    cursor: copy;
+    border-radius: 6px;
+    padding: 0 3px;
+    margin: 0 -3px;
+    transition: background-color .18s ease;
+}
+
+.site-footer-ip .ip-pair:hover {
+    background-color: rgba(255, 255, 255, .07);
+}
+
+.site-footer-ip .ip-pair:focus-visible {
+    outline: 1px solid rgba(140, 190, 255, .6);
+    outline-offset: 1px;
+}
+
+.site-footer-ip .ip-pair:active {
+    background-color: rgba(255, 255, 255, .12);
 }
 
 .site-footer-ip .ip-pair[hidden] {
