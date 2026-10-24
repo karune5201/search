@@ -8,24 +8,23 @@
    平时整条缩在屏幕外（-100px），收起看板娘后露 10px（-50px），hover 再滑出到 -30px。 */
 .pet-toggle {
     background-color: #fa0;
-    border: 0;
     border-radius: 5px;
     bottom: 66px;
     color: #fff;
     cursor: pointer;
-    font: inherit;
     font-size: 12px;
     left: 0;
-    line-height: 1;
-    margin: 0 0 0 -100px;
+    margin-left: -100px;
     padding: 5px 2px 5px 5px;
     position: fixed;
     transition: margin-left 1s;
     width: 60px;
     writing-mode: vertical-rl;
     z-index: 65;
-    -webkit-appearance: none;
-    appearance: none;
+    /* 以下三条只是为了贴近原版观感：竖排字别被系统字体挤歪、别被选中、别出蓝框 */
+    line-height: 1;
+    -webkit-user-select: none;
+    user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
 

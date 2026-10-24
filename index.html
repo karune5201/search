@@ -53,10 +53,10 @@
    <i></i>
   </div>
 
-  <!-- 看板娘把手：样式照 live2d-widget 的 #waifu-toggle，默认关着，点了才加载大肥鱼 -->
-  <button type="button" class="pet-toggle is-shown" id="pet-toggle" aria-pressed="false" aria-label="打开桌宠小肥鱼">
-    <span>小肥鱼</span>
-  </button>
+  <!-- 看板娘把手：结构和样式都照 live2d-widget 的 #waifu-toggle（div + 竖排三个字），
+       不用 button 是因为浏览器会把按钮内容居中，字就被挤出露出的那一条了 -->
+  <div class="pet-toggle is-shown" id="pet-toggle" role="button" tabindex="0"
+       aria-pressed="false" aria-label="打开桌宠小肥鱼"><span>小肥鱼</span></div>
 
   <!-- 点击遮罩关闭面板 -->
   <div class="panel-mask" id="panel-mask"></div>

@@ -1138,6 +1138,13 @@
     toggleEl = document.getElementById('pet-toggle');
     if (toggleEl) {
         toggleEl.addEventListener('click', togglePet);
+        // 把手是 div（跟原版一样），得自己补键盘操作
+        toggleEl.addEventListener('keydown', function (ev) {
+            var key = ev.key;
+            if (key !== 'Enter' && key !== ' ' && key !== 'Spacebar') return;
+            if (ev.preventDefault) ev.preventDefault();
+            togglePet();
+        });
         updateToggle();
     }
 
