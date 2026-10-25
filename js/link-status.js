@@ -1,22 +1,15 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-24 07:10",
- "checked": 413,
- "elapsed": 35.3,
+ "generatedAt": "2026-10-25 18:35",
+ "checked": 393,
+ "elapsed": 31.3,
  "summary": {
-  "ok": 311,
-  "blocked": 75,
-  "dead": 18,
-  "unknown": 9
+  "ok": 304,
+  "blocked": 73,
+  "dead": 10,
+  "unknown": 6
  },
  "items": [
-  {
-   "cat": "常用",
-   "name": "Key",
-   "url": "https://key.visualarts.gr.jp/",
-   "kind": "unknown",
-   "detail": "超时"
-  },
   {
    "cat": "常用",
    "name": "雜貨庫",
@@ -259,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "unknown",
-   "detail": "连接被重置"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "動漫壁紙",
@@ -288,7 +281,7 @@ window.LINK_STATUS = {
    "name": "Ascii2d",
    "url": "https://ascii2d.net/",
    "kind": "ok",
-   "detail": "206"
+   "detail": "200"
   },
   {
    "cat": "動漫壁紙",
@@ -348,13 +341,6 @@ window.LINK_STATUS = {
   },
   {
    "cat": "動漫",
-   "name": "NT动漫",
-   "url": "https://ntdm8.com/",
-   "kind": "dead",
-   "detail": "域名解析失败"
-  },
-  {
-   "cat": "動漫",
    "name": "anime1",
    "url": "https://anime1.me/",
    "kind": "ok",
@@ -363,9 +349,9 @@ window.LINK_STATUS = {
   {
    "cat": "漫画",
    "name": "安娜的档案",
-   "url": "https://annas-archive.org/",
-   "kind": "dead",
-   "detail": "域名解析失败"
+   "url": "https://annas-archive.is/",
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "漫画",
@@ -565,59 +551,10 @@ window.LINK_STATUS = {
   },
   {
    "cat": "影视",
-   "name": "泥巴影視",
-   "url": "https://nbyy.cc/",
-   "kind": "ok",
-   "detail": "200"
-  },
-  {
-   "cat": "影视",
-   "name": "no視頻",
-   "url": "https://novipnoad.net/",
-   "kind": "blocked",
-   "detail": "403"
-  },
-  {
-   "cat": "影视",
-   "name": "HDmoli",
-   "url": "https://hdmoli.pro/",
-   "kind": "blocked",
-   "detail": "403"
-  },
-  {
-   "cat": "影视",
    "name": "gimy",
    "url": "https://gimytw.cc/",
    "kind": "blocked",
    "detail": "403"
-  },
-  {
-   "cat": "影视",
-   "name": "pttplay",
-   "url": "https://pttplay.cc/",
-   "kind": "blocked",
-   "detail": "403"
-  },
-  {
-   "cat": "影视",
-   "name": "油管4k下載1",
-   "url": "https://en.loader.to/4/",
-   "kind": "ok",
-   "detail": "200"
-  },
-  {
-   "cat": "影视",
-   "name": "油管4k下載2",
-   "url": "https://y2mp3.top/en1/",
-   "kind": "dead",
-   "detail": "域名解析失败"
-  },
-  {
-   "cat": "影视",
-   "name": "油管4k下載3",
-   "url": "https://youtube4kdownloader.com/en84/",
-   "kind": "ok",
-   "detail": "200"
   },
   {
    "cat": "郵箱",
@@ -688,20 +625,6 @@ window.LINK_STATUS = {
    "url": "https://gmx.com/mail/",
    "kind": "ok",
    "detail": "200"
-  },
-  {
-   "cat": "郵箱",
-   "name": "MailTor",
-   "url": "http://mail2tor.com/",
-   "kind": "dead",
-   "detail": "域名解析失败"
-  },
-  {
-   "cat": "郵箱",
-   "name": "Tildamail",
-   "url": "https://tildamail.com/home",
-   "kind": "dead",
-   "detail": "域名解析失败"
   },
   {
    "cat": "郵箱",
@@ -950,24 +873,10 @@ window.LINK_STATUS = {
   },
   {
    "cat": "工具",
-   "name": "原神TTS",
-   "url": "https://v2.genshinvoice.top/",
-   "kind": "dead",
-   "detail": "域名解析失败"
-  },
-  {
-   "cat": "工具",
    "name": "Acgtts",
    "url": "https://acgn.ttson.cn/",
    "kind": "ok",
    "detail": "206"
-  },
-  {
-   "cat": "工具",
-   "name": "ttson",
-   "url": "https://ttson.cn/",
-   "kind": "dead",
-   "detail": "404"
   },
   {
    "cat": "工具",
@@ -1010,13 +919,6 @@ window.LINK_STATUS = {
    "url": "https://tcptest.cn/",
    "kind": "ok",
    "detail": "200"
-  },
-  {
-   "cat": "工具",
-   "name": "IP112",
-   "url": "https://ip112.cn/",
-   "kind": "unknown",
-   "detail": "超时"
   },
   {
    "cat": "工具",
@@ -1253,8 +1155,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "MSDN",
    "url": "https://msdn.itellyou.cn/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "域名解析失败"
   },
   {
    "cat": "開發",
@@ -1267,8 +1169,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "山已几子木",
    "url": "https://msdn.sjjzm.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "域名解析失败"
   },
   {
    "cat": "開發",
@@ -1316,8 +1218,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "Kitsune",
    "url": "https://jesse205.github.io/MagiskChineseDocument/delta/main.html",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "404"
   },
   {
    "cat": "開發",
@@ -1351,8 +1253,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "PE",
    "url": "https://download.pixelexperience.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "開發",
@@ -1428,8 +1330,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "秋之盒",
    "url": "https://atmb.top/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "206"
   },
   {
    "cat": "開發",
@@ -1464,28 +1366,28 @@ window.LINK_STATUS = {
    "name": "日亞",
    "url": "https://amazon.co.jp/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "202"
   },
   {
    "cat": "海購",
    "name": "美亞",
    "url": "https://amazon.com",
    "kind": "ok",
-   "detail": "200"
+   "detail": "202"
   },
   {
    "cat": "海購",
    "name": "英亞",
    "url": "https://amazon.co.uk/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "206"
   },
   {
    "cat": "海購",
    "name": "德亞",
    "url": "https://amazon.de",
    "kind": "ok",
-   "detail": "200"
+   "detail": "202"
   },
   {
    "cat": "海購",
@@ -1605,13 +1507,6 @@ window.LINK_STATUS = {
    "url": "https://adiexpress.com/",
    "kind": "ok",
    "detail": "200"
-  },
-  {
-   "cat": "转运",
-   "name": "顺丰集运",
-   "url": "https://sf-express.com/",
-   "kind": "dead",
-   "detail": "域名解析失败"
   },
   {
    "cat": "網盤",
@@ -1804,13 +1699,6 @@ window.LINK_STATUS = {
   },
   {
    "cat": "模擬器",
-   "name": "suyu",
-   "url": "https://suyu.dev/",
-   "kind": "dead",
-   "detail": "域名解析失败"
-  },
-  {
-   "cat": "模擬器",
    "name": "Strato",
    "url": "https://github.com/strato-emu/strato",
    "kind": "ok",
@@ -1958,24 +1846,10 @@ window.LINK_STATUS = {
   },
   {
    "cat": "模擬器",
-   "name": "Micewine",
-   "url": "https://github.com/KreitinnSoftware/MiceWine-Application?tab=readme-ov-file",
-   "kind": "dead",
-   "detail": "404"
-  },
-  {
-   "cat": "模擬器",
-   "name": "mobox",
-   "url": "https://github.com/olegos2/mobox",
+   "name": "DroidDeck",
+   "url": "https://droiddeck.app/",
    "kind": "ok",
-   "detail": "206"
-  },
-  {
-   "cat": "模擬器",
-   "name": "box64",
-   "url": "https://github.com/ptitSeb/box64",
-   "kind": "ok",
-   "detail": "206"
+   "detail": "200"
   },
   {
    "cat": "模擬器",
@@ -2058,8 +1932,8 @@ window.LINK_STATUS = {
    "cat": "遊戲",
    "name": "rutracker",
    "url": "https://rutracker.org/forum/index.php",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "遊戲",
@@ -2116,20 +1990,6 @@ window.LINK_STATUS = {
    "url": "https://steamunlocked.net/",
    "kind": "ok",
    "detail": "206"
-  },
-  {
-   "cat": "遊戲",
-   "name": "steam下載2",
-   "url": "https://games4theworld.club/",
-   "kind": "ok",
-   "detail": "200"
-  },
-  {
-   "cat": "遊戲",
-   "name": "evilleaker",
-   "url": "https://performai.evilleaker.com/manual/",
-   "kind": "dead",
-   "detail": "域名解析失败"
   },
   {
    "cat": "音樂",
@@ -2415,8 +2275,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "rutracker",
    "url": "https://rutracker.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2485,8 +2345,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "伪射手网",
    "url": "https://assrt.net/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2792,9 +2652,9 @@ window.LINK_STATUS = {
   {
    "cat": "ASMR",
    "name": "ASMR中心",
-   "url": "https://asmrgay.com/",
-   "kind": "unknown",
-   "detail": "证书/SSL 错误"
+   "url": "https://www.asmrgay.com/",
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "ASMR",
@@ -2807,8 +2667,8 @@ window.LINK_STATUS = {
    "cat": "ASMR",
    "name": "heniasmr",
    "url": "https://hentaiasmr.moe/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "ASMR",
@@ -2877,8 +2737,8 @@ window.LINK_STATUS = {
    "cat": "GameBuying",
    "name": "Kagura",
    "url": "https://kaguragames.com/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "gal网盘直链",
