@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-25 18:54",
+ "generatedAt": "2026-10-25 22:27",
  "checked": 393,
- "elapsed": 90.0,
+ "elapsed": 175.9,
  "summary": {
-  "ok": 305,
+  "ok": 304,
   "blocked": 72,
   "dead": 6,
-  "unknown": 10
+  "unknown": 11
  },
  "items": [
   {
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "ok",
-   "detail": "200，301→www.sankakucomplex.com"
+   "kind": "unknown",
+   "detail": "连接被重置"
   },
   {
    "cat": "動漫壁紙",
@@ -1366,21 +1366,21 @@ window.LINK_STATUS = {
    "name": "日亞",
    "url": "https://amazon.co.jp/",
    "kind": "ok",
-   "detail": "202，301→www.amazon.co.jp"
+   "detail": "200，301→www.amazon.co.jp"
   },
   {
    "cat": "海購",
    "name": "美亞",
    "url": "https://amazon.com",
    "kind": "ok",
-   "detail": "202，301→www.amazon.com"
+   "detail": "200，301→www.amazon.com"
   },
   {
    "cat": "海購",
    "name": "英亞",
    "url": "https://amazon.co.uk/",
    "kind": "ok",
-   "detail": "202，301→www.amazon.co.uk"
+   "detail": "200，301→www.amazon.co.uk"
   },
   {
    "cat": "海購",
