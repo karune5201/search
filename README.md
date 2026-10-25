@@ -200,14 +200,37 @@ python3 tools/build-hitokoto.py 我的句子.json -o data/hitokoto.json
 站点会失效，定期查一次比手动点省事：
 
 ```bash
-python3 tools/check-links.py                  # 全量
+python3 tools/check-links.py                  # 全量（含两轮复核）
 python3 tools/check-links.py --limit 20       # 先抽查
 python3 tools/check-links.py --report r.md    # 输出 markdown 报告
+python3 tools/check-links.py --no-recheck     # 只跑一轮，快但误报多
+python3 tools/check-links.py --selftest       # 只验分类规则，不联网
 ```
 
-结果分四类：**正常 / 受限（403、429 等，站点还活着）/ 死链（404、410、5xx、DNS 失败）/ 可疑（超时，多为网络问题）**。超时不会被当成死链，避免误删还能用的站点。
+结果分四类，判定标准（这一版的重点是**别冤枉好人**）：
 
-仓库里的 `.github/workflows/check-links.yml` 会每周一自动跑一次，也可以在 Actions 页面点「Run workflow」手动触发，报告直接写进 Job Summary。
+| 结论 | 判定 | 说明 |
+|---|---|---|
+| 正常 | 2xx，且不是停放/停用页 | |
+| 受限 | 401 / 403 / 429 / 451、Cloudflare 人机验证页 | 站点还活着，只是不肯给这台机器看 |
+| 死链 | 404 / 410、反复 500·502·504、域名不存在（NXDOMAIN）、证书过期、域名停放/待售/站点停用页 | 基本可确认打不开 |
+| 可疑 | 超时、连接被拒/重置、DNS 临时失败、520–527/530（源站或隧道异常）、503（维护限流）、证书不匹配、解析到内网/保留地址（疑似污染） | 多半是网络或区域问题，**不当死链** |
+
+为减少误报，脚本还做了这些事：
+
+- **不用 HEAD**：不少站点 HEAD 单独返回 403，会凭空造出误报；直接 GET，响应体最多读 64KB
+- **两轮复核**：第一轮得出「死链/可疑」的，隔几秒独立再测一次；两次一致才认，第二次正常就改判正常，两次不一致降级为可疑
+- **单域名串行**：同一个域名不并发请求（间隔 0.3s），避免自己把自己打成 429/403
+- **DNS 分级**：区分「域名真的不存在」和「解析暂时失败」，前者才判死链；解析到 127/10/198.18 这类地址视为疑似劫持
+- **内容嗅探**：200 也可能是「域名出售 / 已过期 / 账号停用」页；反之 403 若是人机验证页，算受限而不是死链。
+  人机验证除了看页面内容，还看跳转后的地址（Google 的 `/sorry/`、CF 的 `/cdn-cgi/challenge`）
+- **http 兜底**：`http://` 的站连不上时，顺手试一次 `https://`，能开仍算正常并提示换协议
+- **环境自校准**：如果本机 DNS 被透明代理接管（所有域名都解析到 198.18 这类保留网段），
+  脚本会自动跳过「DNS 污染」判定并打印提示，免得把整站判成可疑
+
+注意：本机（受限网络）跑仍会有一批「可疑」（证书错误、连接重置），GitHub Actions 的机器网络不受限，结果更准。
+
+仓库里的 `.github/workflows/check-links.yml` 会**每天北京时间 04:00** 自动跑一次，也可以在 Actions 页面点「Run workflow」手动触发，报告直接写进 Job Summary。
 
 ## 站点状态页
 
@@ -217,7 +240,7 @@ python3 tools/check-links.py --report r.md    # 输出 markdown 报告
 - 按分类列出全部站点及检测结果，标出原因（200、404、403、超时…）
 - 可按状态筛选（含「正常」），`status.html#dead` 这样能直接分享某一类
 
-页面数据来自 `js/link-status.js`，由 Actions 每周自动检测后提交回仓库，所以内容会自己更新。想手动刷新：
+页面数据来自 `js/link-status.js`，由 Actions 每天自动检测后提交回仓库，所以内容会自己更新。想手动刷新：
 
 ```bash
 python3 tools/check-links.py --json js/link-status.js --report link-report.md

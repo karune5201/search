@@ -64,20 +64,23 @@ PYTHONPATH=/tmp/ft_env python3 tools/subset-font.py /root/ziti-font-FULL-4.6M.wo
 
 ```bash
 python3 tools/check-links.py --limit 20          # 抽查
-python3 tools/check-links.py                     # 全量（约 4 分钟）
+python3 tools/check-links.py                     # 全量（约 6 分钟，含两轮复核）
 python3 tools/check-links.py --json js/link-status.js --report link-report.md
+python3 tools/check-links.py --selftest          # 只验分类规则，不联网
 ```
 
-结果分四类，**超时不算死链**（避免误删）：
+结果分四类，**超时/连接失败不算死链**（避免误删）：
 
 | 结论 | 判定 |
 |---|---|
-| 正常 | 2xx |
-| 受限 | 401 / 403 / 429，站点还活着 |
-| 死链 | 404 / 410 / 5xx / DNS 失败 |
-| 可疑 | 超时、连接失败，多为网络问题 |
+| 正常 | 2xx，且不是停放/停用页 |
+| 受限 | 401 / 403 / 429 / 451、人机验证页，站点还活着 |
+| 死链 | 404 / 410、反复 5xx、域名不存在、证书过期、域名停放/待售/停用页 |
+| 可疑 | 超时、连接被拒/重置、DNS 临时失败、520–527/530、503、证书不符、解析到内网地址 |
 
-`.github/workflows/check-links.yml` 每周一自动跑，结果 commit 回仓库，`status.html` 自动变新。
+为降误报：不用 HEAD（不少站 HEAD 单给 403）、死链/可疑都做第二轮复核、同名域名串行 + 0.3s 间隔、DNS 区分 NXDOMAIN 与临时失败、响应体嗅探停放页。
+
+`.github/workflows/check-links.yml` 每天北京时间 04:00 自动跑，结果 commit 回仓库，`status.html` 自动变新。
 
 ## 关键设计约束（别踩）
 

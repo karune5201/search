@@ -1,17 +1,23 @@
 name: 死链检测
 
-# 每周一凌晨跑一次，也可以在 Actions 页面手动触发
+# 每天北京时间 04:00（UTC 20:00）跑一次，也可以在 Actions 页面手动触发
 on:
   schedule:
-    - cron: '0 3 * * 1'
+    - cron: '0 20 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
+# 同一条工作流不并发：两轮同时跑会互相覆盖数据文件，push 也会打架
+concurrency:
+  group: check-links
+  cancel-in-progress: false
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     steps:
       - name: 检出仓库
         uses: actions/checkout@v4
@@ -21,14 +27,21 @@ jobs:
         with:
           python-version: '3.12'
 
+      # 分类规则自检（不联网，1 秒）：规则改坏了先在这里炸，别等跑完 400 个站才发现
+      - name: 分类规则自检
+        run: python3 tools/check-links.py --selftest
+
       # 不加 --strict：超时/连接失败多半是区域限制，不当成死链；
       # continue-on-error 让报告无论如何都能产出
       - name: 运行死链检测
         continue-on-error: true
         run: |
           python3 tools/check-links.py \
-            --workers 16 \
-            --timeout 12 \
+            --workers 12 \
+            --timeout 15 \
+            --recheck \
+            --recheck-delay 3 \
+            --per-host-delay 0.3 \
             --json js/link-status.js \
             --report link-report.md
 
@@ -63,7 +76,9 @@ jobs:
           git add js/link-status.js
           if git diff --cached --quiet; then
             echo "数据没有变化，无需提交"
-          else
-            git commit -m "chore: 更新站点状态数据 $(date -u '+%Y-%m-%d')"
-            git push
+            exit 0
           fi
+          git commit -m "chore: 更新站点状态数据 $(date -u '+%Y-%m-%d')"
+          # 期间可能有人推了站点改动，先 rebase 再推，免得 push 被拒
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push

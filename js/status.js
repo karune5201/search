@@ -24,7 +24,7 @@
 
     if (!data || !data.items) {
         if (subEl) subEl.textContent = '还没有检测数据';
-        showMessage('暂时没有检测数据。仓库的 GitHub Actions 每周会自动跑一次，跑完之后这里就有内容了。');
+        showMessage('暂时没有检测数据。仓库的 GitHub Actions 每天会自动跑一次，跑完之后这里就有内容了。');
         return;
     }
 
