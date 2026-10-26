@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-25 22:27",
+ "generatedAt": "2026-10-26 23:43",
  "checked": 393,
  "elapsed": 175.9,
  "summary": {
-  "ok": 304,
-  "blocked": 72,
-  "dead": 6,
-  "unknown": 11
+  "ok": 303,
+  "blocked": 73,
+  "dead": 7,
+  "unknown": 10
  },
  "items": [
   {
@@ -99,7 +99,7 @@ window.LINK_STATUS = {
    "name": "纳米Ai",
    "url": "https://www.n.cn/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "200，302→work.n.cn"
   },
   {
    "cat": "Ai",
@@ -1498,8 +1498,8 @@ window.LINK_STATUS = {
    "cat": "转运",
    "name": "递四方",
    "url": "https://www.4px.com/",
-   "kind": "unknown",
-   "detail": "证书校验失败"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "转运",
@@ -1603,8 +1603,8 @@ window.LINK_STATUS = {
    "cat": "論壇",
    "name": "吾爱破解",
    "url": "https://52pojie.cn/",
-   "kind": "ok",
-   "detail": "200，301→www.52pojie.cn"
+   "kind": "blocked",
+   "detail": "403，301→www.52pojie.cn"
   },
   {
    "cat": "論壇",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "detail": "403"
   },
   {
    "cat": "galgame",
@@ -2618,8 +2618,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "稻荷gal",
    "url": "https://inarigal.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "域名解析失败（域名不存在）"
   },
   {
    "cat": "galgame",
@@ -2745,7 +2745,7 @@ window.LINK_STATUS = {
    "name": "梓澪の妙妙屋",
    "url": "https://zi6.cc/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "200，301→gal.games"
   },
   {
    "cat": "gal网盘直链",
