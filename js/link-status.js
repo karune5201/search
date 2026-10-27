@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-26 23:43",
+ "generatedAt": "2026-10-27 23:47",
  "checked": 393,
- "elapsed": 175.9,
+ "elapsed": 502.6,
  "summary": {
   "ok": 303,
-  "blocked": 73,
-  "dead": 7,
-  "unknown": 10
+  "blocked": 71,
+  "dead": 6,
+  "unknown": 13
  },
  "items": [
   {
@@ -309,7 +309,7 @@ window.LINK_STATUS = {
    "name": "bilbil",
    "url": "https://bilibili.com/",
    "kind": "ok",
-   "detail": "200，302→www.bilibili.com"
+   "detail": "200，301→www.bilibili.com"
   },
   {
    "cat": "動漫",
@@ -1092,8 +1092,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "ok",
-   "detail": "200，302→www.ikuai8.com"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "開發",
@@ -1477,8 +1477,8 @@ window.LINK_STATUS = {
    "cat": "海購",
    "name": "Netoff",
    "url": "https://netoff.co.jp/sp/",
-   "kind": "ok",
-   "detail": "200，301→www.netoff.co.jp"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "海購",
@@ -1603,8 +1603,8 @@ window.LINK_STATUS = {
    "cat": "論壇",
    "name": "吾爱破解",
    "url": "https://52pojie.cn/",
-   "kind": "blocked",
-   "detail": "403，301→www.52pojie.cn"
+   "kind": "ok",
+   "detail": "200，301→www.52pojie.cn"
   },
   {
    "cat": "論壇",
@@ -2177,8 +2177,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "nyaaland",
    "url": "https://nyaa.land",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "523（源站/隧道异常）"
   },
   {
    "cat": "磁力",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "403"
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "galgame",
@@ -2618,8 +2618,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "稻荷gal",
    "url": "https://inarigal.com/",
-   "kind": "dead",
-   "detail": "域名解析失败（域名不存在）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "galgame",
@@ -2667,8 +2667,8 @@ window.LINK_STATUS = {
    "cat": "ASMR",
    "name": "heniasmr",
    "url": "https://hentaiasmr.moe/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "ASMR",
