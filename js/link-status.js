@@ -1,8 +1,8 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-27 23:47",
+ "generatedAt": "2026-10-28 23:59",
  "checked": 393,
- "elapsed": 502.6,
+ "elapsed": 111.6,
  "summary": {
   "ok": 303,
   "blocked": 71,
@@ -280,8 +280,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Ascii2d",
    "url": "https://ascii2d.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "503（维护/限流）"
   },
   {
    "cat": "動漫壁紙",
@@ -406,8 +406,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "漫自由",
    "url": "https://mheee.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（attention required）"
   },
   {
    "cat": "漫画",
@@ -539,8 +539,8 @@ window.LINK_STATUS = {
    "cat": "影视",
    "name": "金牌影视",
    "url": "https://ksnnhbj.com/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "影视",
@@ -553,8 +553,8 @@ window.LINK_STATUS = {
    "cat": "影视",
    "name": "gimy",
    "url": "https://gimytw.cc/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（attention required）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "郵箱",
@@ -1092,8 +1092,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200，302→www.ikuai8.com"
   },
   {
    "cat": "開發",
@@ -2178,7 +2178,7 @@ window.LINK_STATUS = {
    "name": "nyaaland",
    "url": "https://nyaa.land",
    "kind": "unknown",
-   "detail": "523（源站/隧道异常）"
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2667,8 +2667,8 @@ window.LINK_STATUS = {
    "cat": "ASMR",
    "name": "heniasmr",
    "url": "https://hentaiasmr.moe/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "ASMR",
@@ -2745,7 +2745,7 @@ window.LINK_STATUS = {
    "name": "梓澪の妙妙屋",
    "url": "https://zi6.cc/",
    "kind": "ok",
-   "detail": "200，301→gal.games"
+   "detail": "200，308→www.galfor.you"
   },
   {
    "cat": "gal网盘直链",
