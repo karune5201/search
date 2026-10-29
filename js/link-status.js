@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-28 23:59",
+ "generatedAt": "2026-10-29 23:54",
  "checked": 393,
- "elapsed": 111.6,
+ "elapsed": 109.8,
  "summary": {
-  "ok": 303,
+  "ok": 304,
   "blocked": 71,
-  "dead": 6,
-  "unknown": 13
+  "dead": 7,
+  "unknown": 11
  },
  "items": [
   {
@@ -280,8 +280,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Ascii2d",
    "url": "https://ascii2d.net/",
-   "kind": "unknown",
-   "detail": "503（维护/限流）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "動漫壁紙",
@@ -406,8 +406,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "漫自由",
    "url": "https://mheee.com/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（attention required）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "漫画",
@@ -539,8 +539,8 @@ window.LINK_STATUS = {
    "cat": "影视",
    "name": "金牌影视",
    "url": "https://ksnnhbj.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "影视",
@@ -553,8 +553,8 @@ window.LINK_STATUS = {
    "cat": "影视",
    "name": "gimy",
    "url": "https://gimytw.cc/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（attention required）"
   },
   {
    "cat": "郵箱",
@@ -1253,8 +1253,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "PE",
    "url": "https://download.pixelexperience.org/",
-   "kind": "unknown",
-   "detail": "超时，301→get.pixelexperience.org"
+   "kind": "ok",
+   "detail": "200，301→get.pixelexperience.org"
   },
   {
    "cat": "開發",
@@ -1554,8 +1554,8 @@ window.LINK_STATUS = {
    "cat": "網盤",
    "name": "奶牛快傳",
    "url": "https://cowtransfer.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "域名解析失败（域名不存在）"
   },
   {
    "cat": "網盤",
@@ -2177,8 +2177,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "nyaaland",
    "url": "https://nyaa.land",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2745,7 +2745,7 @@ window.LINK_STATUS = {
    "name": "梓澪の妙妙屋",
    "url": "https://zi6.cc/",
    "kind": "ok",
-   "detail": "200，308→www.galfor.you"
+   "detail": "200，301→www.gal4.you"
   },
   {
    "cat": "gal网盘直链",
@@ -2758,8 +2758,8 @@ window.LINK_STATUS = {
    "cat": "gal网盘直链",
    "name": "次元图书馆",
    "url": "https://pan.cycg.xyz/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "kind": "ok",
+   "detail": "200"
   }
  ]
 };
