@@ -1,8 +1,8 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-29 23:54",
+ "generatedAt": "2026-10-30 23:35",
  "checked": 393,
- "elapsed": 109.8,
+ "elapsed": 107.7,
  "summary": {
   "ok": 304,
   "blocked": 71,
@@ -92,7 +92,7 @@ window.LINK_STATUS = {
    "name": "国家超算DS",
    "url": "https://chat.scnet.cn/ui/chatbot/",
    "kind": "ok",
-   "detail": "200，302→www.scnet.cn"
+   "detail": "200，301→www.scnet.cn"
   },
   {
    "cat": "Ai",
@@ -309,7 +309,7 @@ window.LINK_STATUS = {
    "name": "bilbil",
    "url": "https://bilibili.com/",
    "kind": "ok",
-   "detail": "200，301→www.bilibili.com"
+   "detail": "200，302→www.bilibili.com"
   },
   {
    "cat": "動漫",
@@ -1946,8 +1946,8 @@ window.LINK_STATUS = {
    "cat": "遊戲",
    "name": "大自然搬运工",
    "url": "https://yoooyo.com",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "遊戲",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "detail": "403"
   },
   {
    "cat": "galgame",
@@ -2758,8 +2758,8 @@ window.LINK_STATUS = {
    "cat": "gal网盘直链",
    "name": "次元图书馆",
    "url": "https://pan.cycg.xyz/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   }
  ]
 };
