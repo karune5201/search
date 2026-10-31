@@ -1,11 +1,11 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-30 23:35",
+ "generatedAt": "2026-10-31 23:16",
  "checked": 393,
- "elapsed": 107.7,
+ "elapsed": 94.9,
  "summary": {
-  "ok": 304,
-  "blocked": 71,
+  "ok": 305,
+  "blocked": 70,
   "dead": 7,
   "unknown": 11
  },
@@ -92,7 +92,7 @@ window.LINK_STATUS = {
    "name": "国家超算DS",
    "url": "https://chat.scnet.cn/ui/chatbot/",
    "kind": "ok",
-   "detail": "200，301→www.scnet.cn"
+   "detail": "200，302→www.scnet.cn"
   },
   {
    "cat": "Ai",
@@ -1407,8 +1407,8 @@ window.LINK_STATUS = {
    "cat": "海購",
    "name": "Bigboy",
    "url": "https://bigboytoyz.jp/",
-   "kind": "ok",
-   "detail": "200，301→www.bigboytoyz.jp"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "海購",
@@ -2003,7 +2003,7 @@ window.LINK_STATUS = {
    "name": "Vigm",
    "url": "https://downloads.khinsider.com",
    "kind": "blocked",
-   "detail": "反爬/人机验证（attention required）"
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "音樂",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2667,8 +2667,8 @@ window.LINK_STATUS = {
    "cat": "ASMR",
    "name": "heniasmr",
    "url": "https://hentaiasmr.moe/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "ASMR",
