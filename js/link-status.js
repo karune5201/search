@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-10-31 23:16",
+ "generatedAt": "2026-11-01 23:28",
  "checked": 393,
- "elapsed": 94.9,
+ "elapsed": 113.4,
  "summary": {
-  "ok": 305,
-  "blocked": 70,
-  "dead": 7,
-  "unknown": 11
+  "ok": 304,
+  "blocked": 69,
+  "dead": 8,
+  "unknown": 12
  },
  "items": [
   {
@@ -1134,8 +1134,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "FirPE",
    "url": "https://firpe.cn/page-247",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "域名解析失败（域名不存在）"
   },
   {
    "cat": "開發",
@@ -1407,8 +1407,8 @@ window.LINK_STATUS = {
    "cat": "海購",
    "name": "Bigboy",
    "url": "https://bigboytoyz.jp/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200，301→www.bigboytoyz.jp"
   },
   {
    "cat": "海購",
@@ -1891,7 +1891,7 @@ window.LINK_STATUS = {
    "name": "3DM",
    "url": "https://m.3dmgame.com/",
    "kind": "ok",
-   "detail": "200，302→www.3dmgame.com"
+   "detail": "200"
   },
   {
    "cat": "遊戲",
@@ -2247,8 +2247,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "btdig",
    "url": "https://en.btdig.com/",
-   "kind": "blocked",
-   "detail": "429，302→www.btdig.com"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "403"
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "galgame",
@@ -2632,8 +2632,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "hentait",
    "url": "https://hentaitorrents.com/jp/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "galgame",
