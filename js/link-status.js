@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-01 23:28",
+ "generatedAt": "2026-11-03 02:08",
  "checked": 393,
- "elapsed": 113.4,
+ "elapsed": 107.7,
  "summary": {
-  "ok": 304,
-  "blocked": 69,
-  "dead": 8,
-  "unknown": 12
+  "ok": 305,
+  "blocked": 71,
+  "dead": 6,
+  "unknown": 11
  },
  "items": [
   {
@@ -1134,8 +1134,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "FirPE",
    "url": "https://firpe.cn/page-247",
-   "kind": "dead",
-   "detail": "域名解析失败（域名不存在）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "開發",
@@ -1554,8 +1554,8 @@ window.LINK_STATUS = {
    "cat": "網盤",
    "name": "奶牛快傳",
    "url": "https://cowtransfer.com/",
-   "kind": "dead",
-   "detail": "域名解析失败（域名不存在）"
+   "kind": "blocked",
+   "detail": "405"
   },
   {
    "cat": "網盤",
@@ -1891,7 +1891,7 @@ window.LINK_STATUS = {
    "name": "3DM",
    "url": "https://m.3dmgame.com/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "200，302→www.3dmgame.com"
   },
   {
    "cat": "遊戲",
@@ -2632,8 +2632,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "hentait",
    "url": "https://hentaitorrents.com/jp/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "galgame",
@@ -2737,8 +2737,8 @@ window.LINK_STATUS = {
    "cat": "GameBuying",
    "name": "Kagura",
    "url": "https://kaguragames.com/",
-   "kind": "ok",
-   "detail": "200，301→www.kaguragames.com"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "gal网盘直链",
