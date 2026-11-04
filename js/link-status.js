@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-03 02:08",
+ "generatedAt": "2026-11-04 00:32",
  "checked": 393,
- "elapsed": 107.7,
+ "elapsed": 110.5,
  "summary": {
-  "ok": 305,
+  "ok": 304,
   "blocked": 71,
   "dead": 6,
-  "unknown": 11
+  "unknown": 12
  },
  "items": [
   {
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "unknown",
-   "detail": "连接被重置"
+   "kind": "ok",
+   "detail": "200，301→www.sankakucomplex.com"
   },
   {
    "cat": "動漫壁紙",
@@ -420,8 +420,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "漫核",
    "url": "https://comicores.com/",
-   "kind": "ok",
-   "detail": "200，301→www.comicores.cc"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "漫画",
@@ -1366,28 +1366,28 @@ window.LINK_STATUS = {
    "name": "日亞",
    "url": "https://amazon.co.jp/",
    "kind": "ok",
-   "detail": "200，301→www.amazon.co.jp"
+   "detail": "202，301→www.amazon.co.jp"
   },
   {
    "cat": "海購",
    "name": "美亞",
    "url": "https://amazon.com",
    "kind": "ok",
-   "detail": "200，301→www.amazon.com"
+   "detail": "202，301→www.amazon.com"
   },
   {
    "cat": "海購",
    "name": "英亞",
    "url": "https://amazon.co.uk/",
    "kind": "ok",
-   "detail": "200，301→www.amazon.co.uk"
+   "detail": "202，301→www.amazon.co.uk"
   },
   {
    "cat": "海購",
    "name": "德亞",
    "url": "https://amazon.de",
    "kind": "ok",
-   "detail": "200，301→www.amazon.de"
+   "detail": "202，301→www.amazon.de"
   },
   {
    "cat": "海購",
@@ -2205,8 +2205,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "花园资源站",
    "url": "https://dongmanhuayuan.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "证书校验失败"
   },
   {
    "cat": "磁力",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "detail": "403"
   },
   {
    "cat": "galgame",
