@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-04 00:32",
+ "generatedAt": "2026-11-05 00:51",
  "checked": 393,
- "elapsed": 110.5,
+ "elapsed": 111.1,
  "summary": {
-  "ok": 304,
-  "blocked": 71,
+  "ok": 303,
+  "blocked": 70,
   "dead": 6,
-  "unknown": 12
+  "unknown": 14
  },
  "items": [
   {
@@ -56,8 +56,8 @@ window.LINK_STATUS = {
    "cat": "Ai",
    "name": "OpenAi",
    "url": "https://chat.openai.com/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（cf_chl_opt），308→chatgpt.com"
+   "kind": "ok",
+   "detail": "200，308→chatgpt.com"
   },
   {
    "cat": "Ai",
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "ok",
-   "detail": "200，301→www.sankakucomplex.com"
+   "kind": "unknown",
+   "detail": "连接被重置"
   },
   {
    "cat": "動漫壁紙",
@@ -420,8 +420,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "漫核",
    "url": "https://comicores.com/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200，301→www.comicores.cc"
   },
   {
    "cat": "漫画",
@@ -1155,8 +1155,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "MSDN",
    "url": "https://msdn.itellyou.cn/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "525（源站/隧道异常）"
   },
   {
    "cat": "開發",
@@ -1366,28 +1366,28 @@ window.LINK_STATUS = {
    "name": "日亞",
    "url": "https://amazon.co.jp/",
    "kind": "ok",
-   "detail": "202，301→www.amazon.co.jp"
+   "detail": "200，301→www.amazon.co.jp"
   },
   {
    "cat": "海購",
    "name": "美亞",
    "url": "https://amazon.com",
    "kind": "ok",
-   "detail": "202，301→www.amazon.com"
+   "detail": "200，301→www.amazon.com"
   },
   {
    "cat": "海購",
    "name": "英亞",
    "url": "https://amazon.co.uk/",
    "kind": "ok",
-   "detail": "202，301→www.amazon.co.uk"
+   "detail": "200，301→www.amazon.co.uk"
   },
   {
    "cat": "海購",
    "name": "德亞",
    "url": "https://amazon.de",
    "kind": "ok",
-   "detail": "202，301→www.amazon.de"
+   "detail": "200，301→www.amazon.de"
   },
   {
    "cat": "海購",
@@ -2304,7 +2304,7 @@ window.LINK_STATUS = {
    "name": "SubEdit",
    "url": "https://www.nikse.dk/subtitleedit/help",
    "kind": "ok",
-   "detail": "200"
+   "detail": "200（复核后正常）"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
