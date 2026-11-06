@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-05 00:51",
+ "generatedAt": "2026-11-06 01:06",
  "checked": 393,
- "elapsed": 111.1,
+ "elapsed": 623.4,
  "summary": {
-  "ok": 303,
-  "blocked": 70,
+  "ok": 301,
+  "blocked": 69,
   "dead": 6,
-  "unknown": 14
+  "unknown": 17
  },
  "items": [
   {
@@ -1092,8 +1092,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "ok",
-   "detail": "200，302→www.ikuai8.com"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "開發",
@@ -1323,8 +1323,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "SP Flash",
    "url": "https://sp-flashtool.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "DNS 临时解析失败"
   },
   {
    "cat": "開發",
@@ -1604,7 +1604,7 @@ window.LINK_STATUS = {
    "name": "吾爱破解",
    "url": "https://52pojie.cn/",
    "kind": "ok",
-   "detail": "200，301→www.52pojie.cn"
+   "detail": "200，301→www.52pojie.cn（复核后正常）"
   },
   {
    "cat": "論壇",
@@ -1715,8 +1715,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "prodkeys",
    "url": "https://prodkeys.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "模擬器",
@@ -2304,7 +2304,7 @@ window.LINK_STATUS = {
    "name": "SubEdit",
    "url": "https://www.nikse.dk/subtitleedit/help",
    "kind": "ok",
-   "detail": "200（复核后正常）"
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "403"
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "galgame",
@@ -2737,8 +2737,8 @@ window.LINK_STATUS = {
    "cat": "GameBuying",
    "name": "Kagura",
    "url": "https://kaguragames.com/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "kind": "ok",
+   "detail": "200，301→www.kaguragames.com"
   },
   {
    "cat": "gal网盘直链",
