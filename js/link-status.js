@@ -1,11 +1,11 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-06 01:06",
+ "generatedAt": "2026-11-07 00:10",
  "checked": 393,
- "elapsed": 623.4,
+ "elapsed": 503.5,
  "summary": {
-  "ok": 301,
-  "blocked": 69,
+  "ok": 300,
+  "blocked": 70,
   "dead": 6,
   "unknown": 17
  },
@@ -245,8 +245,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "kurocore",
    "url": "https://kurocore.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "動漫壁紙",
@@ -400,7 +400,7 @@ window.LINK_STATUS = {
    "name": "Mangabz",
    "url": "https://mangabz.com/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "200（复核后正常）"
   },
   {
    "cat": "漫画",
@@ -637,8 +637,8 @@ window.LINK_STATUS = {
    "cat": "郵箱",
    "name": "Metamail",
    "url": "https://metamail.ink",
-   "kind": "ok",
-   "detail": "200，307→www.metamail.ink"
+   "kind": "unknown",
+   "detail": "DNS 临时解析失败"
   },
   {
    "cat": "郵箱",
@@ -1155,8 +1155,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "MSDN",
    "url": "https://msdn.itellyou.cn/",
-   "kind": "unknown",
-   "detail": "525（源站/隧道异常）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "開發",
@@ -1604,7 +1604,7 @@ window.LINK_STATUS = {
    "name": "吾爱破解",
    "url": "https://52pojie.cn/",
    "kind": "ok",
-   "detail": "200，301→www.52pojie.cn（复核后正常）"
+   "detail": "200，301→www.52pojie.cn"
   },
   {
    "cat": "論壇",
@@ -1715,8 +1715,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "prodkeys",
    "url": "https://prodkeys.net/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "模擬器",
@@ -2212,15 +2212,15 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "爱恋动漫",
    "url": "http://kisssub.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
    "name": "漫猫动漫",
    "url": "https://comicat.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2472,7 +2472,7 @@ window.LINK_STATUS = {
    "name": "鲲",
    "url": "https://moyu.moe/",
    "kind": "ok",
-   "detail": "200，302→www.moyu.moe"
+   "detail": "200，302→www.moyu.moe（复核后正常）"
   },
   {
    "cat": "galgame",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "detail": "403"
   },
   {
    "cat": "galgame",
