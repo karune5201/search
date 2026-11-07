@@ -1,8 +1,8 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-07 00:10",
+ "generatedAt": "2026-11-07 23:36",
  "checked": 393,
- "elapsed": 503.5,
+ "elapsed": 178.7,
  "summary": {
   "ok": 300,
   "blocked": 70,
@@ -400,7 +400,7 @@ window.LINK_STATUS = {
    "name": "Mangabz",
    "url": "https://mangabz.com/",
    "kind": "ok",
-   "detail": "200（复核后正常）"
+   "detail": "200"
   },
   {
    "cat": "漫画",
@@ -1092,8 +1092,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200，302→www.ikuai8.com"
   },
   {
    "cat": "開發",
@@ -2072,8 +2072,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "FDM",
    "url": "https://freedownloadmanager.org/zh/download.htm",
-   "kind": "ok",
-   "detail": "200，301→www.freedownloadmanager.org"
+   "kind": "unknown",
+   "detail": "503（维护/限流），301→www.freedownloadmanager.org"
   },
   {
    "cat": "磁力",
@@ -2212,15 +2212,15 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "爱恋动漫",
    "url": "http://kisssub.org/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
    "name": "漫猫动漫",
    "url": "https://comicat.org/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2472,7 +2472,7 @@ window.LINK_STATUS = {
    "name": "鲲",
    "url": "https://moyu.moe/",
    "kind": "ok",
-   "detail": "200，302→www.moyu.moe（复核后正常）"
+   "detail": "200，302→www.moyu.moe"
   },
   {
    "cat": "galgame",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "403"
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "galgame",
@@ -2632,8 +2632,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "hentait",
    "url": "https://hentaitorrents.com/jp/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "520（源站/隧道异常）"
   },
   {
    "cat": "galgame",
