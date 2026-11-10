@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-08 23:35",
+ "generatedAt": "2026-11-10 02:40",
  "checked": 393,
- "elapsed": 178.6,
+ "elapsed": 178.0,
  "summary": {
-  "ok": 329,
+  "ok": 330,
   "blocked": 40,
   "dead": 6,
-  "unknown": 18
+  "unknown": 17
  },
  "items": [
   {
@@ -99,7 +99,7 @@ window.LINK_STATUS = {
    "name": "纳米Ai",
    "url": "https://www.n.cn/",
    "kind": "ok",
-   "detail": "200，302→work.n.cn（复核后正常）"
+   "detail": "200，302→work.n.cn"
   },
   {
    "cat": "Ai",
@@ -350,8 +350,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "安娜的档案",
    "url": "https://annas-archive.is/",
-   "kind": "unknown",
-   "detail": "521（源站/隧道异常）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "漫画",
