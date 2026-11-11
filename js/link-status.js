@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-10 02:40",
+ "generatedAt": "2026-11-11 00:32",
  "checked": 393,
- "elapsed": 178.0,
+ "elapsed": 115.1,
  "summary": {
-  "ok": 330,
+  "ok": 331,
   "blocked": 40,
   "dead": 6,
-  "unknown": 17
+  "unknown": 16
  },
  "items": [
   {
@@ -85,7 +85,7 @@ window.LINK_STATUS = {
    "name": "Grok",
    "url": "https://grok.com/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "200（复核后正常）"
   },
   {
    "cat": "Ai",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "detail": "403"
   },
   {
    "cat": "galgame",
