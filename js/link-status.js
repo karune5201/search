@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-11 00:32",
+ "generatedAt": "2026-11-12 01:53",
  "checked": 393,
- "elapsed": 115.1,
+ "elapsed": 119.4,
  "summary": {
-  "ok": 331,
+  "ok": 328,
   "blocked": 40,
   "dead": 6,
-  "unknown": 16
+  "unknown": 19
  },
  "items": [
   {
@@ -85,7 +85,7 @@ window.LINK_STATUS = {
    "name": "Grok",
    "url": "https://grok.com/",
    "kind": "ok",
-   "detail": "200（复核后正常）"
+   "detail": "200"
   },
   {
    "cat": "Ai",
@@ -1155,8 +1155,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "MSDN",
    "url": "https://msdn.itellyou.cn/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "525（源站/隧道异常）"
   },
   {
    "cat": "開發",
@@ -1891,7 +1891,7 @@ window.LINK_STATUS = {
    "name": "3DM",
    "url": "https://m.3dmgame.com/",
    "kind": "ok",
-   "detail": "200，302→www.3dmgame.com"
+   "detail": "200，302→www.3dmgame.com（复核后正常）"
   },
   {
    "cat": "遊戲",
@@ -2114,8 +2114,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "东京图书馆",
    "url": "https://tokyotosho.info/",
-   "kind": "ok",
-   "detail": "200，302→www.tokyotosho.info"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "403"
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "galgame",
