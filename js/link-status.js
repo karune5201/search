@@ -1,11 +1,11 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-12 01:53",
+ "generatedAt": "2026-11-13 01:07",
  "checked": 393,
- "elapsed": 119.4,
+ "elapsed": 574.1,
  "summary": {
-  "ok": 328,
-  "blocked": 40,
+  "ok": 329,
+  "blocked": 39,
   "dead": 6,
   "unknown": 19
  },
@@ -602,8 +602,8 @@ window.LINK_STATUS = {
    "cat": "郵箱",
    "name": "Outlook",
    "url": "https://outlook.live.com/",
-   "kind": "blocked",
-   "detail": "417"
+   "kind": "unknown",
+   "detail": "网络不可达"
   },
   {
    "cat": "郵箱",
@@ -1568,8 +1568,8 @@ window.LINK_STATUS = {
    "cat": "網盤",
    "name": "TMP",
    "url": "https://app.tmp.link/",
-   "kind": "ok",
-   "detail": "200，301→www.tmp.link"
+   "kind": "unknown",
+   "detail": "网络不可达，301→www.tmp.link"
   },
   {
    "cat": "網盤",
@@ -1891,7 +1891,7 @@ window.LINK_STATUS = {
    "name": "3DM",
    "url": "https://m.3dmgame.com/",
    "kind": "ok",
-   "detail": "200，302→www.3dmgame.com（复核后正常）"
+   "detail": "200，302→www.3dmgame.com"
   },
   {
    "cat": "遊戲",
@@ -2114,8 +2114,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "东京图书馆",
    "url": "https://tokyotosho.info/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200，302→www.tokyotosho.info"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
