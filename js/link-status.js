@@ -1,11 +1,11 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-13 01:07",
+ "generatedAt": "2026-11-14 00:58",
  "checked": 393,
- "elapsed": 574.1,
+ "elapsed": 505.5,
  "summary": {
-  "ok": 329,
-  "blocked": 39,
+  "ok": 327,
+  "blocked": 41,
   "dead": 6,
   "unknown": 19
  },
@@ -196,8 +196,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Y站",
    "url": "https://yande.re/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "動漫壁紙",
@@ -309,7 +309,7 @@ window.LINK_STATUS = {
    "name": "bilbil",
    "url": "https://bilibili.com/",
    "kind": "ok",
-   "detail": "200，302→www.bilibili.com"
+   "detail": "200，301→www.bilibili.com"
   },
   {
    "cat": "動漫",
@@ -372,7 +372,7 @@ window.LINK_STATUS = {
    "name": "library",
    "url": "https://z-library.sk/",
    "kind": "unknown",
-   "detail": "307 重定向循环"
+   "detail": "连接被重置"
   },
   {
    "cat": "漫画",
@@ -602,8 +602,8 @@ window.LINK_STATUS = {
    "cat": "郵箱",
    "name": "Outlook",
    "url": "https://outlook.live.com/",
-   "kind": "unknown",
-   "detail": "网络不可达"
+   "kind": "blocked",
+   "detail": "417"
   },
   {
    "cat": "郵箱",
@@ -1092,8 +1092,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "ok",
-   "detail": "200，302→www.ikuai8.com"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "開發",
@@ -1155,8 +1155,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "MSDN",
    "url": "https://msdn.itellyou.cn/",
-   "kind": "unknown",
-   "detail": "525（源站/隧道异常）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "開發",
@@ -1568,8 +1568,8 @@ window.LINK_STATUS = {
    "cat": "網盤",
    "name": "TMP",
    "url": "https://app.tmp.link/",
-   "kind": "unknown",
-   "detail": "网络不可达，301→www.tmp.link"
+   "kind": "ok",
+   "detail": "200，301→www.tmp.link"
   },
   {
    "cat": "網盤",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2451,7 +2451,7 @@ window.LINK_STATUS = {
    "name": "lewd",
    "url": "https://new.lewd.ninja/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "200（复核后正常）"
   },
   {
    "cat": "galgame",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "detail": "403"
   },
   {
    "cat": "galgame",
@@ -2737,8 +2737,8 @@ window.LINK_STATUS = {
    "cat": "GameBuying",
    "name": "Kagura",
    "url": "https://kaguragames.com/",
-   "kind": "ok",
-   "detail": "200，301→www.kaguragames.com"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "gal网盘直链",
