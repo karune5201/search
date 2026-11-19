@@ -1,12 +1,12 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-18 02:18",
+ "generatedAt": "2026-11-19 01:51",
  "checked": 393,
- "elapsed": 116.9,
+ "elapsed": 120.7,
  "summary": {
-  "ok": 327,
+  "ok": 326,
   "blocked": 41,
-  "dead": 7,
+  "dead": 8,
   "unknown": 18
  },
  "items": [
@@ -1092,8 +1092,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "ok",
-   "detail": "200，302→www.ikuai8.com"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "開發",
@@ -1351,8 +1351,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "螢火蟲資源站",
    "url": "https://yhcres.top/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "開發",
@@ -2254,8 +2254,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "AcgRip",
    "url": "https://acg.rip/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "502"
   },
   {
    "cat": "磁力",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "detail": "403"
   },
   {
    "cat": "galgame",
