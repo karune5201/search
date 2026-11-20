@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-19 01:51",
+ "generatedAt": "2026-11-20 01:46",
  "checked": 393,
- "elapsed": 120.7,
+ "elapsed": 180.3,
  "summary": {
-  "ok": 326,
+  "ok": 329,
   "blocked": 41,
-  "dead": 8,
-  "unknown": 18
+  "dead": 7,
+  "unknown": 16
  },
  "items": [
   {
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "unknown",
-   "detail": "连接被重置"
+   "kind": "ok",
+   "detail": "200，301→www.sankakucomplex.com"
   },
   {
    "cat": "動漫壁紙",
@@ -1092,8 +1092,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200，302→www.ikuai8.com"
   },
   {
    "cat": "開發",
@@ -1366,7 +1366,7 @@ window.LINK_STATUS = {
    "name": "日亞",
    "url": "https://amazon.co.jp/",
    "kind": "ok",
-   "detail": "200，301→www.amazon.co.jp"
+   "detail": "202，301→www.amazon.co.jp"
   },
   {
    "cat": "海購",
@@ -1380,14 +1380,14 @@ window.LINK_STATUS = {
    "name": "英亞",
    "url": "https://amazon.co.uk/",
    "kind": "ok",
-   "detail": "200，301→www.amazon.co.uk"
+   "detail": "202，301→www.amazon.co.uk"
   },
   {
    "cat": "海購",
    "name": "德亞",
    "url": "https://amazon.de",
    "kind": "ok",
-   "detail": "200，301→www.amazon.de"
+   "detail": "202，301→www.amazon.de"
   },
   {
    "cat": "海購",
@@ -2115,7 +2115,7 @@ window.LINK_STATUS = {
    "name": "东京图书馆",
    "url": "https://tokyotosho.info/",
    "kind": "ok",
-   "detail": "200，302→www.tokyotosho.info"
+   "detail": "200，302→www.tokyotosho.info（复核后正常）"
   },
   {
    "cat": "磁力",
@@ -2254,8 +2254,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "AcgRip",
    "url": "https://acg.rip/",
-   "kind": "dead",
-   "detail": "502"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
