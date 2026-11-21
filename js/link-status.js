@@ -1,11 +1,11 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-20 01:46",
+ "generatedAt": "2026-11-21 01:18",
  "checked": 393,
- "elapsed": 180.3,
+ "elapsed": 129.4,
  "summary": {
-  "ok": 329,
-  "blocked": 41,
+  "ok": 330,
+  "blocked": 40,
   "dead": 7,
   "unknown": 16
  },
@@ -196,8 +196,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Y站",
    "url": "https://yande.re/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "動漫壁紙",
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "ok",
-   "detail": "200，301→www.sankakucomplex.com"
+   "kind": "unknown",
+   "detail": "连接被重置"
   },
   {
    "cat": "動漫壁紙",
@@ -539,8 +539,8 @@ window.LINK_STATUS = {
    "cat": "影视",
    "name": "金牌影视",
    "url": "https://ksnnhbj.com/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "影视",
@@ -931,8 +931,8 @@ window.LINK_STATUS = {
    "cat": "工具",
    "name": "whoer",
    "url": "https://whoer.net/zh",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（attention required）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "工具",
@@ -1274,8 +1274,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "Mindows",
    "url": "https://mindows.cn/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "证书已过期"
   },
   {
    "cat": "開發",
@@ -1366,7 +1366,7 @@ window.LINK_STATUS = {
    "name": "日亞",
    "url": "https://amazon.co.jp/",
    "kind": "ok",
-   "detail": "202，301→www.amazon.co.jp"
+   "detail": "200，301→www.amazon.co.jp"
   },
   {
    "cat": "海購",
@@ -1380,14 +1380,14 @@ window.LINK_STATUS = {
    "name": "英亞",
    "url": "https://amazon.co.uk/",
    "kind": "ok",
-   "detail": "202，301→www.amazon.co.uk"
+   "detail": "200，301→www.amazon.co.uk"
   },
   {
    "cat": "海購",
    "name": "德亞",
    "url": "https://amazon.de",
    "kind": "ok",
-   "detail": "202，301→www.amazon.de"
+   "detail": "200，301→www.amazon.de"
   },
   {
    "cat": "海購",
@@ -1491,8 +1491,8 @@ window.LINK_STATUS = {
    "cat": "转运",
    "name": "tenso",
    "url": "https://tenso.com/chs",
-   "kind": "unknown",
-   "detail": "503（维护/限流），301→www.tenso.com"
+   "kind": "ok",
+   "detail": "200，301→www.tenso.com"
   },
   {
    "cat": "转运",
@@ -1533,8 +1533,8 @@ window.LINK_STATUS = {
    "cat": "網盤",
    "name": "MediaFire",
    "url": "https://mediafire.com/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "kind": "ok",
+   "detail": "200，302→www.mediafire.com"
   },
   {
    "cat": "網盤",
@@ -1764,8 +1764,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "play",
    "url": "https://purei.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "模擬器",
@@ -1848,8 +1848,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "DroidDeck",
    "url": "https://droiddeck.app/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "模擬器",
@@ -1989,7 +1989,7 @@ window.LINK_STATUS = {
    "name": "steam下載1",
    "url": "https://steamunlocked.net/",
    "kind": "ok",
-   "detail": "200，301→steamunlocked.org"
+   "detail": "200，301→steamunlocked.org（复核后正常）"
   },
   {
    "cat": "音樂",
@@ -2115,7 +2115,7 @@ window.LINK_STATUS = {
    "name": "东京图书馆",
    "url": "https://tokyotosho.info/",
    "kind": "ok",
-   "detail": "200，302→www.tokyotosho.info（复核后正常）"
+   "detail": "200，302→www.tokyotosho.info"
   },
   {
    "cat": "磁力",
@@ -2135,8 +2135,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "sukebei",
    "url": "https://sukebei.nyaa.si/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2338,8 +2338,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "字幕库",
    "url": "https://zimuku.org/",
-   "kind": "dead",
-   "detail": "404"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2374,7 +2374,7 @@ window.LINK_STATUS = {
    "name": "AniDB",
    "url": "https://anidb.net/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "detail": "反爬/人机验证（attention required）"
   },
   {
    "cat": "磁力",
@@ -2737,8 +2737,8 @@ window.LINK_STATUS = {
    "cat": "GameBuying",
    "name": "Kagura",
    "url": "https://kaguragames.com/",
-   "kind": "ok",
-   "detail": "200，301→www.kaguragames.com"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "gal网盘直链",
