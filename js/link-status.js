@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-21 01:18",
+ "generatedAt": "2026-11-22 00:14",
  "checked": 393,
- "elapsed": 129.4,
+ "elapsed": 105.9,
  "summary": {
-  "ok": 330,
-  "blocked": 40,
-  "dead": 7,
-  "unknown": 16
+  "ok": 328,
+  "blocked": 43,
+  "dead": 8,
+  "unknown": 14
  },
  "items": [
   {
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "unknown",
-   "detail": "连接被重置"
+   "kind": "ok",
+   "detail": "200，301→www.sankakucomplex.com"
   },
   {
    "cat": "動漫壁紙",
@@ -294,8 +294,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Google",
    "url": "https://google.com/imghp?hl=zh-TW&ogbl",
-   "kind": "ok",
-   "detail": "200，301→www.google.com"
+   "kind": "blocked",
+   "detail": "429，302→www.google.com"
   },
   {
    "cat": "動漫",
@@ -539,8 +539,8 @@ window.LINK_STATUS = {
    "cat": "影视",
    "name": "金牌影视",
    "url": "https://ksnnhbj.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "影视",
@@ -1645,8 +1645,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "红以太PS2",
    "url": "https://nethersx2.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "模擬器",
@@ -1989,7 +1989,7 @@ window.LINK_STATUS = {
    "name": "steam下載1",
    "url": "https://steamunlocked.net/",
    "kind": "ok",
-   "detail": "200，301→steamunlocked.org（复核后正常）"
+   "detail": "200，301→steamunlocked.org"
   },
   {
    "cat": "音樂",
@@ -2338,8 +2338,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "字幕库",
    "url": "https://zimuku.org/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "dead",
+   "detail": "404"
   },
   {
    "cat": "磁力",
@@ -2374,7 +2374,7 @@ window.LINK_STATUS = {
    "name": "AniDB",
    "url": "https://anidb.net/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（attention required）"
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "磁力",
