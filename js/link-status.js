@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-22 00:14",
+ "generatedAt": "2026-11-23 00:43",
  "checked": 393,
- "elapsed": 105.9,
+ "elapsed": 122.1,
  "summary": {
-  "ok": 328,
-  "blocked": 43,
-  "dead": 8,
-  "unknown": 14
+  "ok": 324,
+  "blocked": 42,
+  "dead": 9,
+  "unknown": 18
  },
  "items": [
   {
@@ -196,8 +196,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Y站",
    "url": "https://yande.re/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "動漫壁紙",
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "ok",
-   "detail": "200，301→www.sankakucomplex.com"
+   "kind": "unknown",
+   "detail": "连接被重置"
   },
   {
    "cat": "動漫壁紙",
@@ -294,8 +294,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Google",
    "url": "https://google.com/imghp?hl=zh-TW&ogbl",
-   "kind": "blocked",
-   "detail": "429，302→www.google.com"
+   "kind": "ok",
+   "detail": "200，301→www.google.com"
   },
   {
    "cat": "動漫",
@@ -931,8 +931,8 @@ window.LINK_STATUS = {
    "cat": "工具",
    "name": "whoer",
    "url": "https://whoer.net/zh",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（attention required）"
   },
   {
    "cat": "工具",
@@ -1057,8 +1057,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "Open在線編譯",
    "url": "https://supes.top/",
-   "kind": "ok",
-   "detail": "200，301→openwrt.ai"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "開發",
@@ -1491,8 +1491,8 @@ window.LINK_STATUS = {
    "cat": "转运",
    "name": "tenso",
    "url": "https://tenso.com/chs",
-   "kind": "ok",
-   "detail": "200，301→www.tenso.com"
+   "kind": "unknown",
+   "detail": "503（维护/限流），301→www.tenso.com"
   },
   {
    "cat": "转运",
@@ -1533,8 +1533,8 @@ window.LINK_STATUS = {
    "cat": "網盤",
    "name": "MediaFire",
    "url": "https://mediafire.com/",
-   "kind": "ok",
-   "detail": "200，302→www.mediafire.com"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "網盤",
@@ -1645,8 +1645,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "红以太PS2",
    "url": "https://nethersx2.com/",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "模擬器",
@@ -1764,8 +1764,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "play",
    "url": "https://purei.org/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "模擬器",
@@ -1995,8 +1995,8 @@ window.LINK_STATUS = {
    "cat": "音樂",
    "name": "foobar汉化版",
    "url": "https://www.cnblogs.com/asionwu",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "dead",
+   "detail": "500"
   },
   {
    "cat": "音樂",
@@ -2135,8 +2135,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "sukebei",
    "url": "https://sukebei.nyaa.si/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2667,8 +2667,8 @@ window.LINK_STATUS = {
    "cat": "ASMR",
    "name": "heniasmr",
    "url": "https://hentaiasmr.moe/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "ASMR",
