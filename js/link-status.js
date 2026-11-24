@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-23 00:43",
+ "generatedAt": "2026-11-24 04:43",
  "checked": 393,
- "elapsed": 122.1,
+ "elapsed": 119.4,
  "summary": {
-  "ok": 324,
-  "blocked": 42,
-  "dead": 9,
-  "unknown": 18
+  "ok": 325,
+  "blocked": 44,
+  "dead": 7,
+  "unknown": 17
  },
  "items": [
   {
@@ -1057,8 +1057,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "Open在線編譯",
    "url": "https://supes.top/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200，301→openwrt.ai"
   },
   {
    "cat": "開發",
@@ -1274,8 +1274,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "Mindows",
    "url": "https://mindows.cn/",
-   "kind": "dead",
-   "detail": "证书已过期"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "開發",
@@ -1946,8 +1946,8 @@ window.LINK_STATUS = {
    "cat": "遊戲",
    "name": "大自然搬运工",
    "url": "https://yoooyo.com",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "遊戲",
@@ -1995,8 +1995,8 @@ window.LINK_STATUS = {
    "cat": "音樂",
    "name": "foobar汉化版",
    "url": "https://www.cnblogs.com/asionwu",
-   "kind": "dead",
-   "detail": "500"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "音樂",
@@ -2205,8 +2205,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "花园资源站",
    "url": "https://dongmanhuayuan.com/",
-   "kind": "unknown",
-   "detail": "证书校验失败"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2289,8 +2289,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "mkvtoolnix",
    "url": "https://mkvtoolnix.download/downloads.html",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "403"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2577,7 +2577,7 @@ window.LINK_STATUS = {
    "name": "denpasoft",
    "url": "https://denpasoft.com/",
    "kind": "blocked",
-   "detail": "403"
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "galgame",
