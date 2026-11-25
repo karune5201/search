@@ -60,8 +60,16 @@
         return false;
     }
 
+    function isMobileSearch() {
+        return (window.matchMedia && window.matchMedia('(max-width: 767px), (pointer: coarse)').matches) ||
+            window.innerWidth <= 767;
+    }
+
     function t() {
         var selected = document.querySelector('input[name="type"]:checked');
+        if (selected && selected.value === 'https://search.bilibili.com/all?keyword=') {
+            return isMobileSearch() ? 'https://m.bilibili.com/search?keyword=' : selected.value;
+        }
         return selected ? selected.value : a[0].value
     }
 

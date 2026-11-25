@@ -1,4 +1,4 @@
-/* Search suggestions: local history + site labels + optional engine suggestions. */
+/* Search suggestions: local saved query history only. */
 (function () {
     var input = document.getElementById('search-text');
     var form = document.getElementById('super-search-fm');
@@ -6,9 +6,9 @@
     if (!input || !form || !list) return;
 
     var HISTORY_KEY = 'superSearch.queryHistory';
-    var HISTORY_LIMIT = 12;
-    var SUGGEST_DELAY = 180;
-    var MAX_ITEMS = 8;
+    var HISTORY_LIMIT = 5;
+    var MAX_ITEMS = 5;
+    var SUGGEST_DELAY = 80;
     var timer = null;
     var requestId = 0;
     var activeIndex = -1;
@@ -20,22 +20,10 @@
     form.appendChild(inlineHint);
     var measureCanvas = document.createElement('canvas');
     var measureContext = measureCanvas.getContext && measureCanvas.getContext('2d');
-    var endpoints = {
-        'https://google.com/search?q=': function (q) {
-            return 'https://suggestqueries.google.com/complete/search?client=firefox&q=' + encodeURIComponent(q);
-        },
-        'https://bing.com/search?q=': function (q) {
-            return 'https://api.bing.com/osjson.aspx?query=' + encodeURIComponent(q);
-        },
-        'https://duckduckgo.com/?q=': function (q) {
-            return 'https://duckduckgo.com/ac/?q=' + encodeURIComponent(q) + '&type=list';
-        }
-    };
-
     function readHistory() {
         try {
             var value = JSON.parse(localStorage.getItem(HISTORY_KEY));
-            return Array.isArray(value) ? value.filter(function (x) { return typeof x === 'string'; }) : [];
+            return Array.isArray(value) ? value.filter(function (x) { return typeof x === 'string' && x.trim(); }) : [];
         } catch (e) {
             return [];
         }
@@ -47,49 +35,17 @@
         try { localStorage.setItem(HISTORY_KEY, JSON.stringify(values.slice(0, HISTORY_LIMIT))); } catch (e) {}
     }
 
-    function selectedEngine() {
-        var node = document.querySelector('input[name="type"]:checked');
-        return node ? node.value : '';
+    function removeHistory(query) {
+        var values = readHistory().filter(function (x) { return x.toLowerCase() !== query.toLowerCase(); });
+        try { localStorage.setItem(HISTORY_KEY, JSON.stringify(values)); } catch (e) {}
     }
-
-    function getSiteLabels() {
-        var data = window.SuperSearchPanel && window.SuperSearchPanel.getSites ?
-            window.SuperSearchPanel.getSites() : (window.SITE_DATA || []);
-        var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            var sites = data[i] && data[i].sites || [];
-            for (var j = 0; j < sites.length; j++) {
-                if (sites[j] && typeof sites[j][0] === 'string') labels.push(sites[j][0]);
-            }
-        }
-        return labels;
-    }
-
     function localSuggestions(query) {
         var q = query.toLowerCase();
-        var matches = [];
-        readHistory().forEach(function (text) {
-            if (text.toLowerCase().indexOf(q) !== -1) matches.push({ text: text, source: '搜索历史' });
+        return readHistory().filter(function (text) {
+            return text.toLowerCase().indexOf(q) !== -1;
+        }).slice(0, MAX_ITEMS).map(function (text) {
+            return { text: text, source: '本地搜索记录' };
         });
-        getSiteLabels().forEach(function (text) {
-            if (text.toLowerCase().indexOf(q) !== -1 && !matches.some(function (item) { return item.text === text; })) {
-                matches.push({ text: text, source: '站点' });
-            }
-        });
-        return matches.slice(0, MAX_ITEMS);
-    }
-
-    function parseRemote(data, engine) {
-        var values = [];
-        if (engine === 'https://google.com/search?q=' && Array.isArray(data) && Array.isArray(data[1])) {
-            values = data[1];
-        } else if (engine === 'https://bing.com/search?q=' && Array.isArray(data) && Array.isArray(data[1])) {
-            values = data[1];
-        } else if (engine === 'https://duckduckgo.com/?q=' && Array.isArray(data)) {
-            values = data.map(function (x) { return x && x.phrase; });
-        }
-        return values.filter(function (x) { return typeof x === 'string' && x.trim(); })
-            .map(function (text) { return { text: text.trim(), source: '联网联想' }; });
     }
 
     function renderInlineHint(query, items) {
@@ -111,26 +67,6 @@
         inlineHint.style.fontWeight = style.fontWeight;
         inlineHint.style.letterSpacing = style.letterSpacing;
         inlineHint.textContent = match.text.slice(query.length);
-    }
-
-    function remoteSuggestions(query, id) {
-        var engine = selectedEngine();
-        var buildUrl = endpoints[engine];
-        if (!buildUrl || !window.fetch) return Promise.resolve([]);
-        var controller = window.AbortController ? new AbortController() : null;
-        var options = { method: 'GET', mode: 'cors', credentials: 'omit' };
-        if (controller) options.signal = controller.signal;
-        var timeout = setTimeout(function () { if (controller) controller.abort(); }, 2500);
-        return fetch(buildUrl(query), options).then(function (response) {
-            if (!response.ok) throw new Error('suggestion request failed');
-            return response.json();
-        }).then(function (data) {
-            if (id !== requestId) return [];
-            return parseRemote(data, engine);
-        }).catch(function () { return []; }).then(function (items) {
-            clearTimeout(timeout);
-            return items;
-        });
     }
 
     function render(items) {
@@ -158,6 +94,20 @@
             source.textContent = item.source;
             li.appendChild(label);
             li.appendChild(source);
+            var remove = document.createElement('button');
+            remove.type = 'button';
+            remove.className = 'suggestion-remove';
+            remove.setAttribute('aria-label', '删除关键词：' + item.text);
+            remove.title = '删除这条记录';
+            remove.textContent = '';
+            remove.addEventListener('mousedown', function (event) { event.preventDefault(); });
+            remove.addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                removeHistory(item.text);
+                schedule();
+            });
+            li.appendChild(remove);
             li.addEventListener('mousedown', function (event) { event.preventDefault(); });
             li.addEventListener('click', function () {
                 input.value = item.text;
@@ -203,16 +153,8 @@
         var query = input.value.trim();
         if (!query) { close(); return; }
         timer = setTimeout(function () {
-            var local = localSuggestions(query);
-            render(local);
-            remoteSuggestions(query, id).then(function (remote) {
-                if (id !== requestId || input.value.trim() !== query) return;
-                var merged = local.slice();
-                remote.forEach(function (item) {
-                    if (merged.length < MAX_ITEMS && !merged.some(function (x) { return x.text.toLowerCase() === item.text.toLowerCase(); })) merged.push(item);
-                });
-                render(merged);
-            });
+            if (id !== requestId || input.value.trim() !== query) return;
+            render(localSuggestions(query));
         }, SUGGEST_DELAY);
     }
 
