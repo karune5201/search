@@ -1,14 +1,9 @@
 ! function() {
     function g() {
-        h();
         i();
         j();
         k();
     }
-    function h() {
-        d.checked = s()
-    }
-
     function i() {
         var a = document.querySelector('input[name="type"][value="' + p() + '"]');
         a && (a.checked = !0, l(a))
@@ -50,10 +45,6 @@
         return b || a[0].value
     }
 
-    function q(a) {
-        m("newWindow", a.target.checked ? 1 : -1), x(a.target.checked)
-    }
-
     function r(a) {
         a.preventDefault();
         var query = c.value.trim();
@@ -62,16 +53,11 @@
             return false;
         }
         // 查询词必须编码，避免空格、#、& 等字符破坏目标地址。
-        w(t() + encodeURIComponent(query));
-        x(s());
-        if (s()) window.open(b.action, '_blank', 'noopener');
-        else location.href = b.action;
+        var targetUrl = t() + encodeURIComponent(query);
+        var opened = window.open(targetUrl, '_blank');
+        if (!opened) location.href = targetUrl;
+        else opened.opener = null;
         return false;
-    }
-
-    function s() {
-        var a = n("newWindow");
-        return a ? 1 == a : !0
     }
 
     function t() {
@@ -93,17 +79,13 @@
         b.action = a
     }
 
-    function x(a) {
-        a ? b.target = "_blank" : b.removeAttribute("target")
-    }
     var y, a = document.querySelectorAll('input[name="type"]'),
         b = document.querySelector("#super-search-fm"),
         c = document.querySelector("#search-text"),
-        d = document.querySelector("#set-search-blank"),
         e = document.querySelectorAll(".search-group"),
         f = a[0];
     for (g(), y = 0; y < a.length; y++) a[y].addEventListener("change", o);
-    d && d.addEventListener("change", q), b && b.addEventListener("submit", r)
+    b && b.addEventListener("submit", r)
 }();
 	function bq(){
 		document.getElementById('super-search-fm').style.display = 'none';

@@ -271,28 +271,6 @@
 	background-color: rgba(240, 240, 240, .3);
 }
 
-.set-check {
-	margin-top: 8px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 7px;
-	font-size: 12px;
-	color: rgba(255, 255, 255, .78);
-}
-
-.set-check input {
-	width: 15px;
-	height: 15px;
-	margin: 0;
-	accent-color: #68c7a1;
-	cursor: pointer;
-}
-
-.set-check label {
-	cursor: pointer;
-}
-
 .fa-2x {
 	padding-top: 15px;
 	font-size: 1.5em;

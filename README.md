@@ -72,8 +72,6 @@ js/ipinfo.js        # 页脚访客 IPv4 + IPv6 / 国内海外 / 中文归属地
 js/visits.js        # 页脚游客访问量（abacus 计数）
 js/wallpaper.js     # 随机壁纸（每次刷新都换，带缓存穿透）
 js/weather.js       # 左上角天气（按 IP 定位）
-js/yyss.js          # 已停用：依赖 PHP 后端 api.php
-js/lianxiang.js     # 已停用：依赖失效的百度联想接口
 ziti/font.woff2     # 自定义字体（已子集化：656KB / 4065 字形）
 CHANGELOG.md        # 本次修复与优化清单
 tools/subset-font.py   # 字体子集化脚本（改文案后重建字体用）
