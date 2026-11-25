@@ -28,14 +28,14 @@
   <link rel="preconnect" href="https://www.dmoe.cc" crossorigin />
   <link rel="preload" href="ziti/font.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link href="css/bizhi.css" rel="stylesheet" />
-  <link href="css/sousuo.css" rel="stylesheet" />
-  <link href="css/anim.css" rel="stylesheet" />
-  <link href="css/ipinfo.css" rel="stylesheet" />
-  <link href="css/weather.css" rel="stylesheet" />
-  <link href="css/pet.css" rel="stylesheet" />
-  <link href="source/css/custom.css" rel="stylesheet" />
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="css/bizhi.css?v=20261125a" rel="stylesheet" />
+  <link href="css/sousuo.css?v=20261125a" rel="stylesheet" />
+  <link href="css/anim.css?v=20261125a" rel="stylesheet" />
+  <link href="css/ipinfo.css?v=20261125a" rel="stylesheet" />
+  <link href="css/weather.css?v=20261125a" rel="stylesheet" />
+  <link href="css/pet.css?v=20261125a" rel="stylesheet" />
+  <link href="source/css/custom.css?v=20261125a" rel="stylesheet" />
+  <link href="css/responsive.css?v=20261125a" rel="stylesheet" />
 </head>
 <body>
   <!-- 随机背景层（CSS 里带渐变兜底） -->
@@ -101,11 +101,26 @@
 </div>
 
 <div id="search" class="s-search">
-    <!-- 时间 / 日期 / 问候 -->
+    <!-- 时间 / 问候 -->
     <div class="hero-greet">
+        <div class="greet-time" id="greet-clock" role="img" aria-label="当前时间">
+            <span class="greet-hour" id="greet-hour">
+                <span class="flip-digit">-</span><span class="flip-digit">-</span>
+            </span>
+            <span class="greet-minute" id="greet-minute">
+                <span class="flip-digit">-</span><span class="flip-digit">-</span>
+            </span>
+            <span class="greet-second" id="greet-second">
+                <span class="flip-digit">-</span><span class="flip-digit">-</span>
+            </span>
+        </div>
+        <div class="lockscreen-meta">
+            <span id="greet-weekday-long">Thursday</span>
+            <span id="greet-monthday-short">Nov 26</span>
+        </div>
+        <p class="greet-date-full" id="greet-date-full"></p>
+        <p class="greet-date-line" id="greet-date-line"></p>
         <p class="greet-text" id="greet-text">你好</p>
-        <p class="greet-time" id="greet-clock">--:--</p>
-        <p class="greet-date" id="greet-date"></p>
     </div>
 
     <div id="search-list" class="hide-type-list">
@@ -197,21 +212,21 @@
 
 <!-- 站点脚本（原生 JS，无第三方依赖） -->
 <!-- defer：等 DOM 解析完再执行，避免脚本取不到页脚等靠后的节点 -->
-<script defer src="js/xd.js"></script>
-<script defer src="js/sites.js"></script>
-<script defer src="js/panel.js"></script>
-<script defer src="js/recent.js"></script>
-<script defer src="js/clock.js"></script>
-<script defer src="js/sousuo.js"></script>
-<script defer src="js/suggestions.js"></script>
-<script defer src="js/fun.js"></script>
-<script defer src="js/duration.js"></script>
-<script defer src="js/wallpaper.js"></script>
-<script defer src="js/ipinfo.js"></script>
-<script defer src="js/visits.js"></script>
-  <script defer src="js/pet-lines.js"></script>
-  <script defer src="js/pet.js"></script>
-<script defer src="js/weather.js"></script>
+<script defer src="js/xd.js?v=20261125a"></script>
+<script defer src="js/sites.js?v=20261125a"></script>
+<script defer src="js/panel.js?v=20261125a"></script>
+<script defer src="js/recent.js?v=20261125a"></script>
+<script defer src="js/clock.js?v=20261125a"></script>
+<script defer src="js/sousuo.js?v=20261125a"></script>
+<script defer src="js/suggestions.js?v=20261125a"></script>
+<script defer src="js/fun.js?v=20261125a"></script>
+<script defer src="js/duration.js?v=20261125a"></script>
+<script defer src="js/wallpaper.js?v=20261125a"></script>
+<script defer src="js/ipinfo.js?v=20261125a"></script>
+<script defer src="js/visits.js?v=20261125a"></script>
+  <script defer src="js/pet-lines.js?v=20261125a"></script>
+  <script defer src="js/pet.js?v=20261125a"></script>
+<script defer src="js/weather.js?v=20261125a"></script>
 
 
 <!-- 已停用：

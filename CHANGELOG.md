@@ -388,3 +388,104 @@ python3 tools/check-links.py --report link-report.md
 同时加了 `concurrency: check-links`（防止两次运行互相覆盖数据文件、push 打架）、`timeout-minutes: 40`、提交前 `git pull --rebase --autostash`（期间有人推了站点改动也不会 push 失败），以及第一步的「分类规则自检」。
 
 `status.html` / `js/status.js` / README / NOTES 里的「每周」文案一并改成「每天」。
+
+---
+
+## 十九、时间块三种样式全部翻牌，冒号跟着秒闪，线上样式加秒
+
+时间模块现在有三种样式，点一下时间块就换一种（顺序：翻牌 → 单行 → 线上），选择记在
+`localStorage` 的 `dsh-clock-look` 里，刷新后保持：
+
+| 样式 | 样子 | 翻牌 | 冒号 | 秒 |
+|------|------|------|------|----|
+| `flip`（默认） | 上下两行 75px 大时钟 + 英文星期 / 月日 + 问候 | 有 | 无 | 无 |
+| `line` | Iconify `clock_3`：一行 100px 粗体 `HH:mm`，上方英文整日期 | 有 | 闪 | 无 |
+| `online` | 线上现行样式：问候 / 46px 时间 / 中文日期，纯文字无卡片 | 有 | 闪 | 有 |
+
+### 翻牌的三个修正
+
+1. **`perspective()` 挪进数字自己的 transform**。原来只在 `.greet-time` 上写 `perspective: 620px`，
+   而 3D 景深只作用于它的直接子元素；真正翻转的 `.flip-digit` 是孙子节点，拿不到景深，
+   `rotateX` 只被压成 2D 缩放，看起来"没动"。现在写成
+   `transform: perspective(420px) rotateX(-86deg)`，三种样式都不再依赖祖先的 3D 上下文。
+2. **单行样式不再跳字**。之前 `[data-clock-look="line"] .flip-digit` 上有
+   `transform/animation/transition: none !important`，等于把翻牌关掉；该规则已删除。
+3. **秒也要翻**。`#greet-second` 与时分用同一套 `.flip-digit`，`tick` 从 10 秒改成 1 秒一跳，
+   秒位每秒翻一次。
+
+### 冒号闪烁
+
+`@keyframes colonBlink`（2 秒周期，`steps(1)` 硬切，`opacity` 在 1 与 .2 之间跳），
+只加在有冒号的样式上（`line` / `online` 的 `.greet-minute::before`，`online` 还有
+`.greet-second::before`）。`prefers-reduced-motion: reduce` 下不闪。
+
+### 一个坑
+
+`#greet-second` 一开始带 `hidden` 属性，而 `css/bizhi.css` 里有
+`[hidden] { display: none !important; }`（面板遮罩功能需要它），`!important` 把
+`online` 样式的 `display: flex` 直接压掉，秒永远不显示。改成不带 `hidden`，
+由 `[data-clock-style="lockscreen"] .greet-second { display: none }` 兜底。
+
+### 验证
+
+`node --check`、`git diff --check`、`tools/check-links.py --selftest` 23/23、
+`tools/check-responsive.py` 14 个视口、CSS 大括号 127/127 全过。
+`file://` 下用 chromium 探针实测三种样式：`is-out` → `is-in` 都出现
+`flipDigitIn` 动画与 `matrix3d`，390×844 / 320×568 / 740×360 / 1280×800
+均无裁切、无横向溢出（`overflowX = 0`）。
+
+## 二十、面板顶部那根黑杠：三层原因、三层拆掉
+
+### 症状
+
+浅色壁纸上打开站点面板，最上面「搜索站点…」输入框背后是一条黑色长方块，
+像是给输入框加了个黑色阴影。
+
+### 三层原因（都是「在深色毛玻璃上再叠一层」）
+
+灰底对照实测：隐藏壁纸、`html,body` 涂 `#8a8a8a`、只留遮罩与面板，
+读同一列的灰度值（越高越亮）。
+
+| 位置 | 原始 | 处理 | 处理后 |
+|---|---|---|---|
+| 过滤栏 `.panel-tools`（黑渐变 `.96`） | 17–20 | 改成 `transparent`，只剩一条 1px 细线 | 44–50 |
+| 筛选框 `.panel-filter`（自身 `backdrop-filter: blur(12px)`） | 44 | 去掉自身 blur | 66 |
+| 分类标题 `.panel-sec .title`（自身 `blur(18px)`） | 52 | 去掉自身 blur | 72 |
+| 面板本体（空背景） | — | — | 47–50 |
+
+结论：
+
+1. `.panel-tools` 原本铺 `linear-gradient(180deg, rgba(14,16,21,.96), .88 70%, transparent)`，
+   而它整个坐在 `.list` 的 `rgba(10,12,16,.55)` 上，同一块区域被压两遍。
+2. `.list` 已经 `backdrop-filter: blur(22px)`，子元素再写 `backdrop-filter`（筛选框、
+   分类标题）时 Chrome 会把底色再压掉约三成——44 对 66、52 对 72，肉眼就是
+   「框后面一块黑」。
+3. 连换成「同色同透明度」的 `.55` 叠色也一样压（26），所以这栏不能有任何底色。
+
+### 改法
+
+- `.panel-tools`：`background: transparent`，去掉 `backdrop-filter`，留
+  `border-bottom: 1px solid rgba(255,255,255,.08)` 做分隔。
+- `.panel-filter` / `.panel-sec .title`：删掉各自的 `backdrop-filter`，
+  底色提到 `rgba(255,255,255,.10)`。
+- 面板本体 `.list` 的毛玻璃保留（它糊的是页面背景，不是自己人）。
+
+### 顺带：静态资源加版本号
+
+这次排查绕了一圈才发现是**浏览器缓存着旧 CSS**——改完刷新还是老样子，
+很容易误判成「没修好」。新增 `tools/bump-assets.py`：
+
+```
+python3 tools/bump-assets.py        # 用当天日期，如 20261125a
+python3 tools/bump-assets.py v7     # 自定义
+```
+
+它把 `index.html` / `status.html` 里所有本地 `css/*.css`、`js/*.js`、
+`source/css/*.css` 引用统一加上 `?v=…`（外链不动）。改完样式跑一次，
+手机上就不必手动清缓存。
+
+### 验证
+
+灰底探针 390×844：顶栏 44–50、筛选框 66–69、分类标题 72–73、本体 47–78，
+全段一致，无黑带；`tools/check-links.py --selftest` 23/23、
+`tools/check-responsive.py` 14 视口、CSS 大括号配平、预览 200。

@@ -329,11 +329,12 @@ a {
     padding: 0 10px;
     border: 1px solid rgba(255, 255, 255, .18);
     border-radius: 9px;
-    /* 毛玻璃：透出后面的壁纸，而不是一条纯黑色带 */
+    /* 这里不再二次 backdrop-filter：父级 .list 已经 blur 过一次，
+       在毛玻璃里再 blur 一次，Chrome 会把底色再压掉约三成
+       （灰底实测：标题 72 → 52，跟面板本体 68 差出一截，看着像黑条）。
+       改成纯半透明白，亮度与面板一致 */
     background: rgba(255, 255, 255, .10);
-    -webkit-backdrop-filter: blur(18px) saturate(1.4);
-    backdrop-filter: blur(18px) saturate(1.4);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 2px 10px rgba(0, 0, 0, .12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
 }
 
 .panel-sec:first-child .title {
@@ -442,7 +443,13 @@ a {
     display: flex;
     gap: 8px;
     padding: 12px 0 10px;
-    background: linear-gradient(180deg, rgba(14, 16, 21, .96) 0%, rgba(14, 16, 21, .88) 70%, rgba(14, 16, 21, 0) 100%);
+    /* 这里原本是到 .96 的黑色渐变。面板本体已经是 .list 的 .55 深色毛玻璃，
+       再叠一层就是双倍压黑，浅色壁纸上一眼一根黑杠。
+       实测（灰底对照）：不加层的面板本体亮度 48，加 .55 叠色变 26，
+       加 backdrop-filter 也会被压到 24 —— 叠在毛玻璃上的任何一层都会二次压暗，
+       所以这一栏不涂底色、不做 blur，只用一条细线把它和内容分开 */
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
 }
 
 .panel-tools .panel-filter {
@@ -476,9 +483,9 @@ a {
     font-size: 13px;
     border: 1px solid rgba(255, 255, 255, .18);
     border-radius: 9px;
-    background: rgba(255, 255, 255, .08);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    /* 同上：.list 已经模糊过，这里再叠一层会把输入框压暗
+       （灰底实测 62 → 44），看上去就是「框后面一块黑」 */
+    background: rgba(255, 255, 255, .10);
     transition: background-color .2s ease, border-color .2s ease;
 }
 

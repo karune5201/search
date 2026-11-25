@@ -63,7 +63,7 @@ css/responsive.css  # 响应式适配：电脑 / 平板 / 手机、刘海屏安�
 source/css/custom.css  # 自定义鼠标指针（可选）
 js/xd.js            # 收纳面板开关、遮罩、快捷键（原生 JS）
 js/panel.js         # 面板增强：搜索过滤、最近访问
-js/clock.js         # 主界面：时间 / 日期 / 翻牌时钟
+js/clock.js         # 主界面：时间 / 日期 / 三种样式翻牌时钟（点时间切换）
 js/fun.js           # 随机站点、一言打字机提示、方向键彩蛋、壁纸视差
 js/recent.js        # 最近访问（面板分区，本地记录）
 js/sousuo.js        # 搜索源切换 / 提交逻辑
@@ -77,6 +77,7 @@ CHANGELOG.md        # 本次修复与优化清单
 tools/subset-font.py   # 字体子集化脚本（改文案后重建字体用）
 tools/check-links.py   # 死链检测（纯标准库，可本地跑或由 Actions 定时跑）
 tools/check-responsive.py  # 各视口断点取值核对（打印生效的宽度/字号，查重叠）
+tools/bump-assets.py   # 给页面里本地 css/js 引用统一换 ?v= 版本号（改完样式跑一次）
 status.html          # 站点状态页（游客可看的死链报告）
 css/status.css       # 站点状态页样式
 js/link-status.js    # 检测结果数据（Actions 自动生成并提交）
@@ -122,6 +123,20 @@ window.SITE_DATA = [
 
 左上角**天气**：按 IP 定位的城市显示图标 + 温度 + 描述（`api.open-meteo.com`，免 key），缓存 30 分钟；IP 拿不到坐标时自动隐藏。想固定城市，改 `js/weather.js` 里 `geo:ready` 监听直接传固定坐标即可。
 
+## 主界面时间块
+
+顶部时间块有三种样式，**点一下时间块**就换到下一种，顺序是 翻牌 → 单行 → 线上，选择记在
+`localStorage` 的 `dsh-clock-look`，刷新后保持。鼠标悬停会微微提亮，键盘 Tab 到它再按 Enter / 空格也能切换。
+
+| 样式 | 内容 | 翻牌 | 冒号 | 秒 |
+|------|------|------|------|----|
+| `flip`（默认） | 上下两行 75px 大时钟 + 英文星期 / 月日 + 问候 | 有 | — | — |
+| `line` | Iconify `clock_3` 单行：上方英文整日期 + 100px 粗体 `HH:mm` | 有 | 闪 | — |
+| `online` | 线上现行样式：问候 / 46px 时间 / 中文日期，纯文字、无卡片无模糊 | 有 | 闪 | 有 |
+
+翻牌是逐位做的：数字先绕水平中轴翻出去（150ms），翻到接近 90° 时换字，再翻回来（300ms）。
+`prefers-reduced-motion: reduce` 下不翻牌、冒号也不闪。
+
 ## 响应式适配
 
 `css/responsive.css` 放在所有样式表最后，只做布局自适应，不改原有视觉风格。分档如下：
@@ -151,6 +166,19 @@ python3 tools/check-responsive.py
 ```
 
 会打印 14 种视口的面板宽度、搜索框宽度、顶部位置、字号，并估算页脚是否压住搜索框。
+
+## 改完样式手机上没变化？
+
+GitHub Pages 的静态资源是可缓存的，手机浏览器会把旧 CSS 一直用下去，
+现象就是「明明改了、刷新还是老样子」。纯静态站没有构建步骤，所以用查询串做版本号：
+
+```bash
+python3 tools/bump-assets.py        # 用当天日期，如 20261125a
+python3 tools/bump-assets.py v7     # 或自定义
+```
+
+它会把 `index.html`、`status.html` 里所有本地 `css/*.css`、`js/*.js`、
+`source/css/*.css` 引用改成 `?v=当前版本`（外链不动）。发布前跑一次即可。
 
 ## 随机壁纸
 
