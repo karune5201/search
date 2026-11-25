@@ -14,6 +14,12 @@
     var activeIndex = -1;
     var composing = false;
     var currentItems = [];
+    var inlineHint = document.createElement('span');
+    inlineHint.className = 'search-inline-hint';
+    inlineHint.setAttribute('aria-hidden', 'true');
+    form.appendChild(inlineHint);
+    var measureCanvas = document.createElement('canvas');
+    var measureContext = measureCanvas.getContext && measureCanvas.getContext('2d');
     var endpoints = {
         'https://google.com/search?q=': function (q) {
             return 'https://suggestqueries.google.com/complete/search?client=firefox&q=' + encodeURIComponent(q);
@@ -86,6 +92,27 @@
             .map(function (text) { return { text: text.trim(), source: '联网联想' }; });
     }
 
+    function renderInlineHint(query, items) {
+        inlineHint.textContent = '';
+        if (!query || query !== query.trim() || document.activeElement !== input) return;
+        var match = items.find(function (item) {
+            return item.text.toLowerCase().indexOf(query.toLowerCase()) === 0 && item.text.length > query.length;
+        });
+        if (!match) return;
+        var style = window.getComputedStyle ? window.getComputedStyle(input) : null;
+        if (!style) return;
+        if (measureContext) measureContext.font = style.font;
+        var letterSpacing = parseFloat(style.letterSpacing) || 0;
+        var width = measureContext ? measureContext.measureText(query).width + letterSpacing * query.length : query.length * 9;
+        var textInset = parseFloat(style.paddingLeft) + parseFloat(style.borderLeftWidth);
+        inlineHint.style.left = (textInset + width) + 'px';
+        inlineHint.style.fontFamily = style.fontFamily;
+        inlineHint.style.fontSize = style.fontSize;
+        inlineHint.style.fontWeight = style.fontWeight;
+        inlineHint.style.letterSpacing = style.letterSpacing;
+        inlineHint.textContent = match.text.slice(query.length);
+    }
+
     function remoteSuggestions(query, id) {
         var engine = selectedEngine();
         var buildUrl = endpoints[engine];
@@ -111,7 +138,10 @@
         activeIndex = -1;
         list.textContent = '';
         if (!currentItems.length) {
-            close();
+            list.style.display = 'none';
+            input.setAttribute('aria-expanded', 'false');
+            input.removeAttribute('aria-activedescendant');
+            renderInlineHint(input.value.trim(), currentItems);
             return;
         }
         currentItems.forEach(function (item, index) {
@@ -138,12 +168,16 @@
         });
         list.style.display = 'block';
         input.setAttribute('aria-expanded', 'true');
+        renderInlineHint(input.value.trim(), currentItems);
     }
 
     function close() {
+        clearTimeout(timer);
+        requestId++;
         list.style.display = 'none';
         list.textContent = '';
         currentItems = [];
+        inlineHint.textContent = '';
         input.setAttribute('aria-expanded', 'false');
         input.removeAttribute('aria-activedescendant');
         activeIndex = -1;
@@ -160,6 +194,7 @@
         }
         input.setAttribute('aria-activedescendant', 'search-suggestion-' + activeIndex);
         input.value = currentItems[activeIndex].text;
+        inlineHint.textContent = '';
     }
 
     function schedule() {
@@ -182,7 +217,7 @@
     }
 
     input.setAttribute('role', 'combobox');
-    input.setAttribute('aria-autocomplete', 'list');
+    input.setAttribute('aria-autocomplete', 'both');
     input.setAttribute('aria-controls', 'ul');
     input.setAttribute('aria-expanded', 'false');
     input.addEventListener('compositionstart', function () { composing = true; });
@@ -193,6 +228,12 @@
         if (event.key === 'ArrowDown' && currentItems.length) { event.preventDefault(); updateActive(1); }
         else if (event.key === 'ArrowUp' && currentItems.length) { event.preventDefault(); updateActive(-1); }
         else if (event.key === 'Escape') close();
+        else if (inlineHint.textContent && (event.key === 'Tab' || (event.key === 'ArrowRight' && input.selectionStart === input.value.length && input.selectionEnd === input.value.length))) {
+            if (event.key === 'ArrowRight') event.preventDefault();
+            input.value += inlineHint.textContent;
+            inlineHint.textContent = '';
+            if (event.key === 'ArrowRight') schedule();
+        }
         else if (event.key === 'Enter' && activeIndex >= 0) {
             event.preventDefault();
             form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));

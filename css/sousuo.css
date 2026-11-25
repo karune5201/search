@@ -54,6 +54,20 @@
 	position: relative;
 }
 
+.search-inline-hint {
+	position: absolute;
+	top: 50%;
+	z-index: 101;
+	transform: translateY(-50%);
+	color: rgba(255, 255, 255, .48);
+	font: inherit;
+	font-size: 16px;
+	line-height: normal;
+	white-space: pre;
+	pointer-events: none;
+	user-select: none;
+}
+
 #search-text,
 #kos {
 	box-sizing: border-box;
