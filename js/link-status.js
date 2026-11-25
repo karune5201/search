@@ -1,11 +1,11 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-24 04:43",
+ "generatedAt": "2026-11-25 03:29",
  "checked": 393,
- "elapsed": 119.4,
+ "elapsed": 116.3,
  "summary": {
-  "ok": 325,
-  "blocked": 44,
+  "ok": 326,
+  "blocked": 43,
   "dead": 7,
   "unknown": 17
  },
@@ -2121,8 +2121,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "ffshrine",
    "url": "https://ffshrine.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2289,8 +2289,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "mkvtoolnix",
    "url": "https://mkvtoolnix.download/downloads.html",
-   "kind": "blocked",
-   "detail": "403"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2528,14 +2528,14 @@ window.LINK_STATUS = {
    "name": "gal其他",
    "url": "https://galgamex.net/",
    "kind": "ok",
-   "detail": "200，301→www.galgamex.net"
+   "detail": "200，301→www.galgamex.net（复核后正常）"
   },
   {
    "cat": "galgame",
    "name": "ci-en",
    "url": "https://ci-en.dlsite.com/",
    "kind": "ok",
-   "detail": "200"
+   "detail": "200，302→media.ci-en.jp:443"
   },
   {
    "cat": "galgame",
