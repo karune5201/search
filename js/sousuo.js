@@ -1,17 +1,9 @@
 ! function() {
     function g() {
-        h(), i(), j(), k(),z(),zi()
-    }
-
-    function zi() {
-    	if (document.getElementById("search-text").getAttribute("placeholder")=='影视搜索') {
-        var a = document.querySelector('input[name="type"][onclick="' + bq() + '"]');
-        a && (a.checked = !0, l(a))
-    }    		
-    	}
-    function z() {
-        var selected = document.querySelector('input[name="type"]:checked');
-        return selected ? selected.getAttribute("onclick") : ''
+        h();
+        i();
+        j();
+        k();
     }
     function h() {
         d.checked = s()

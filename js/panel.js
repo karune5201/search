@@ -156,6 +156,12 @@
         body.innerHTML = html;
 
         if (dirtyTip) dirtyTip.hidden = !hasDraft();
+        if (filterInput) {
+            var itemCount = state.reduce(function (n, category) {
+                return n + category.sites.length;
+            }, 0);
+            filterInput.placeholder = '搜索站点…（' + itemCount + ' 个）';
+        }
 
         // 分类下拉同步
         if (catSelect) {
@@ -185,7 +191,7 @@
             var sec = secs[i];
             var items = sec.querySelectorAll('.panel-links > li');
             var titleEl = sec.querySelector('.title');
-            var secName = titleEl ? (titleEl.textContent || '').toLowerCase() : '';
+            var secName = titleEl ? (titleEl.getAttribute('data-key') || '').toLowerCase() : '';
             // 输入的就是分类名（如「網盤」「磁力」）时，整段都保留
             var secHit = !!q && secName.indexOf(q) !== -1;
             var shown = 0;

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-touch-fullscreen" content="yes" />
@@ -193,8 +193,9 @@
         <ul id="kol" class="ko"></ul>
     </div>
 
-    <div class="set-check hidden-xs">
-        <input type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off" />
+    <div class="set-check">
+        <input type="checkbox" id="set-search-blank" autocomplete="off" />
+        <label for="set-search-blank">新窗口打开</label>
     </div>
 
 </div>
@@ -248,7 +249,7 @@
 
 <!-- 音乐播放器 -->
 <div id="music" key="67629c0cf3742" api="https://music.zbiwl.com"></div>
-<script id="xplayer" src="https://music.zbiwl.com/Static/player9/js/player.js"></script>
+<script id="xplayer" defer src="https://music.zbiwl.com/Static/player9/js/player.js"></script>
 
   <!-- 桌宠（素材来自 dsh-pet，MIT；见 assets/pet/README.md）
        长按鱼身可以选动作，台词在 js/pet-lines.js -->

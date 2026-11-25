@@ -53,7 +53,8 @@
             return d.value;
         })
         .catch(function () {
-            // 新 key 可能不存在：hit 会顺手创建，这里再试一次只读就够了
+            // 首次 hit 失败时可重试一次创建；已计数会话只能 get，不能因读取故障误加访问量。
+            if (counted) throw new Error('visit count lookup failed');
             return request('hit').then(function (d) {
                 return d && d.value;
             });
