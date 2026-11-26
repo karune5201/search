@@ -464,8 +464,9 @@ python3 tools/check-links.py --report link-report.md
 
 ### 改法
 
-- `.panel-tools`：`background: transparent`，去掉 `backdrop-filter`，留
-  `border-bottom: 1px solid rgba(255,255,255,.08)` 做分隔。
+- `.panel-tools`：`background: transparent`，去掉 `backdrop-filter`，连分隔线也不画
+  （`border: 0`）—— 那条 `1px rgba(255,255,255,.08)` 在浅色壁纸上会亮成一行白线，
+  比面板本体高出一截，等于把黑杠换成了白杠。
 - `.panel-filter` / `.panel-sec .title`：删掉各自的 `backdrop-filter`，
   底色提到 `rgba(255,255,255,.10)`。
 - 面板本体 `.list` 的毛玻璃保留（它糊的是页面背景，不是自己人）。
@@ -487,5 +488,6 @@ python3 tools/bump-assets.py v7     # 自定义
 ### 验证
 
 灰底探针 390×844：顶栏 44–50、筛选框 66–69、分类标题 72–73、本体 47–78，
-全段一致，无黑带；`tools/check-links.py --selftest` 23/23、
+全段一致，无黑带；亮壁纸探针逐行扫过面板顶 260px，无孤立高亮行（只有各分类
+胶囊自身的 1px 描边）；`tools/check-links.py --selftest` 23/23、
 `tools/check-responsive.py` 14 视口、CSS 大括号配平、预览 200。
