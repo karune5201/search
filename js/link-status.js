@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-25 03:29",
+ "generatedAt": "2026-11-26 02:45",
  "checked": 393,
- "elapsed": 116.3,
+ "elapsed": 120.1,
  "summary": {
   "ok": 326,
   "blocked": 43,
-  "dead": 7,
-  "unknown": 17
+  "dead": 6,
+  "unknown": 18
  },
  "items": [
   {
@@ -1450,7 +1450,7 @@ window.LINK_STATUS = {
    "name": "駿河屋",
    "url": "https://suruga-ya.jp/",
    "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment），301→www.suruga-ya.jp"
+   "detail": "反爬/人机验证（just a moment），301→www.suruga-ya.jp:443"
   },
   {
    "cat": "海購",
@@ -2121,8 +2121,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "ffshrine",
    "url": "https://ffshrine.org/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2156,8 +2156,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "海盗船",
    "url": "https://thepiratebay.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2513,8 +2513,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "莉斯坦",
    "url": "https://limulu.moe/",
-   "kind": "dead",
-   "detail": "域名解析失败（域名不存在），301→www.singureo.com"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "galgame",
@@ -2528,14 +2528,14 @@ window.LINK_STATUS = {
    "name": "gal其他",
    "url": "https://galgamex.net/",
    "kind": "ok",
-   "detail": "200，301→www.galgamex.net（复核后正常）"
+   "detail": "200，301→www.galgamex.net"
   },
   {
    "cat": "galgame",
    "name": "ci-en",
    "url": "https://ci-en.dlsite.com/",
    "kind": "ok",
-   "detail": "200，302→media.ci-en.jp:443"
+   "detail": "200"
   },
   {
    "cat": "galgame",
