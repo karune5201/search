@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-26 02:45",
+ "generatedAt": "2026-11-27 02:52",
  "checked": 393,
- "elapsed": 120.1,
+ "elapsed": 503.4,
  "summary": {
-  "ok": 326,
-  "blocked": 43,
-  "dead": 6,
-  "unknown": 18
+  "ok": 327,
+  "blocked": 42,
+  "dead": 7,
+  "unknown": 17
  },
  "items": [
   {
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "unknown",
-   "detail": "连接被重置"
+   "kind": "ok",
+   "detail": "200，301→www.sankakucomplex.com"
   },
   {
    "cat": "動漫壁紙",
@@ -343,8 +343,8 @@ window.LINK_STATUS = {
    "cat": "動漫",
    "name": "anime1",
    "url": "https://anime1.me/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "521（源站/隧道异常）"
   },
   {
    "cat": "漫画",
@@ -1092,8 +1092,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "iKuai",
    "url": "https://ikuai8.com/component/download",
-   "kind": "ok",
-   "detail": "200，302→www.ikuai8.com"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "開發",
@@ -1148,8 +1148,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "微PE",
    "url": "https://wepe.com.cn",
-   "kind": "ok",
-   "detail": "200，301→www.wepe.com.cn"
+   "kind": "dead",
+   "detail": "证书已过期"
   },
   {
    "cat": "開發",
@@ -1373,7 +1373,7 @@ window.LINK_STATUS = {
    "name": "美亞",
    "url": "https://amazon.com",
    "kind": "ok",
-   "detail": "200，301→www.amazon.com"
+   "detail": "202，301→www.amazon.com"
   },
   {
    "cat": "海購",
@@ -1387,7 +1387,7 @@ window.LINK_STATUS = {
    "name": "德亞",
    "url": "https://amazon.de",
    "kind": "ok",
-   "detail": "200，301→www.amazon.de"
+   "detail": "202，301→www.amazon.de"
   },
   {
    "cat": "海購",
@@ -1848,8 +1848,8 @@ window.LINK_STATUS = {
    "cat": "模擬器",
    "name": "DroidDeck",
    "url": "https://droiddeck.app/",
-   "kind": "blocked",
-   "detail": "反爬/人机验证（just a moment）"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "模擬器",
@@ -1912,7 +1912,7 @@ window.LINK_STATUS = {
    "name": "老貓和一修",
    "url": "https://lmaoyx.com/",
    "kind": "ok",
-   "detail": "200，301→www.lmaoyx.com"
+   "detail": "200，301→www.lmaoyx.com（复核后正常）"
   },
   {
    "cat": "遊戲",
@@ -2156,8 +2156,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "海盗船",
    "url": "https://thepiratebay.org/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200"
   },
   {
    "cat": "磁力",
@@ -2247,8 +2247,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "btdig",
    "url": "https://en.btdig.com/",
-   "kind": "unknown",
-   "detail": "超时"
+   "kind": "ok",
+   "detail": "200，302→www.btdig.com"
   },
   {
    "cat": "磁力",
