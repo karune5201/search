@@ -1,13 +1,13 @@
 /* 由 tools/check-links.py 自动生成，请勿手动修改 */
 window.LINK_STATUS = {
- "generatedAt": "2026-11-27 02:52",
+ "generatedAt": "2026-11-28 02:42",
  "checked": 393,
- "elapsed": 503.4,
+ "elapsed": 505.3,
  "summary": {
-  "ok": 327,
-  "blocked": 42,
+  "ok": 319,
+  "blocked": 43,
   "dead": 7,
-  "unknown": 17
+  "unknown": 24
  },
  "items": [
   {
@@ -252,8 +252,8 @@ window.LINK_STATUS = {
    "cat": "動漫壁紙",
    "name": "Sankaku",
    "url": "https://sankakucomplex.com/",
-   "kind": "ok",
-   "detail": "200，301→www.sankakucomplex.com"
+   "kind": "unknown",
+   "detail": "连接被重置"
   },
   {
    "cat": "動漫壁紙",
@@ -344,7 +344,7 @@ window.LINK_STATUS = {
    "name": "anime1",
    "url": "https://anime1.me/",
    "kind": "unknown",
-   "detail": "521（源站/隧道异常）"
+   "detail": "超时"
   },
   {
    "cat": "漫画",
@@ -490,8 +490,8 @@ window.LINK_STATUS = {
    "cat": "漫画",
    "name": "henthand",
    "url": "https://hentaihand.com/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "blocked",
+   "detail": "反爬/人机验证（just a moment）"
   },
   {
    "cat": "漫画",
@@ -1253,8 +1253,8 @@ window.LINK_STATUS = {
    "cat": "開發",
    "name": "PE",
    "url": "https://download.pixelexperience.org/",
-   "kind": "ok",
-   "detail": "200，301→get.pixelexperience.org"
+   "kind": "unknown",
+   "detail": "证书校验失败"
   },
   {
    "cat": "開發",
@@ -1373,7 +1373,7 @@ window.LINK_STATUS = {
    "name": "美亞",
    "url": "https://amazon.com",
    "kind": "ok",
-   "detail": "202，301→www.amazon.com"
+   "detail": "200，301→www.amazon.com"
   },
   {
    "cat": "海購",
@@ -1387,7 +1387,7 @@ window.LINK_STATUS = {
    "name": "德亞",
    "url": "https://amazon.de",
    "kind": "ok",
-   "detail": "202，301→www.amazon.de"
+   "detail": "200，301→www.amazon.de"
   },
   {
    "cat": "海購",
@@ -1912,7 +1912,7 @@ window.LINK_STATUS = {
    "name": "老貓和一修",
    "url": "https://lmaoyx.com/",
    "kind": "ok",
-   "detail": "200，301→www.lmaoyx.com（复核后正常）"
+   "detail": "200，301→www.lmaoyx.com"
   },
   {
    "cat": "遊戲",
@@ -1932,8 +1932,8 @@ window.LINK_STATUS = {
    "cat": "遊戲",
    "name": "rutracker",
    "url": "https://rutracker.org/forum/index.php",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "遊戲",
@@ -2177,8 +2177,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "nyaaland",
    "url": "https://nyaa.land",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "523（源站/隧道异常）"
   },
   {
    "cat": "磁力",
@@ -2275,8 +2275,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "rutracker",
    "url": "https://rutracker.org/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2331,8 +2331,8 @@ window.LINK_STATUS = {
    "cat": "磁力",
    "name": "日语字幕",
    "url": "https://kitsunekko.net/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "超时"
   },
   {
    "cat": "磁力",
@@ -2632,8 +2632,8 @@ window.LINK_STATUS = {
    "cat": "galgame",
    "name": "hentait",
    "url": "https://hentaitorrents.com/jp/",
-   "kind": "ok",
-   "detail": "200"
+   "kind": "unknown",
+   "detail": "520（源站/隧道异常）"
   },
   {
    "cat": "galgame",
